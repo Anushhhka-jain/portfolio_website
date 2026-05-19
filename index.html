@@ -32,7 +32,33 @@ body{
   color:var(--text);
   font-family:var(--sans);
   overflow-x:hidden;
+  cursor:none;
 }
+
+/* ─── CUSTOM CURSOR ─── */
+.cursor{
+  position:fixed;
+  width:10px;height:10px;
+  background:var(--red);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:99999;
+  transform:translate(-50%,-50%);
+  transition:transform 0.1s ease, width 0.25s ease, height 0.25s ease, opacity 0.25s ease;
+  mix-blend-mode:multiply;
+}
+.cursor-ring{
+  position:fixed;
+  width:34px;height:34px;
+  border:1.5px solid rgba(139,26,26,0.5);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:99998;
+  transform:translate(-50%,-50%);
+  transition:transform 0.18s ease, width 0.25s ease, height 0.25s ease, opacity 0.25s ease;
+}
+body.cursor-hover .cursor{width:16px;height:16px;background:var(--red-dark);}
+body.cursor-hover .cursor-ring{width:50px;height:50px;opacity:0.4;}
 
 /* Grain overlay */
 body::after{
@@ -43,6 +69,17 @@ body::after{
   opacity:0.04;
   pointer-events:none;
   z-index:9999;
+}
+
+/* ─── SCROLL PROGRESS ─── */
+.scroll-progress{
+  position:fixed;
+  top:0;left:0;
+  height:2px;
+  width:0%;
+  background:linear-gradient(90deg, var(--red-dark), var(--red-light));
+  z-index:9997;
+  transition:width 0.1s linear;
 }
 
 /* ─── NAVBAR ─── */
@@ -62,6 +99,12 @@ body::after{
   backdrop-filter:blur(16px);
   border-radius:50px;
   box-shadow:0 8px 40px rgba(101,17,17,0.25);
+  transition:padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar.scrolled{
+  padding:0.7rem 1.8rem;
+  box-shadow:0 12px 50px rgba(101,17,17,0.35);
 }
 
 .nav-logo{
@@ -88,12 +131,63 @@ body::after{
   padding:0.5rem 1rem;
   border-radius:30px;
   transition:0.25s ease;
+  position:relative;
 }
 
-.nav-links a:hover{
+.nav-links a:hover,
+.nav-links a.active{
   color:white;
   background:rgba(255,255,255,0.12);
 }
+
+/* Hamburger */
+.nav-hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+  padding:6px;
+  border-radius:8px;
+  transition:background 0.2s;
+}
+.nav-hamburger:hover{background:rgba(255,255,255,0.1);}
+.nav-hamburger span{
+  display:block;
+  width:22px;height:2px;
+  background:rgba(255,255,255,0.85);
+  border-radius:2px;
+  transition:all 0.3s ease;
+}
+.nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+/* Mobile menu */
+.mobile-menu{
+  position:fixed;
+  top:0;left:0;right:0;
+  background:rgba(101,17,17,0.98);
+  backdrop-filter:blur(20px);
+  z-index:997;
+  padding:100px 3rem 3rem;
+  transform:translateY(-110%);
+  transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  display:flex;
+  flex-direction:column;
+  gap:0.5rem;
+}
+.mobile-menu.open{transform:translateY(0);}
+.mobile-menu a{
+  color:rgba(255,255,255,0.75);
+  text-decoration:none;
+  font-family:var(--serif);
+  font-size:2.5rem;
+  font-style:italic;
+  padding:0.8rem 0;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  transition:color 0.2s, padding-left 0.2s;
+}
+.mobile-menu a:hover{color:white;padding-left:1rem;}
 
 /* ─── HERO ─── */
 .hero{
@@ -127,6 +221,19 @@ body::after{
   margin-bottom:1.8rem;
 }
 
+/* Blinking dot */
+.pulse-dot{
+  width:8px;height:8px;
+  background:var(--red);
+  border-radius:50%;
+  display:inline-block;
+  animation:pulse-anim 2s ease-in-out infinite;
+}
+@keyframes pulse-anim{
+  0%,100%{opacity:1;transform:scale(1);}
+  50%{opacity:0.4;transform:scale(0.7);}
+}
+
 .hero-name{
   font-family:var(--serif);
   font-size:clamp(3.5rem,7vw,6.5rem);
@@ -137,6 +244,7 @@ body::after{
 
 .hero-name em{font-style:italic;font-weight:400;}
 
+/* Typewriter */
 .hero-title{
   font-family:var(--body);
   font-size:1.4rem;
@@ -144,6 +252,7 @@ body::after{
   color:var(--muted);
   margin-bottom:1.8rem;
   font-style:italic;
+  min-height:2rem;
 }
 
 .hero-desc{
@@ -200,7 +309,20 @@ body::after{
   display:inline-flex;
   align-items:center;
   gap:0.4rem;
+  position:relative;
+  overflow:hidden;
 }
+
+.btn-primary::after,.btn-outline::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,0.15);
+  opacity:0;
+  transition:opacity 0.2s;
+  border-radius:50px;
+}
+.btn-primary:hover::after,.btn-outline:hover::after{opacity:1;}
 
 .btn-primary{background:var(--red);color:white;box-shadow:0 8px 24px rgba(139,26,26,0.28);}
 .btn-primary:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 12px 32px rgba(139,26,26,0.35);}
@@ -231,6 +353,11 @@ body::after{
   top:50%;left:50%;
   transform:translate(-50%,-50%);
   z-index:0;
+  animation:blob-pulse 4s ease-in-out infinite;
+}
+@keyframes blob-pulse{
+  0%,100%{transform:translate(-50%,-50%) scale(1);}
+  50%{transform:translate(-50%,-50%) scale(1.15);}
 }
 
 .hero-image{
@@ -273,6 +400,42 @@ body::after{
 .social-chip:hover{background:rgba(255,255,255,0.15);color:white;}
 .social-chip svg{width:13px;height:13px;fill:currentColor;}
 
+/* ─── SCROLL REVEAL ─── */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+.reveal-left{
+  opacity:0;
+  transform:translateX(-40px);
+  transition:opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{
+  opacity:0;
+  transform:translateX(40px);
+  transition:opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+
+/* staggered children */
+.stagger > *{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity 0.5s ease, transform 0.5s ease;
+}
+.stagger.visible > *:nth-child(1){opacity:1;transform:none;transition-delay:0.05s;}
+.stagger.visible > *:nth-child(2){opacity:1;transform:none;transition-delay:0.15s;}
+.stagger.visible > *:nth-child(3){opacity:1;transform:none;transition-delay:0.25s;}
+.stagger.visible > *:nth-child(4){opacity:1;transform:none;transition-delay:0.35s;}
+.stagger.visible > *:nth-child(5){opacity:1;transform:none;transition-delay:0.45s;}
+.stagger.visible > *:nth-child(6){opacity:1;transform:none;transition-delay:0.55s;}
+
 /* ─── SECTIONS ─── */
 section{padding:8rem 3rem;}
 
@@ -312,7 +475,7 @@ section{padding:8rem 3rem;}
   background:var(--cream-card);
   padding:2.2rem;
   border-radius:26px;
-  transition:all 0.35s ease;
+  transition:all 0.35s cubic-bezier(0.4,0,0.2,1);
   position:relative;
   overflow:hidden;
   display:flex;
@@ -330,15 +493,28 @@ section{padding:8rem 3rem;}
   transition:0.3s ease;
 }
 
+/* shimmer on hover */
+.project-card::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%);
+  background-size:200% 200%;
+  background-position:200% 200%;
+  transition:background-position 0.6s ease;
+  pointer-events:none;
+  border-radius:26px;
+}
+.project-card:hover::after{background-position:-50% -50%;}
+
 .project-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 20px 50px rgba(0,0,0,0.1);
+  transform:translateY(-10px);
+  box-shadow:0 24px 60px rgba(0,0,0,0.12);
   background:white;
 }
 
 .project-card:hover::before{opacity:1;}
 
-/* Featured card spans 2 columns */
 .project-card.featured{
   grid-column:span 1;
   background:var(--red);
@@ -391,7 +567,10 @@ section{padding:8rem 3rem;}
   letter-spacing:0.05em;
   color:var(--text);
   font-weight:500;
+  transition:all 0.2s ease;
 }
+.tech-tag:hover{background:var(--red);color:white;transform:translateY(-2px);}
+.project-card.featured .tech-tag:hover{background:rgba(255,255,255,0.3);}
 
 .project-link{
   display:inline-flex;
@@ -407,7 +586,7 @@ section{padding:8rem 3rem;}
   transition:0.2s ease;
 }
 
-.project-link:hover{gap:0.7rem;}
+.project-link:hover{gap:0.8rem;}
 .project-card.featured .project-link{color:rgba(255,255,255,0.9);}
 
 /* ─── SKILLS ─── */
@@ -457,14 +636,12 @@ section{padding:8rem 3rem;}
 .skill-tag:hover{
   background:var(--red);
   color:white;
-  transform:translateY(-3px);
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 6px 20px rgba(139,26,26,0.25);
 }
 
-/* ─── CERTIFICATES & ACHIEVEMENTS ─── */
-
-#certificates{
-  background:var(--cream);
-}
+/* ─── CERTIFICATES ─── */
+#certificates{background:var(--cream);}
 
 .carousel-wrapper{
   position:relative;
@@ -480,10 +657,7 @@ section{padding:8rem 3rem;}
   padding-bottom:1rem;
   scrollbar-width:none;
 }
-
-.carousel-track::-webkit-scrollbar{
-  display:none;
-}
+.carousel-track::-webkit-scrollbar{display:none;}
 
 .certificate-card{
   min-width:340px;
@@ -491,14 +665,14 @@ section{padding:8rem 3rem;}
   border-radius:26px;
   overflow:hidden;
   flex-shrink:0;
-  transition:0.35s ease;
+  transition:0.35s cubic-bezier(0.4,0,0.2,1);
   box-shadow:0 10px 30px rgba(0,0,0,0.06);
 }
 
 .certificate-card:hover{
-  transform:translateY(-8px);
+  transform:translateY(-10px) scale(1.01);
   background:white;
-  box-shadow:0 18px 50px rgba(0,0,0,0.1);
+  box-shadow:0 22px 60px rgba(0,0,0,0.12);
 }
 
 .certificate-image{
@@ -506,11 +680,11 @@ section{padding:8rem 3rem;}
   height:240px;
   object-fit:cover;
   display:block;
+  transition:transform 0.5s ease;
 }
+.certificate-card:hover .certificate-image{transform:scale(1.04);}
 
-.certificate-content{
-  padding:1.5rem;
-}
+.certificate-content{padding:1.5rem;}
 
 .certificate-tag{
   color:var(--red);
@@ -542,27 +716,33 @@ section{padding:8rem 3rem;}
 }
 
 .carousel-btn{
-  width:48px;
-  height:48px;
+  width:48px;height:48px;
   border:none;
   border-radius:50%;
   background:var(--red);
   color:white;
-  cursor:pointer;
+  cursor:none;
   font-size:1.2rem;
   transition:0.3s ease;
+  display:flex;align-items:center;justify-content:center;
 }
+.carousel-btn:hover{background:var(--red-dark);transform:scale(1.1);}
 
-.carousel-btn:hover{
-  background:var(--red-dark);
-  transform:scale(1.08);
+/* Dots indicator */
+.carousel-dots{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:1.5rem;
 }
-
-@media(max-width:900px){
-  .certificate-card{
-    min-width:85%;
-  }
+.carousel-dot{
+  width:8px;height:8px;
+  border-radius:50%;
+  background:rgba(139,26,26,0.2);
+  cursor:pointer;
+  transition:all 0.25s ease;
 }
+.carousel-dot.active{background:var(--red);width:24px;border-radius:4px;}
 
 /* ─── TIMELINE ─── */
 #timeline{background:var(--white-soft);}
@@ -581,19 +761,23 @@ section{padding:8rem 3rem;}
   left:50%;
   transform:translateX(-50%);
   width:2px;
-  height:100%;
+  height:0%;
   background:rgba(139,26,26,0.15);
+  transition:height 1.2s ease;
 }
+.timeline.visible::before{height:100%;}
 
 .timeline-item{
   position:relative;
   width:50%;
   padding:0 3.5rem;
   margin-bottom:3.5rem;
+  opacity:0;
+  transition:opacity 0.6s ease, transform 0.6s ease;
 }
-
-.timeline-item:nth-child(odd){left:0;text-align:right;}
-.timeline-item:nth-child(even){left:50%;}
+.timeline-item:nth-child(odd){left:0;text-align:right;transform:translateX(-30px);}
+.timeline-item:nth-child(even){left:50%;transform:translateX(30px);}
+.timeline-item.visible{opacity:1;transform:translateX(0);}
 
 .timeline-item::before{
   content:'';
@@ -604,8 +788,9 @@ section{padding:8rem 3rem;}
   border-radius:50%;
   background:var(--red);
   box-shadow:0 0 0 4px rgba(139,26,26,0.12);
+  transition:box-shadow 0.3s ease;
 }
-
+.timeline-item:hover::before{box-shadow:0 0 0 8px rgba(139,26,26,0.15);}
 .timeline-item:nth-child(even)::before{left:-8px;right:auto;}
 
 .timeline-year{
@@ -623,34 +808,18 @@ section{padding:8rem 3rem;}
   border-radius:22px;
   transition:0.35s ease;
 }
-
 .timeline-content:hover{
   background:var(--red);
   transform:translateY(-6px);
   box-shadow:0 18px 50px rgba(139,26,26,0.2);
 }
-
 .timeline-content:hover h3,
 .timeline-content:hover p{color:white;}
-
-.timeline-content h3{
-  font-family:var(--serif);
-  font-size:1.35rem;
-  margin-bottom:0.7rem;
-}
-
-.timeline-content p{
-  font-family:var(--body);
-  font-size:1.05rem;
-  line-height:1.8;
-  color:var(--muted);
-}
+.timeline-content h3{font-family:var(--serif);font-size:1.35rem;margin-bottom:0.7rem;}
+.timeline-content p{font-family:var(--body);font-size:1.05rem;line-height:1.8;color:var(--muted);}
 
 /* ─── CONTACT ─── */
-.contact-section{
-  background:var(--red-dark);
-  text-align:center;
-}
+.contact-section{background:var(--red-dark);text-align:center;}
 
 .contact-heading{
   font-family:var(--serif);
@@ -690,8 +859,12 @@ section{padding:8rem 3rem;}
   align-items:center;
   gap:0.5rem;
 }
-
-.contact-link:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.5);}
+.contact-link:hover{
+  background:rgba(255,255,255,0.15);
+  border-color:rgba(255,255,255,0.5);
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px rgba(0,0,0,0.2);
+}
 .contact-link svg{width:15px;height:15px;fill:currentColor;}
 
 /* ─── FOOTER ─── */
@@ -706,16 +879,12 @@ footer{
   letter-spacing:0.08em;
 }
 
-/* ─── ANIMATIONS ─── */
+/* ─── HERO ANIMATIONS ─── */
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(30px);}
   to{opacity:1;transform:translateY(0);}
 }
-
-.hero-content > *{
-  animation:fadeUp 0.7s ease both;
-}
-
+.hero-content > *{animation:fadeUp 0.7s ease both;}
 .hero-eyebrow{animation-delay:0.1s;}
 .hero-name{animation-delay:0.2s;}
 .hero-title{animation-delay:0.3s;}
@@ -725,10 +894,7 @@ footer{
 .hero-image-side{animation:fadeUp 0.8s 0.3s ease both;}
 
 /* ─── IMAGE POPUP ─── */
-
-.clickable-image{
-  cursor:pointer;
-}
+.clickable-image{cursor:none;}
 
 .image-modal{
   position:fixed;
@@ -738,40 +904,66 @@ footer{
   justify-content:center;
   align-items:center;
   z-index:99999;
-
   opacity:0;
   pointer-events:none;
   transition:0.3s ease;
-
   padding:2rem;
 }
-
-.image-modal.active{
-  opacity:1;
-  pointer-events:auto;
-}
+.image-modal.active{opacity:1;pointer-events:auto;}
 
 .modal-image{
   max-width:90%;
   max-height:90vh;
   border-radius:18px;
   box-shadow:0 25px 80px rgba(0,0,0,0.5);
+  transform:scale(0.9);
+  transition:transform 0.3s ease;
 }
+.image-modal.active .modal-image{transform:scale(1);}
 
 .close-modal{
   position:absolute;
-  top:24px;
-  right:36px;
+  top:24px;right:36px;
   color:white;
   font-size:3rem;
   font-weight:300;
-  cursor:pointer;
+  cursor:none;
+  width:48px;height:48px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  transition:background 0.2s;
 }
+.close-modal:hover{background:rgba(255,255,255,0.1);}
+
+/* ─── BACK TO TOP ─── */
+.back-to-top{
+  position:fixed;
+  bottom:2rem;
+  right:2rem;
+  width:44px;height:44px;
+  background:var(--red);
+  color:white;
+  border:none;
+  border-radius:50%;
+  cursor:none;
+  font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity 0.3s, transform 0.3s;
+  z-index:900;
+  box-shadow:0 8px 24px rgba(139,26,26,0.3);
+}
+.back-to-top.visible{opacity:1;transform:translateY(0);}
+.back-to-top:hover{background:var(--red-dark);transform:translateY(-3px);}
 
 /* ─── MOBILE ─── */
 @media(max-width:900px){
+  body{cursor:auto;}
+  .cursor,.cursor-ring{display:none;}
   .navbar{width:calc(100% - 24px);top:10px;padding:0.8rem 1.2rem;}
   .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
   .hero{padding:8rem 1.5rem 4rem;}
   .hero-container{grid-template-columns:1fr;gap:3rem;text-align:center;}
   .hero-content{align-items:center;}
@@ -784,16 +976,36 @@ footer{
   .project-card.featured{grid-column:span 1;}
   .skills-layout{grid-template-columns:1fr;}
   .timeline::before{left:20px;transform:none;}
-  .timeline-item{width:100%;left:0 !important;padding-left:55px;padding-right:0;text-align:left !important;}
+  .timeline-item{width:100%;left:0 !important;padding-left:55px;padding-right:0;text-align:left !important;transform:translateX(0) !important;}
   .timeline-item::before{left:12px !important;right:auto !important;}
+  .certificate-card{min-width:85%;}
   footer{flex-direction:column;gap:0.8rem;text-align:center;}
+  .back-to-top{bottom:1.5rem;right:1.5rem;}
 }
 </style>
 </head>
 <body>
 
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#timeline" onclick="closeMenu()">Journey</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
 <!-- NAVBAR -->
-<nav class="navbar">
+<nav class="navbar" id="navbar">
   <div class="nav-logo">Anushka Jain</div>
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
@@ -801,6 +1013,9 @@ footer{
     <li><a href="#timeline">Journey</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -810,15 +1025,15 @@ footer{
     <!-- LEFT -->
     <div class="hero-content">
       <p class="hero-eyebrow">
-        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style="display:inline"><circle cx="5" cy="5" r="4" fill="#8B1A1A"/></svg>
+        <span class="pulse-dot"></span>
         B.Tech Artificial Intelligence · Mumbai
       </p>
 
       <h1 class="hero-name">
-        Hi,<br>I'm <em>Anushka</em>
+I'm <em>Anushka</em>
       </h1>
 
-      <p class="hero-title">AI Engineer & Developer</p>
+      <p class="hero-title" id="typewriter"></p>
 
       <p class="hero-desc">
         Building intelligent systems at the intersection of machine learning,
@@ -829,15 +1044,15 @@ footer{
 
       <div class="hero-stats">
         <div>
-          <span class="stat-num">5+</span>
+          <span class="stat-num" data-target="5" data-suffix="+">0</span>
           <span class="stat-label">AI Projects</span>
         </div>
         <div>
-          <span class="stat-num">3.49</span>
+          <span class="stat-num" data-target="3.49" data-decimal="true">0</span>
           <span class="stat-label">CGPA</span>
         </div>
         <div>
-          <span class="stat-num">2027</span>
+          <span class="stat-num" data-target="2027">0</span>
           <span class="stat-label">Graduation</span>
         </div>
       </div>
@@ -880,12 +1095,11 @@ footer{
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-inner">
-    <span class="section-label">Selected Work</span>
-    <h2 class="section-title">Projects</h2>
+    <span class="section-label reveal">Selected Work</span>
+    <h2 class="section-title reveal">Projects</h2>
 
-    <div class="projects-grid">
+    <div class="projects-grid stagger">
 
-      <!-- Featured: Alpha Builder -->
       <div class="project-card">
         <p class="project-tag">✦ Featured · Quant Finance AI</p>
         <h3 class="project-name">Alpha Builder</h3>
@@ -905,34 +1119,25 @@ footer{
         </a>
       </div>
 
-      <!-- Card: Adversarial AML Chain -->
-<div class="project-card">
-  <p class="project-tag">AI Security · Blockchain AML</p>
+      <div class="project-card">
+        <p class="project-tag">AI Security · Blockchain AML</p>
+        <h3 class="project-name">Adversarial AML Chain</h3>
+        <p class="project-desc">
+          AI-powered adversarial anti-money laundering research project focused on
+          blockchain transaction analysis, attack simulation, anomaly detection,
+          and security-aware ML pipelines for financial systems.
+        </p>
+        <div class="project-meta">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">AML</span>
+          <span class="tech-tag">Cybersecurity</span>
+          <span class="tech-tag">Blockchain</span>
+        </div>
+        <a href="https://github.com/reyaoberoi/Adversarial-AML-Chain" target="_blank" class="project-link">
+          View on GitHub →
+        </a>
+      </div>
 
-  <h3 class="project-name">Adversarial AML Chain</h3>
-
-  <p class="project-desc">
-    AI-powered adversarial anti-money laundering research project focused on
-    blockchain transaction analysis, attack simulation, anomaly detection,
-    and security-aware ML pipelines for financial systems.
-  </p>
-
-  <div class="project-meta">
-    <span class="tech-tag">Python</span>
-    <span class="tech-tag">AML</span>
-    <span class="tech-tag">Cybersecurity</span>
-    <span class="tech-tag">Blockchain</span>
-  </div>
-
-  <a href="https://github.com/reyaoberoi/Adversarial-AML-Chain"
-     target="_blank"
-     class="project-link">
-    View on GitHub →
-  </a>
-</div>
-      
-
-      <!-- Card: Liver -->
       <div class="project-card">
         <p class="project-tag">Medical AI</p>
         <h3 class="project-name">3D Liver Segmentation</h3>
@@ -947,7 +1152,6 @@ footer{
         </div>
       </div>
 
-      <!-- Card: Stock -->
       <div class="project-card">
         <p class="project-tag">Finance AI</p>
         <h3 class="project-name">Stock Prediction</h3>
@@ -962,7 +1166,6 @@ footer{
         </div>
       </div>
 
-      <!-- Card: OCR -->
       <div class="project-card">
         <p class="project-tag">Accessibility AI</p>
         <h3 class="project-name">Image to Voice</h3>
@@ -977,7 +1180,6 @@ footer{
         </div>
       </div>
 
-      <!-- Card: NLP -->
       <div class="project-card">
         <p class="project-tag">NLP</p>
         <h3 class="project-name">Sentiment Analysis</h3>
@@ -999,10 +1201,10 @@ footer{
 <!-- SKILLS -->
 <section id="skills">
   <div class="section-inner">
-    <span class="section-label">Technical Arsenal</span>
-    <h2 class="section-title">Skills</h2>
+    <span class="section-label reveal">Technical Arsenal</span>
+    <h2 class="section-title reveal">Skills</h2>
 
-    <div class="skills-layout">
+    <div class="skills-layout stagger">
       <div class="skill-box">
         <p class="skill-title">Languages</p>
         <div class="skill-tags">
@@ -1054,119 +1256,68 @@ footer{
 <section id="certificates">
   <div class="section-inner">
 
-    <span class="section-label">Achievements & Certifications</span>
-    <h2 class="section-title">Certificates · Hackathons · Recognition</h2>
+    <span class="section-label reveal">Achievements & Certifications</span>
+    <h2 class="section-title reveal">Certificates · Hackathons · Recognition</h2>
 
     <div class="carousel-buttons">
       <button class="carousel-btn" onclick="scrollCertificates(-1)">←</button>
       <button class="carousel-btn" onclick="scrollCertificates(1)">→</button>
     </div>
-<div class="carousel-wrapper">
-  <div class="carousel-track" id="certificateCarousel">
 
-    <!-- CARD 1 -->
-         <div class="certificate-card">
-      <img 
-        src="images/wqb_gold.png" 
-        class="certificate-image clickable-image" 
-        alt="Achievement"
-        onclick="openImage(this.src)"
-      >
+    <div class="carousel-wrapper">
+      <div class="carousel-track" id="certificateCarousel">
 
-      <div class="certificate-content">
-        <p class="certificate-tag">Achievement</p>
-
-        <h3 class="certificate-title">
-          WorldQuant Challenge – Gold Level
-        </h3>
-
-        <p class="certificate-desc">
-          Reached Gold Level status by building data-driven quantitative
-          alpha models for predictive finance.
-        </p>
-      </div>
-    </div>
-    
-    <div class="certificate-card">
-      <img 
-        src="images/logistics_now.png" 
-        class="certificate-image clickable-image" 
-        alt="Certificate"
-        onclick="openImage(this.src)"
-      >
-
-      <div class="certificate-content">
-        <p class="certificate-tag">Certification</p>
-
-        <h3 class="certificate-title">
-          Logistics Now Hackathon Certificate
-        </h3>
-
-        <p class="certificate-desc">
-          Collaborated with Team SisCode to build an AI-powered system
-          that automatically cleans and standardizes messy shipment data.
-        </p>
-      </div>
-    </div>
-
-    <!-- CARD 2 -->
-    <div class="certificate-card">
-      <img 
-        src="images/healthclick.png" 
-        class="certificate-image clickable-image" 
-        alt="Hackathon"
-        onclick="openImage(this.src)"
-      >
-
-      <div class="certificate-content">
-        <p class="certificate-tag">Internship</p>
-
-        <h3 class="certificate-title">
-          HealthClick SDE Intern
-        </h3>
-
-        <p class="certificate-desc">
-          Developed technical projects and delivered scalable software
-          features within an agile team.
-        </p>
-      </div>
-    </div>
-    <!--card 4 -->
         <div class="certificate-card">
-      <img 
-        src="images/sih.png" 
-        class="certificate-image clickable-image" 
-        alt="Hackathon"
-        onclick="openImage(this.src)"
-      >
+          <img src="images/wqb_gold.png" class="certificate-image clickable-image" alt="Achievement" onclick="openImage(this.src)">
+          <div class="certificate-content">
+            <p class="certificate-tag">Achievement</p>
+            <h3 class="certificate-title">WorldQuant Challenge – Gold Level</h3>
+            <p class="certificate-desc">Reached Gold Level status by building data-driven quantitative alpha models for predictive finance.</p>
+          </div>
+        </div>
 
-      <div class="certificate-content">
-        <p class="certificate-tag">Hackathon</p>
+        <div class="certificate-card">
+          <img src="images/logistics_now.png" class="certificate-image clickable-image" alt="Certificate" onclick="openImage(this.src)">
+          <div class="certificate-content">
+            <p class="certificate-tag">Certification</p>
+            <h3 class="certificate-title">Logistics Now Hackathon Certificate</h3>
+            <p class="certificate-desc">Collaborated with Team SisCode to build an AI-powered system that automatically cleans and standardizes messy shipment data.</p>
+          </div>
+        </div>
 
-        <h3 class="certificate-title">
-          Smart India Hackathon Initiative (MPSTME Ideathon)
-        </h3>
+        <div class="certificate-card">
+          <img src="images/healthclick.png" class="certificate-image clickable-image" alt="Hackathon" onclick="openImage(this.src)">
+          <div class="certificate-content">
+            <p class="certificate-tag">Internship</p>
+            <h3 class="certificate-title">HealthClick SDE Intern</h3>
+            <p class="certificate-desc">Developed technical projects and delivered scalable software features within an agile team.</p>
+          </div>
+        </div>
 
-        <p class="certificate-desc">
-          Competed with Team BrewGANs to pitch innovative, tech-driven solutions for national-level problem statements.
-        </p>
+        <div class="certificate-card">
+          <img src="images/sih.png" class="certificate-image clickable-image" alt="Hackathon" onclick="openImage(this.src)">
+          <div class="certificate-content">
+            <p class="certificate-tag">Hackathon</p>
+            <h3 class="certificate-title">Smart India Hackathon Initiative (MPSTME Ideathon)</h3>
+            <p class="certificate-desc">Competed with Team BrewGANs to pitch innovative, tech-driven solutions for national-level problem statements.</p>
+          </div>
+        </div>
+
       </div>
     </div>
 
-  </div>
-</div>
+    <div class="carousel-dots" id="carouselDots"></div>
 
   </div>
 </section>
 
-
 <!-- TIMELINE -->
 <section id="timeline">
   <div class="section-inner">
-    <span class="section-label">Journey</span>
-    <h2 class="section-title">My Story</h2>
+    <span class="section-label reveal">Journey</span>
+    <h2 class="section-title reveal">My Story</h2>
 
-    <div class="timeline">
+    <div class="timeline" id="timeline-line">
 
       <div class="timeline-item">
         <div class="timeline-year">2024</div>
@@ -1199,11 +1350,11 @@ footer{
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
   <div class="section-inner">
-    <span class="section-label" style="color:rgba(255,255,255,0.6);background:rgba(255,255,255,0.1);">Let's Connect</span>
-    <h2 class="contact-heading">Let's Build Something Great</h2>
-    <p class="contact-sub">Open to internships, collaborations, research opportunities, and ambitious AI projects.</p>
+    <span class="section-label reveal" style="color:rgba(255,255,255,0.6);background:rgba(255,255,255,0.1);">Let's Connect</span>
+    <h2 class="contact-heading reveal">Let's Build Something Great</h2>
+    <p class="contact-sub reveal">Open to internships, collaborations, research opportunities, and ambitious AI projects.</p>
 
-    <div class="contact-links">
+    <div class="contact-links stagger">
       <a href="mailto:anushkaj2211@gmail.com" class="contact-link">
         <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
         Email
@@ -1232,29 +1383,182 @@ footer{
 </div>
 
 <script>
-function scrollCertificates(direction){
-  const container = document.getElementById("certificateCarousel");
-  const scrollAmount = 380;
+/* ─── CUSTOM CURSOR ─── */
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+let mouseX=0,mouseY=0,ringX=0,ringY=0;
 
-  container.scrollBy({
-    left: direction * scrollAmount,
-    behavior: "smooth"
+document.addEventListener('mousemove',e=>{
+  mouseX=e.clientX; mouseY=e.clientY;
+  cursor.style.left=mouseX+'px';
+  cursor.style.top=mouseY+'px';
+});
+
+(function animateRing(){
+  ringX+=(mouseX-ringX)*0.12;
+  ringY+=(mouseY-ringY)*0.12;
+  cursorRing.style.left=ringX+'px';
+  cursorRing.style.top=ringY+'px';
+  requestAnimationFrame(animateRing);
+})();
+
+document.querySelectorAll('a,button,.skill-tag,.tech-tag,.carousel-btn,.close-modal,.clickable-image').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
+});
+
+/* ─── SCROLL PROGRESS ─── */
+const scrollBar = document.getElementById('scrollProgress');
+window.addEventListener('scroll',()=>{
+  const pct = window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+  scrollBar.style.width=pct+'%';
+});
+
+/* ─── NAVBAR: shrink + active link ─── */
+const navbar = document.getElementById('navbar');
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('section[id]');
+
+window.addEventListener('scroll',()=>{
+  // shrink
+  navbar.classList.toggle('scrolled', window.scrollY > 80);
+
+  // back to top visibility
+  document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+
+  // active link
+  let current='';
+  sections.forEach(s=>{
+    if(window.scrollY >= s.offsetTop - 200) current = s.id;
   });
+  navLinks.forEach(a=>{
+    a.classList.toggle('active', a.getAttribute('href')==='#'+current);
+  });
+});
+
+/* ─── MOBILE MENU ─── */
+function toggleMenu(){
+  const menu = document.getElementById('mobileMenu');
+  const ham = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  ham.classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
 }
 
+/* ─── TYPEWRITER ─── */
+const phrases=['AI Engineer & Developer','ML Researcher','Quant Finance Builder','Deep Learning Enthusiast'];
+let pi=0,ci=0,deleting=false;
+const tw=document.getElementById('typewriter');
+function type(){
+  const phrase=phrases[pi];
+  if(!deleting){
+    tw.textContent=phrase.slice(0,++ci);
+    if(ci===phrase.length){deleting=true;setTimeout(type,1800);return;}
+  } else {
+    tw.textContent=phrase.slice(0,--ci);
+    if(ci===0){deleting=false;pi=(pi+1)%phrases.length;}
+  }
+  setTimeout(type,deleting?50:80);
+}
+setTimeout(type,1000);
+
+/* ─── COUNTER ANIMATION ─── */
+function animateCount(el){
+  const target=parseFloat(el.dataset.target);
+  const decimal=el.dataset.decimal==='true';
+  const suffix=el.dataset.suffix||'';
+  const duration=1400;
+  const steps=60;
+  const step=target/steps;
+  let current=0;
+  const timer=setInterval(()=>{
+    current+=step;
+    if(current>=target){current=target;clearInterval(timer);}
+    el.textContent=(decimal?current.toFixed(2):Math.round(current))+suffix;
+  },duration/steps);
+}
+
+/* ─── SCROLL REVEAL ─── */
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      // counters
+      entry.target.querySelectorAll('[data-target]').forEach(animateCount);
+      // timeline line
+      if(entry.target.classList.contains('timeline')) entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.15});
+
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.stagger').forEach(el=>observer.observe(el));
+
+// Timeline items individually
+const timelineObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      timelineObserver.unobserve(entry.target);
+    }
+  });
+},{threshold:0.2});
+document.querySelectorAll('.timeline-item').forEach(el=>timelineObserver.observe(el));
+
+// Timeline line
+const tlLineObs=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting) entries[0].target.classList.add('visible');
+},{threshold:0.1});
+const tl=document.getElementById('timeline-line');
+if(tl) tlLineObs.observe(tl);
+
+// Trigger counter on page load for hero stats (already visible)
+setTimeout(()=>{
+  document.querySelectorAll('.hero-stats [data-target]').forEach(animateCount);
+},600);
+
+/* ─── CAROUSEL + DOTS ─── */
+function scrollCertificates(dir){
+  const track=document.getElementById('certificateCarousel');
+  track.scrollBy({left:dir*380,behavior:'smooth'});
+  setTimeout(updateDots,400);
+}
+
+const cards=document.querySelectorAll('.certificate-card');
+const dotsContainer=document.getElementById('carouselDots');
+cards.forEach((_,i)=>{
+  const dot=document.createElement('div');
+  dot.className='carousel-dot'+(i===0?' active':'');
+  dot.addEventListener('click',()=>{
+    const track=document.getElementById('certificateCarousel');
+    track.scrollTo({left:i*380,behavior:'smooth'});
+    setTimeout(updateDots,400);
+  });
+  dotsContainer.appendChild(dot);
+});
+
+function updateDots(){
+  const track=document.getElementById('certificateCarousel');
+  const idx=Math.round(track.scrollLeft/380);
+  document.querySelectorAll('.carousel-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+}
+document.getElementById('certificateCarousel').addEventListener('scroll',updateDots);
+
+/* ─── IMAGE MODAL ─── */
 function openImage(src){
-  const modal = document.getElementById("imageModal");
-  const modalImg = document.getElementById("modalImage");
-
-  modalImg.src = src;
-  modal.classList.add("active");
+  const modal=document.getElementById('imageModal');
+  document.getElementById('modalImage').src=src;
+  modal.classList.add('active');
+  document.body.style.overflow='hidden';
 }
-
 function closeImage(){
-  document
-    .getElementById("imageModal")
-    .classList.remove("active");
+  document.getElementById('imageModal').classList.remove('active');
+  document.body.style.overflow='';
 }
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeImage();});
 </script>
 
 </body>
