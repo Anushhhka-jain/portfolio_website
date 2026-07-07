@@ -9,9 +9,9 @@
 <meta property="og:title" content="Anushka Jain | AI Engineer">
 <meta property="og:description" content="AI Engineer building intelligent systems across deep learning, quant finance, computer vision and NLP.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="images/anushka_in_red.png">
+<meta property="og:image" content="images/anushka_with_tie.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%2312263A'/%3E%3Ctext x='50' y='66' font-size='52' text-anchor='middle' fill='%23C9A85C' font-family='Georgia,serif' font-style='italic'%3EA%3C/text%3E%3C/svg%3E">
-<link rel="preload" as="image" href="images/anushka_in_red.png" fetchpriority="high">
+<link rel="preload" as="image" href="images/Anushka_with_tie.png" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -44,7 +44,14 @@ body{
   color:var(--text);
   font-family:var(--sans);
   overflow-x:hidden;
-  cursor:none;
+}
+/* Custom cursor only on devices with a real mouse pointer */
+@media (hover:hover) and (pointer:fine){
+  body{cursor:none;}
+}
+@media (hover:none), (pointer:coarse){
+  .cursor,.cursor-ring{display:none;}
+  body,.clickable-image,.carousel-btn,.back-to-top,.close-modal{cursor:auto;}
 }
 body.locked{overflow:hidden;}
 
@@ -245,6 +252,9 @@ body.loaded .navbar{transform:translateX(-50%) translateY(0);}
   backdrop-filter:blur(20px);
   z-index:997;
   padding:100px 3rem 3rem;
+  max-height:100vh;
+  max-height:100dvh;
+  overflow-y:auto;
   transform:translateY(-110%);
   transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);
   display:flex;
@@ -267,6 +277,7 @@ body.loaded .navbar{transform:translateX(-50%) translateY(0);}
 /* ─── HERO ─── */
 .hero{
   min-height:100vh;
+  min-height:100svh;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -1245,6 +1256,22 @@ footer{
   body{cursor:auto;}
 }
 
+/* ─── LAPTOP / SMALL DESKTOP ─── */
+@media(max-width:1240px){
+  .hero-container{gap:3rem;}
+  .projects-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+/* ─── TABLET ─── */
+@media(max-width:1024px){
+  section{padding:6rem 2rem;}
+  .hero{padding:9rem 2rem 5rem;}
+  .hero-name{font-size:clamp(3rem,6.5vw,5rem);}
+  .hero-stats{gap:1.8rem;padding:1.3rem 1.6rem;}
+  .skills-layout{gap:1.2rem;}
+  .certificate-card{min-width:300px;}
+}
+
 /* ─── MOBILE ─── */
 @media(max-width:900px){
   body{cursor:auto;}
@@ -1270,8 +1297,56 @@ footer{
   .timeline-item{width:100%;left:0 !important;padding-left:55px;padding-right:0;text-align:left !important;transform:translateX(0) !important;}
   .timeline-item::before{left:12px !important;right:auto !important;}
   .certificate-card{min-width:85%;}
+  .carousel-buttons{justify-content:center;}
+  .hero-image-wrap{max-width:340px;}
+  .mobile-menu a{font-size:2rem;}
   footer{flex-direction:column;gap:0.8rem;text-align:center;}
   .back-to-top{bottom:1.5rem;right:1.5rem;}
+}
+
+/* ─── SMALL PHONES ─── */
+@media(max-width:600px){
+  .navbar{width:calc(100% - 16px);top:8px;padding:0.7rem 1rem;}
+  .nav-logo{font-size:0.72rem;letter-spacing:0.14em;}
+  .mobile-menu{padding:84px 1.5rem 2rem;}
+  .mobile-menu a{font-size:1.6rem;padding:0.7rem 0;}
+  .hero{padding:6.5rem 1.25rem 3.5rem;}
+  .hero-name{font-size:clamp(2.6rem,12vw,3.5rem);}
+  .hero-title{font-size:1.2rem;}
+  .hero-desc{font-size:1.1rem;line-height:1.8;margin-bottom:2rem;}
+  .hero-stats{width:100%;justify-content:space-between;gap:0.8rem;padding:1.1rem 1.2rem;flex-wrap:wrap;}
+  .stat-num{font-size:1.55rem;}
+  .stat-label{font-size:0.58rem;}
+  .hero-buttons{width:100%;}
+  .btn-primary,.btn-outline{flex:1 1 auto;justify-content:center;padding:0.9rem 1rem;}
+  .social-strip{flex-wrap:wrap;justify-content:center;padding:0.7rem 0.9rem;width:100%;}
+  .hero-image-wrap{max-width:290px;}
+  .hero-badge{width:84px;height:84px;bottom:-14px;left:-6px;}
+  .hero-badge .badge-center{width:38px;height:38px;font-size:0.9rem;}
+  .marquee-item{font-size:0.85rem;gap:1.4rem;padding-right:1.4rem;}
+  section{padding:4rem 1.25rem;}
+  .title-mask{margin-bottom:2.2rem;}
+  .section-title{font-size:clamp(2rem,8.5vw,2.8rem);}
+  .project-card{padding:1.6rem;}
+  .project-name{font-size:1.45rem;}
+  .skill-box{padding:1.5rem;}
+  .certificate-card{min-width:calc(100% - 0.5rem);}
+  .certificate-image{height:200px;}
+  .certificate-content{padding:1.2rem;}
+  .certificate-title{font-size:1.3rem;}
+  .carousel-btn{width:42px;height:42px;}
+  .timeline::before{left:16px;}
+  .timeline-item{padding-left:46px;margin-bottom:2.5rem;}
+  .timeline-item::before{left:9px !important;width:14px;height:14px;}
+  .timeline-content{padding:1.4rem;}
+  .contact-sub{font-size:1.1rem;}
+  .contact-links{gap:0.7rem;}
+  .contact-link{padding:0.8rem 1.3rem;font-size:0.7rem;}
+  .image-modal{padding:1rem;}
+  .modal-image{max-width:100%;max-height:82vh;}
+  .close-modal{top:12px;right:12px;font-size:2.4rem;}
+  footer{padding:1.6rem 1.25rem;}
+  .back-to-top{width:40px;height:40px;bottom:1.1rem;right:1.1rem;}
 }
 </style>
 </head>
@@ -1370,7 +1445,7 @@ footer{
     <!-- RIGHT -->
     <div class="hero-image-side">
       <div class="hero-image-wrap" id="heroImageWrap">
-        <img src="images/anushka_in_red.png" alt="Anushka Jain" class="hero-image" fetchpriority="high"
+        <img src="images/Anushka_with_tie.png" alt="Anushka Jain" class="hero-image" fetchpriority="high"
           onerror="this.style.background='linear-gradient(135deg,#12263A,#2A4A6B)';this.style.minHeight='480px';this.removeAttribute('src');">
 
         <div class="hero-badge" aria-hidden="true">
