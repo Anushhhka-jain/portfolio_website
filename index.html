@@ -181,11 +181,30 @@ section[id],article[id]{scroll-margin-top:86px;}
 .sec-sub{color:var(--text-2);max-width:62ch;margin-top:0.9rem;font-size:1.091rem;}
 .rule{height:1px;background:linear-gradient(90deg,var(--line),transparent);margin:0;border:0;}
 
-/* reveal */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease);}
-.reveal.in{opacity:1;transform:none;}
-.stagger>*{opacity:0;transform:translateY(22px);transition:opacity 0.6s var(--ease),transform 0.6s var(--ease);}
-.stagger.in>*{opacity:1;transform:none;}
+/* ─── REVEAL ───
+   One transition, several entry vectors. Everything animates on the same easing
+   and the same duration so a section reads as one movement rather than a dozen
+   separate ones; only the direction changes, chosen by where the element sits. */
+.reveal{
+  opacity:0;transform:translateY(26px);
+  transition:opacity 0.75s var(--ease),transform 0.75s var(--ease),filter 0.75s var(--ease);
+  filter:blur(4px);
+}
+.reveal.in{opacity:1;transform:none;filter:none;}
+/* a card-sized block reads better settling in than sliding up */
+.reveal.rv-zoom{transform:scale(0.94);}
+.stagger>*{
+  opacity:0;transform:translateY(24px);
+  transition:opacity 0.65s var(--ease),transform 0.65s var(--ease),filter 0.65s var(--ease);
+  filter:blur(4px);
+}
+.stagger.in>*{opacity:1;transform:none;filter:none;}
+/* blur is the expensive half — drop it where there are many cards on weak GPUs */
+@media (max-width:640px){
+  .reveal,.stagger>*{filter:none;}
+}
+/* scroll-linked parallax: data-par holds the travel in px, JS writes the transform */
+[data-par]{will-change:transform;}
 
 /* ─── PRELOADER (boot sequence) ─── */
 .preloader{
@@ -296,6 +315,20 @@ section[id],article[id]{scroll-margin-top:86px;}
 .hero-role .caret{display:inline-block;width:8px;height:1em;background:var(--accent);vertical-align:-2px;animation:blink 0.9s steps(2) infinite;}
 .hero-desc{color:var(--text-2);max-width:52ch;font-size:1.122rem;margin-bottom:2.2rem;}
 .hero-desc b{color:var(--text);font-weight:500;}
+
+/* hero entrance — held until the preloader hands over (body.ready), so the
+   sequence is seen rather than played behind the boot screen. Gated on the
+   class, so if the script never runs the hero is simply visible. */
+@keyframes hero-rise{from{opacity:0;transform:translateY(30px);filter:blur(7px);}}
+@keyframes hero-fade{from{opacity:0;transform:scale(0.965);}}
+body.ready .hero-content>*{animation:hero-rise 0.85s var(--ease) both;}
+body.ready .hero-content>*:nth-child(1){animation-delay:0.06s;}
+body.ready .hero-content>*:nth-child(2){animation-delay:0.14s;}
+body.ready .hero-content>*:nth-child(3){animation-delay:0.24s;}
+body.ready .hero-content>*:nth-child(4){animation-delay:0.32s;}
+body.ready .hero-content>*:nth-child(5){animation-delay:0.40s;}
+body.ready .hero-content>*:nth-child(6){animation-delay:0.48s;}
+body.ready .hero-image-side{animation:hero-fade 1s var(--ease) 0.28s both;}
 
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,10.5rem));gap:0.75rem;margin-bottom:2.4rem;}
 .stat{
@@ -772,28 +805,106 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 .hit-meter i{display:block;height:100%;background:var(--accent);}
 .hit-text{font-size:1.023rem;color:var(--text-2);line-height:1.55;}
 
-/* ─── TIMELINE (commit log) ─── */
-.log{position:relative;padding-left:1.9rem;}
-.log::before{content:'';position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line);}
-.log-line{position:absolute;left:5px;top:6px;width:1px;background:var(--accent);height:0;transition:height 1.4s var(--ease);}
-.entry{position:relative;padding-bottom:2.1rem;}
-.entry:last-child{padding-bottom:0;}
-.entry::before{
-  content:'';position:absolute;left:-1.9rem;top:7px;width:11px;height:11px;border-radius:50%;
-  background:var(--bg);border:1.5px solid var(--line);transition:border-color 0.4s,box-shadow 0.4s;
+/* ─── TIMELINE (commit log) ───
+   Base layout is the phone one: a single rail down the left with every card to
+   its right. The centred, alternating version is layered on at ≥900px, where
+   there is finally room for two columns of prose either side of the line. */
+.log{
+  --tl-rail:6px;      /* x of the rail on the mobile layout */
+  --tl-dot:13px;      /* dot diameter, shared by both layouts */
+  --tl-gap:2.9rem;    /* card edge → rail */
+  position:relative;
+  /* the indent is derived, not guessed: card edge − gap must land the dot exactly
+     on the rail's centre line, or the dots float off it on phones */
+  padding-left:calc(var(--tl-gap) + var(--tl-rail) + 1px);
 }
-.entry.in::before{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-dim);}
+.log::before{
+  content:'';position:absolute;left:var(--tl-rail);top:4px;bottom:4px;width:2px;border-radius:2px;
+  background:linear-gradient(180deg,var(--line-soft),var(--line) 12%,var(--line) 88%,transparent);
+}
+/* the accent fill is driven by scroll position, so the rail draws itself as the
+   section passes rather than filling once and being done */
+.log-line{
+  position:absolute;left:var(--tl-rail);top:4px;width:2px;height:0;border-radius:2px;
+  background:linear-gradient(180deg,var(--accent),var(--peach));
+  box-shadow:0 0 12px rgba(var(--accent-rgb),0.35);
+}
+.entry{
+  position:relative;margin-bottom:1.6rem;
+  background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--r);
+  padding:1.15rem 1.3rem 1.25rem;box-shadow:var(--shadow);
+  opacity:0;transform:translateY(26px);
+  transition:opacity 0.7s var(--ease),transform 0.7s var(--ease),border-color 0.35s;
+}
+.entry:last-child{margin-bottom:0;}
+.entry.in{opacity:1;transform:none;}
+.entry:hover{border-color:var(--accent-line);}
+/* dot, sitting on the rail */
+.entry::before{
+  content:'';position:absolute;left:calc(-1 * (var(--tl-gap) + var(--tl-dot)/2));top:1.55rem;
+  /* the global reset does not reach pseudo-elements, so the 2px border would sit
+     outside --tl-dot and push the dot off the rail by exactly that much */
+  box-sizing:border-box;
+  width:var(--tl-dot);height:var(--tl-dot);border-radius:50%;z-index:2;
+  background:var(--bg);border:2px solid var(--line);
+  transition:border-color 0.45s var(--ease),box-shadow 0.45s var(--ease),background 0.45s;
+}
+.entry.in::before{
+  border-color:var(--accent);background:var(--accent);
+  box-shadow:0 0 0 5px var(--accent-dim);
+}
+/* hairline connector from the rail to the card */
+.entry::after{
+  content:'';position:absolute;left:calc(-1 * var(--tl-gap));top:calc(1.55rem + var(--tl-dot)/2);
+  width:var(--tl-gap);height:1px;background:var(--line);
+  transform:scaleX(0);transform-origin:0 50%;transition:transform 0.6s var(--ease) 0.12s;
+}
+.entry.in::after{transform:scaleX(1);}
 .entry-meta{display:flex;align-items:center;gap:0.7rem;flex-wrap:wrap;font-family:var(--mono);font-size:0.87rem;color:var(--muted);}
 .entry-hash{color:var(--accent);}
 .entry h3{font-family:var(--display);font-size:1.22rem;font-weight:500;letter-spacing:-0.01em;margin:0.35rem 0 0.3rem;}
 .entry p{color:var(--text-2);font-size:1.031rem;max-width:64ch;}
 
-/* ─── CERTIFICATES RAIL ─── */
+/* ── centred timeline: rail down the middle, cards alternating either side ──
+   .log-line is a <span>, so :nth-of-type counts only the .entry divs. */
+@media (min-width:900px){
+  .log{padding-left:0;max-width:1180px;margin:0 auto;}
+  .log::before,.log-line{left:50%;transform:translateX(-50%);}
+  .entry{width:calc(50% - var(--tl-gap));margin-bottom:2.2rem;}
+  /* odd entries land left of the rail and read right-aligned, so both columns
+     stay tight against the line instead of drifting away from it */
+  .entry:nth-of-type(odd){
+    margin-right:auto;text-align:right;transform:translateX(-42px) translateY(18px);
+  }
+  .entry:nth-of-type(odd) .entry-meta{justify-content:flex-end;}
+  .entry:nth-of-type(odd) p{margin-left:auto;}
+  .entry:nth-of-type(odd)::before{left:auto;right:calc(-1 * (var(--tl-gap) + var(--tl-dot)/2));}
+  .entry:nth-of-type(odd)::after{left:auto;right:calc(-1 * var(--tl-gap));transform-origin:100% 50%;}
+  /* even entries sit right of the rail, pushed down half a step so the two
+     columns interleave rather than facing off in pairs */
+  .entry:nth-of-type(even){
+    margin-left:auto;transform:translateX(42px) translateY(18px);margin-top:-1.4rem;
+  }
+  .entry:nth-of-type(even):first-of-type{margin-top:0;}
+  .entry.in{transform:none;}
+}
+
+/* ─── CERTIFICATES RAIL ───
+   The rail scrolls itself. It is still a real overflow container, so a swipe or
+   a trackpad flick works exactly as before — the loop just resumes afterwards.
+   Snapping is deliberately off: mandatory snap fights a continuous scroll. */
 .rail-wrap{position:relative;}
-.rail{display:flex;gap:var(--gap);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:0.6rem;scrollbar-width:none;}
+/* the cards fade out at both edges instead of being sliced by the container */
+.rail-wrap::before,.rail-wrap::after{
+  content:'';position:absolute;top:0;bottom:0;width:clamp(1.25rem,3.5vw,3.5rem);z-index:3;pointer-events:none;
+}
+.rail-wrap::before{left:0;background:linear-gradient(90deg,var(--bg),transparent);}
+.rail-wrap::after{right:0;background:linear-gradient(270deg,var(--bg),transparent);}
+.rail{display:flex;overflow-x:auto;padding-bottom:0.6rem;scrollbar-width:none;}
 .rail::-webkit-scrollbar{display:none;}
+.rail-track{display:flex;flex:0 0 auto;gap:var(--gap);padding-right:var(--gap);}
 .cert{
-  flex:0 0 22rem;scroll-snap-align:start;border:1px solid var(--line);border-radius:var(--r);
+  flex:0 0 22rem;border:1px solid var(--line);border-radius:var(--r);
   overflow:hidden;background:var(--surface);transition:border-color 0.35s,transform 0.35s var(--ease);
 }
 .cert:hover{border-color:var(--accent-line);transform:translateY(-3px);}
@@ -1308,8 +1419,9 @@ footer{
       </div>
     </div>
 
-    <div class="rail-wrap">
+    <div class="rail-wrap reveal rv-zoom">
       <div class="rail" id="rail">
+        <div class="rail-track" id="railTrack">
 
         <article class="cert">
           <img src="images/wqb_gold.png" class="cert-img" alt="WorldQuant Challenge Gold Level achievement" loading="lazy" decoding="async">
@@ -1347,6 +1459,7 @@ footer{
           </div>
         </article>
 
+        </div>
       </div>
     </div>
   </div>
@@ -1361,7 +1474,9 @@ footer{
       <svg class="squiggle reveal" viewBox="0 0 96 9" aria-hidden="true"><path d="M2 6 Q 14 0, 26 5 T 50 5 T 74 5 T 94 4"/></svg>
     </div>
 
-    <div class="log reveal" id="logWrap">
+    <!-- no .reveal here: each entry reveals itself from its own side of the rail,
+         and a transform on the wrapper would offset the scroll-driven fill -->
+    <div class="log" id="logWrap">
       <span class="log-line" id="logLine"></span>
 
       <div class="entry">
@@ -1487,6 +1602,7 @@ function animate(cv, draw){
     if(closed) return; closed = true;
     pre.classList.add('done');
     document.body.classList.remove('locked');
+    document.body.classList.add('ready');   /* releases the hero entrance */
     setTimeout(()=>pre.remove(), 600);
   };
   const minDelay = REDUCED ? 120 : 820;
@@ -1530,7 +1646,10 @@ function animate(cv, draw){
   }));
 })();
 
-/* ══ 03 · reveal on scroll ══ */
+/* ══ 03 · reveal on scroll ══
+   One observer for the whole page, plus a MutationObserver so anything rendered
+   later (the GitHub repo cards, cloned certificates) animates in the same way
+   instead of appearing fully formed. */
 (function(){
   const io = new IntersectionObserver(es=>{
     es.forEach(e=>{
@@ -1541,8 +1660,52 @@ function animate(cv, draw){
       }
       io.unobserve(e.target);
     });
-  },{threshold:0.12, rootMargin:'0px 0px -8% 0px'});
-  $$('.reveal, .stagger').forEach(el=>io.observe(el));
+  },{threshold:0.1, rootMargin:'0px 0px -6% 0px'});
+
+  const watch = root=>{
+    if(root.nodeType!==1) return;
+    if(root.matches?.('.reveal, .stagger')) io.observe(root);
+    $$('.reveal, .stagger', root).forEach(el=>io.observe(el));
+  };
+  watch(document.body);
+
+  new MutationObserver(ms=>{
+    ms.forEach(m=>m.addedNodes.forEach(watch));
+  }).observe(document.body,{childList:true,subtree:true});
+
+  /* the head of each section gets its own cascade, so the eyebrow, the title,
+     the squiggle and the sub-line arrive in reading order rather than together */
+  $$('.sec-head').forEach(head=>{
+    let i=0;
+    $$('.reveal', head).forEach(el=>{ el.style.transitionDelay = `${Math.min(i++*90,360)}ms`; });
+  });
+})();
+
+/* ══ 03a · scroll-linked parallax ══
+   Layers tagged data-par drift against the scroll at a fraction of its speed.
+   Everything is written in one rAF pass off a passive scroll listener. */
+(function(){
+  if(REDUCED) return;
+  /* section heads drift slightly against the scroll — the parallax goes on the
+     wrapper, never on a .reveal element, whose own transform it would overwrite */
+  $$('.sec-head').forEach(h=>{ if(!h.dataset.par) h.dataset.par = '-20'; });
+  const layers = $$('[data-par]');
+  if(!layers.length) return;
+  let ticking=false;
+  function frame(){
+    ticking=false;
+    const vh = innerHeight;
+    layers.forEach(el=>{
+      const r = el.getBoundingClientRect();
+      if(r.bottom < -200 || r.top > vh+200) return;
+      /* -1 … 1 across the viewport, 0 when the element is centred */
+      const p = ((r.top + r.height/2) - vh/2) / vh;
+      el.style.transform = `translate3d(0,${(p * parseFloat(el.dataset.par)).toFixed(2)}px,0)`;
+    });
+  }
+  addEventListener('scroll',()=>{ if(!ticking){ requestAnimationFrame(frame); ticking=true; } },{passive:true});
+  addEventListener('resize', frame, {passive:true});
+  frame();
 })();
 
 /* ══ 04 · typewriter ══ */
@@ -2187,32 +2350,156 @@ document.addEventListener('pointermove', e=>{
     o.disconnect();
   },{threshold:0.05}).observe(grid);
 })();
-/* ══ 09 · certificate rail + lightbox ══ */
+/* ══ 09 · certificate rail — self-scrolling loop + lightbox ══
+   The track is duplicated until it is at least twice the viewport wide, then the
+   rail's scrollLeft is advanced a few pixels a frame and wrapped at the halfway
+   mark. Because it is a real scroll position and not a transform, a swipe, a
+   trackpad flick and the ← → buttons all still work; the loop simply resumes
+   from wherever the reader left it. */
 (function(){
-  const rail=$('#rail'); if(!rail) return;
-  const step = ()=> (rail.querySelector('.cert')?.offsetWidth || 366) + 14;
-  $('#railPrev').addEventListener('click',()=>rail.scrollBy({left:-step(),behavior:'smooth'}));
-  $('#railNext').addEventListener('click',()=>rail.scrollBy({left: step(),behavior:'smooth'}));
+  const rail=$('#rail'), track=$('#railTrack'); if(!rail||!track) return;
+  const SPEED = 26;                       /* px per second — slow enough to read */
+  const originals = [...track.children];
+  let half = 0, paused = false, onScreen = false, last = 0, raf = 0;
+  /* the scroll offset is kept here as a float and written to the element each
+     frame. Reading it back instead loses the sub-pixel remainder — the browser
+     rounds scrollLeft, so a 0.4px-per-frame advance rounds to nothing and the
+     rail barely creeps. */
+  let pos = 0, written = 0;
+
+  /* Lay out 2K copies of the card set, where K copies are at least as wide as the
+     rail. Wrapping by K copies then always leaves a full screen of cards ahead of
+     the seam, so the jump back is invisible. */
+  function build(){
+    [...track.children].forEach(c=>{ if(c.dataset.clone) c.remove(); });
+    /* scrollWidth/offsetLeft, never getBoundingClientRect: the wrapper carries a
+       reveal transform, and rects come back scaled by it — which silently made
+       the loop period 6% short and put a jump at the seam */
+    const unit = track.scrollWidth;                    /* one set, trailing gap included */
+    if(!unit){ half = 0; return; }
+    const K = Math.max(1, Math.ceil(rail.clientWidth / unit));
+    for(let i=0; i<2*K-1; i++){
+      originals.forEach(c=>{
+        const d = c.cloneNode(true);
+        d.dataset.clone = '1';
+        d.setAttribute('aria-hidden','true');
+        track.append(d);
+      });
+    }
+    /* measure the period off the laid-out cards rather than trusting unit*K */
+    const cards = track.children;
+    half = cards[K*originals.length].offsetLeft - cards[0].offsetLeft;
+  }
+
+  /* keep an offset inside [0, half) — one loop period */
+  function norm(v){
+    if(half<=0) return v;
+    v %= half;
+    return v < 0 ? v + half : v;
+  }
+
+  function tick(now){
+    raf = requestAnimationFrame(tick);
+    const dt = Math.min((now-last)/1000, 0.05); last = now;
+    if(paused || !onScreen || document.hidden) return;
+    pos = norm(pos + SPEED*dt);
+    rail.scrollLeft = pos;
+    written = rail.scrollLeft;            /* what the browser actually stored */
+  }
+
+  function start(){ if(!raf && !REDUCED){ last = performance.now(); raf = requestAnimationFrame(tick); } }
+  function stop(){ if(raf){ cancelAnimationFrame(raf); raf = 0; } }
+
+  build();
+  new ResizeObserver(()=>{                 /* keep the same place in the loop */
+    const p = half ? pos/half : 0;
+    build();
+    pos = norm(p*half);
+    rail.scrollLeft = pos; written = rail.scrollLeft;
+  }).observe(rail);
+  new IntersectionObserver(es=>{ onScreen = es[0].isIntersecting; onScreen ? start() : stop(); },{threshold:0.05}).observe(rail);
+  document.addEventListener('visibilitychange',()=>{ last = performance.now(); });
+
+  /* hold while the reader is looking at, touching or tabbing through a card */
+  const hold = v => ()=>{ paused = v; last = performance.now(); };
+  rail.addEventListener('pointerenter', hold(true));
+  rail.addEventListener('pointerleave', hold(false));
+  rail.addEventListener('pointerdown',  hold(true));
+  addEventListener('pointerup',         hold(false));
+  rail.addEventListener('focusin',      hold(true));
+  rail.addEventListener('focusout',     hold(false));
+  /* a swipe, a flick or an arrow-button scroll moves the rail behind our back —
+     adopt it, wrapped, so the loop carries on from where the reader left it */
+  rail.addEventListener('scroll',()=>{
+    if(Math.abs(rail.scrollLeft - written) < 2) return;   /* our own write */
+    pos = norm(rail.scrollLeft);
+    written = rail.scrollLeft;
+  },{passive:true});
+
+  const step = ()=> (rail.querySelector('.cert')?.offsetWidth || 366) + 16;
+  const nudge = dir => {
+    paused = true;
+    /* going back from the very start would hit scrollLeft 0 and do nothing, so
+       hop forward one loop period first — the content there is identical, which
+       makes the hop invisible and leaves room to scroll into */
+    if(dir < 0 && half > 0 && rail.scrollLeft < step()){
+      pos = rail.scrollLeft + half;
+      rail.scrollLeft = pos; written = rail.scrollLeft;
+    }
+    rail.scrollBy({left: dir*step(), behavior: REDUCED?'auto':'smooth'});
+    clearTimeout(nudge.t);
+    nudge.t = setTimeout(()=>{ paused=false; last=performance.now(); }, 1200);
+  };
+  $('#railPrev').addEventListener('click',()=>nudge(-1));
+  $('#railNext').addEventListener('click',()=>nudge(1));
 
   const lb=$('#lightbox'), lbImg=$('#lbImg');
-  $$('.cert-img').forEach(img=>img.addEventListener('click',()=>{
+  /* delegated, so the cloned cards open the lightbox too */
+  rail.addEventListener('click', e=>{
+    const img = e.target.closest('.cert-img'); if(!img) return;
     lbImg.src=img.src; lbImg.alt=img.alt;
     lb.classList.add('open'); document.body.classList.add('locked');
-  }));
+  });
   const close=()=>{ lb.classList.remove('open'); document.body.classList.remove('locked'); };
   $('#lbClose').addEventListener('click', close);
   lb.addEventListener('click', e=>{ if(e.target===lb) close(); });
   addEventListener('keydown', e=>{ if(e.key==='Escape' && lb.classList.contains('open')) close(); });
 })();
 
-/* ══ 10 · timeline log ══ */
+/* ══ 10 · timeline log ══
+   The accent rail is tied to scroll position rather than fired once: it draws
+   down to wherever the reader has got to, and each card lights its dot as the
+   rail reaches it. Cards animate in from their own side of the line. */
 (function(){
   const wrap=$('#logWrap'), line=$('#logLine'); if(!wrap) return;
-  new IntersectionObserver(es=>{
-    if(!es[0].isIntersecting) return;
-    line.style.height = (wrap.offsetHeight-12)+'px';
-    $$('.entry', wrap).forEach((e,i)=>setTimeout(()=>e.classList.add('in'), 220*i));
-  },{threshold:0.18}).observe(wrap);
+  const entries = $$('.entry', wrap);
+
+  /* each card enters from the side it sits on, once, on its own */
+  const io = new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting) return;
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  },{threshold:0.25, rootMargin:'0px 0px -8% 0px'});
+  entries.forEach(e=>io.observe(e));
+
+  if(REDUCED){ line.style.height='100%'; entries.forEach(e=>e.classList.add('in')); return; }
+
+  let ticking=false, live=false;
+  function frame(){
+    ticking=false;
+    if(!live) return;
+    const r = wrap.getBoundingClientRect();
+    /* 0 when the top of the list reaches 78% of the viewport, 1 once its bottom
+       passes 42% — the fill therefore tracks roughly where the eye is reading */
+    const span = r.height + innerHeight*0.36;
+    const p = clamp((innerHeight*0.78 - r.top) / span, 0, 1);
+    line.style.height = (p * (r.height - 8)) + 'px';
+  }
+  addEventListener('scroll',()=>{ if(!ticking){ requestAnimationFrame(frame); ticking=true; } },{passive:true});
+  addEventListener('resize', frame, {passive:true});
+  new IntersectionObserver(es=>{ live = es[0].isIntersecting; frame(); },{rootMargin:'20% 0px'}).observe(wrap);
 })();
 
 /* ══ 11 · command palette ══ */
