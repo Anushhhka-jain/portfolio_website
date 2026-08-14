@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anushka Jain | AI Engineer</title>
-<meta name="description" content="Anushka Jain — AI Engineer & B.Tech Artificial Intelligence student in Mumbai. Deep learning, quant finance and full-stack AI systems, with every project linked to its public source on GitHub.">
+<meta name="description" content="Anushka Jain — AI Engineer & B.Tech Artificial Intelligence student in Mumbai. Deep learning, quant finance and agentic AI systems, with every project linked to its public source on GitHub.">
 <meta name="theme-color" content="#FBFAF8">
 <meta property="og:title" content="Anushka Jain | AI Engineer">
 <meta property="og:description" content="AI Engineer building intelligent systems across deep learning, quant finance and NLP. Browse the real repositories, and run a transformer in your browser.">
@@ -22,18 +22,20 @@
 :root{
   /* Light editorial. Surfaces run warm-white rather than pure #FFF — paper, not
      screen — and elevation is a hairline plus a very soft shadow, never a heavy
-     one. Each step is one elevation up, the same ladder as before, inverted. */
+     one. Cards and controls sit a shade *under* the page rather than above it:
+     on paper this reads as an inked panel, and white-on-white needed the border
+     to do all the work. Each step down is one step darker. */
   --bg:#FBFAF8;          /* warm paper, not #FFF */
-  --bg-2:#F4F2EE;        /* recessed strips */
-  --surface:#FFFFFF;     /* cards sit above the page, so they go brighter */
-  --surface-2:#F7F5F1;   /* card chrome */
-  --surface-3:#FFFFFF;   /* popovers */
-  --line:#DDD8D0;
-  --line-soft:#EBE7E0;
-  /* text steps all clear WCAG AA on --bg */
+  --bg-2:#EFECE6;        /* recessed strips, and anything inset in a card */
+  --surface:#F4F1EB;     /* cards and controls — one shade below the page */
+  --surface-2:#EAE6DE;   /* card chrome, a step darker again */
+  --surface-3:#F8F6F2;   /* popovers stay light so they lift off the dimmed page */
+  --line:#D6D0C6;
+  --line-soft:#E4DFD6;
+  /* text steps all clear WCAG AA on --bg and on --surface-2 */
   --text:#1C1A18;        /* ~15:1 */
   --text-2:#57524C;      /* ~8:1  */
-  --muted:#7D766E;       /* ~4.9:1 */
+  --muted:#6A635B;       /* ~5.7:1 on paper, ~4.8:1 on card chrome */
   /* oxblood accent — --accent-rgb drives every tint so there is one source of truth */
   --accent:#9E3B3B;
   --accent-2:#7E2D2D;
@@ -61,7 +63,7 @@
   --gap-group:4.5rem;      /* above a sub-group heading */
   --gap-group-in:1.5rem;   /* heading → its own content (tight, so they bind) */
   --glow:0 16px 40px -20px rgba(var(--accent-rgb),0.30);
-  --surface-glass:rgba(255,255,255,0.78);
+  --surface-glass:rgba(244,241,235,0.82);
   /* one soft paper shadow, reused — heavy dark shadows read as dirt on white */
   --shadow:0 1px 2px rgba(28,26,24,0.04), 0 8px 24px -14px rgba(28,26,24,0.16);
 }
@@ -139,7 +141,7 @@ body.locked{overflow:hidden;}
 }
 /* elevation is a hairline plus one soft paper shadow — a heavy dark shadow reads
    as grime on white, so every raised surface shares the same restrained token */
-.mat-group,.rag,.cert,.stat,.frame{box-shadow:var(--shadow);}
+.mat-group,.cert,.stat,.frame{box-shadow:var(--shadow);}
 
 ::selection{background:var(--accent);color:var(--on-accent);}
 ::-webkit-scrollbar{width:10px;height:10px;}
@@ -264,9 +266,10 @@ section[id],article[id]{scroll-margin-top:86px;}
 .nav-links a:hover::after{transform:scaleX(1);transform-origin:0 50%;}
 .kbd-btn{
   display:flex;align-items:center;gap:0.5rem;font-family:var(--mono);font-size:0.901rem;color:var(--muted);
-  border:1px solid var(--line);border-radius:8px;padding:0.4rem 0.65rem;transition:border-color 0.25s,color 0.25s;
+  border:1px solid var(--line);border-radius:8px;padding:0.4rem 0.65rem;background:var(--surface);
+  transition:border-color 0.25s,color 0.25s,background 0.25s;
 }
-.kbd-btn:hover{border-color:var(--accent-line);color:var(--text);}
+.kbd-btn:hover{border-color:var(--accent-line);color:var(--text);background:var(--surface-2);}
 .kbd-btn kbd{font-family:var(--mono);font-size:0.891rem;background:var(--surface-2);border-radius:4px;padding:0.05rem 0.3rem;border:1px solid var(--line);}
 .burger{display:none;flex-direction:column;gap:5px;padding:6px;}
 .burger span{width:20px;height:1.5px;background:var(--text);transition:transform 0.35s var(--ease),opacity 0.25s;}
@@ -332,7 +335,7 @@ body.ready .hero-image-side{animation:hero-fade 1s var(--ease) 0.28s both;}
 
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,10.5rem));gap:0.75rem;margin-bottom:2.4rem;}
 .stat{
-  border:1px solid var(--line);border-radius:10px;padding:0.85rem 0.9rem;background:rgba(255,255,255,0.7);
+  border:1px solid var(--line);border-radius:10px;padding:0.85rem 0.9rem;background:var(--surface-glass);
   backdrop-filter:blur(6px);transition:border-color 0.3s,transform 0.3s var(--ease);
 }
 .stat:hover{border-color:var(--accent-line);transform:translateY(-2px);}
@@ -347,8 +350,8 @@ body.ready .hero-image-side{animation:hero-fade 1s var(--ease) 0.28s both;}
 }
 .btn-fill{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:600;}
 .btn-fill:hover{background:var(--accent-2);border-color:var(--accent-2);transform:translateY(-2px);}
-.btn-ghost{color:var(--text-2);}
-.btn-ghost:hover{border-color:var(--accent-line);color:var(--text);transform:translateY(-2px);}
+.btn-ghost{color:var(--text-2);background:var(--surface);}
+.btn-ghost:hover{border-color:var(--accent-line);color:var(--text);background:var(--surface-2);transform:translateY(-2px);}
 .btn svg{width:13px;height:13px;}
 
 /* photo frame */
@@ -486,7 +489,7 @@ body.ready .hero-image-side{animation:hero-fade 1s var(--ease) 0.28s both;}
 .tag,.badge,.use-chip,.card-tag{border-radius:8px;}
 .tag,.use-chip{padding:0.26rem 0.62rem;}
 .stat{border-radius:16px;}
-.demo,.tree,.langbar,.facts,.hit,.pal-box,.model-input,.rag-input{border-radius:var(--r-sm);}
+.demo,.tree,.langbar,.facts,.hit,.pal-box,.model-input{border-radius:var(--r-sm);}
 .langbar{height:6px;border-radius:999px;}
 .langbar i:first-child{border-radius:999px 0 0 999px;}
 .langbar i:last-child{border-radius:0 999px 999px 0;}
@@ -501,10 +504,10 @@ body.ready .hero-image-side{animation:hero-fade 1s var(--ease) 0.28s both;}
 .socials{display:flex;gap:0.5rem;margin-top:0.9rem;}
 .chip{
   display:inline-flex;align-items:center;gap:0.45rem;font-family:var(--mono);font-size:0.901rem;
-  color:var(--text-2);border:1px solid var(--line);padding:0.45rem 0.85rem;
+  color:var(--text-2);border:1px solid var(--line);padding:0.45rem 0.85rem;background:var(--surface);
   transition:border-color 0.25s,color 0.25s,background 0.25s;
 }
-.chip:hover{border-color:var(--accent-line);color:var(--text);background:var(--surface);}
+.chip:hover{border-color:var(--accent-line);color:var(--text);background:var(--surface-2);}
 .chip svg{width:13px;height:13px;fill:currentColor;}
 
 .scroll-hint{
@@ -534,12 +537,12 @@ body.ready .hero-image-side{animation:hero-fade 1s var(--ease) 0.28s both;}
 .filters{display:flex;gap:0.4rem;flex-wrap:wrap;}
 .fchip{
   font-family:var(--mono);font-size:0.891rem;color:var(--text-2);
-  border:1px solid var(--line);padding:0.4rem 0.85rem;
+  border:1px solid var(--line);padding:0.4rem 0.85rem;background:var(--surface);
   display:inline-flex;align-items:center;gap:0.45rem;
   transition:border-color 0.25s,color 0.25s,background 0.25s;
 }
 .fchip em{font-style:normal;color:var(--muted);font-size:0.86rem;}
-.fchip:hover{border-color:var(--accent-line);color:var(--text);}
+.fchip:hover{border-color:var(--accent-line);color:var(--text);background:var(--surface-2);}
 .fchip.on{background:var(--accent-dim);border-color:var(--accent-line);color:var(--accent);}
 .fchip.on em{color:var(--accent);}
 .sync{
@@ -576,11 +579,11 @@ body.ready .hero-image-side{animation:hero-fade 1s var(--ease) 0.28s both;}
 }
 .mini{
   font-family:var(--mono);font-size:0.891rem;color:var(--text-2);
-  border:1px solid var(--line);border-radius:8px;padding:0.38rem 0.7rem;
+  border:1px solid var(--line);border-radius:8px;padding:0.38rem 0.7rem;background:var(--surface);
   display:inline-flex;align-items:center;gap:0.4rem;
   transition:border-color 0.25s,color 0.25s,background 0.25s;
 }
-.mini:hover{border-color:var(--accent-line);color:var(--text);background:var(--bg-2);}
+.mini:hover{border-color:var(--accent-line);color:var(--text);background:var(--surface-2);}
 .mini[aria-expanded="true"]{color:var(--accent);border-color:var(--accent-line);background:var(--accent-dim);}
 .mini .car{transition:transform 0.3s var(--ease);display:inline-block;}
 .mini[aria-expanded="true"] .car{transform:rotate(90deg);}
@@ -680,7 +683,7 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 .sheet-meta{display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-top:0.6rem;}
 .sheet-close{
   flex:none;width:36px;height:36px;border:1px solid var(--line);border-radius:999px;
-  color:var(--text-2);display:grid;place-items:center;font-size:1rem;
+  color:var(--text-2);display:grid;place-items:center;font-size:1rem;background:var(--surface);
   transition:border-color 0.25s,color 0.25s,background 0.25s;
 }
 .sheet-close:hover{border-color:var(--accent-line);color:var(--text);background:var(--surface-2);}
@@ -724,7 +727,7 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 .model-split{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;align-items:start;}
 .badge{
   font-family:var(--mono);font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;
-  border:1px solid var(--line);padding:0.2rem 0.55rem;color:var(--muted);
+  border:1px solid var(--line);padding:0.2rem 0.55rem;color:var(--muted);background:var(--surface-2);
 }
 .badge.live{color:var(--accent);border-color:var(--accent-line);background:var(--accent-dim);}
 .badge.warn{color:var(--amber);border-color:rgba(251,191,36,0.3);}
@@ -773,26 +776,53 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 .mat-use{display:flex;gap:0.3rem;flex-wrap:wrap;}
 .use-chip{
   font-family:var(--mono);font-size:0.839rem;color:var(--muted);border:1px solid var(--line-soft);
-  transition:color 0.25s,border-color 0.25s;
+  background:var(--bg-2);transition:color 0.25s,border-color 0.25s;
 }
 .mat-row:hover .use-chip{color:var(--accent);border-color:var(--accent-line);}
 
-/* ─── RESUME SEARCH ─── */
-.rag{border:1px solid var(--line);border-radius:var(--r);background:var(--surface-glass);backdrop-filter:blur(14px);overflow:hidden;}
-.rag-bar{
-  display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;padding:0.7rem 1.1rem;
-  border-bottom:1px solid var(--line-soft);background:var(--surface-2);
-  font-family:var(--mono);font-size:0.875rem;color:var(--muted);
+/* ─── RESUME SEARCH ───
+   Lives under the photo in the hero rather than in a section of its own, so it
+   is deliberately small: one line of chrome, one input, three shortcuts, and a
+   results list that scrolls inside itself instead of growing the page. */
+.mini-ask{
+  margin-top:1rem;padding:0.7rem 0.75rem;scroll-margin-top:6rem;
+  border:1px solid var(--line);border-radius:var(--r-sm);
+  background:var(--surface-glass);backdrop-filter:blur(14px);box-shadow:var(--shadow);
 }
-.rag-body{padding:1.3rem;}
-.rag-input-row{display:flex;gap:0.55rem;flex-wrap:wrap;}
-.rag-input{
-  flex:1;min-width:220px;background:var(--bg-2);border:1px solid var(--line);border-radius:9px;
-  padding:0.75rem 0.9rem;font-family:var(--mono);font-size:0.97rem;transition:border-color 0.25s;
+.mini-ask-top{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;}
+.mini-ask-top .badge{font-size:0.66rem;padding:0.14rem 0.45rem;letter-spacing:0.08em;}
+.mini-ask-idx{
+  margin-left:auto;font-family:var(--mono);font-size:0.7rem;color:var(--muted);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
-.rag-input:focus{outline:none;border-color:var(--accent-line);}
-.rag-input::placeholder{color:var(--muted);}
-.rag-results{margin-top:1.1rem;display:flex;flex-direction:column;gap:0.7rem;}
+.mini-ask-row{display:flex;gap:0.4rem;align-items:center;}
+.mini-ask-input{
+  flex:1;min-width:0;background:var(--bg-2);border:1px solid var(--line);border-radius:999px;
+  padding:0.42rem 0.85rem;font-family:var(--mono);font-size:0.82rem;color:var(--text);
+  transition:border-color 0.25s;
+}
+.mini-ask-input:focus{outline:none;border-color:var(--accent-line);}
+.mini-ask-input::placeholder{color:var(--muted);}
+.mini-ask-go{
+  flex:none;width:1.95rem;height:1.95rem;border-radius:999px;border:1px solid transparent;
+  background:var(--accent);color:var(--on-accent);font-size:0.85rem;line-height:1;
+  cursor:pointer;transition:background 0.25s,opacity 0.25s;
+}
+.mini-ask-go:hover{background:var(--accent-2);}
+.mini-samples{margin-top:0.45rem;gap:0.28rem;}
+.mini-samples .sample{font-size:0.7rem;padding:0.16rem 0.55rem;}
+.mini-ask-results{
+  margin-top:0.55rem;display:flex;flex-direction:column;gap:0.4rem;
+  max-height:16rem;overflow-y:auto;
+}
+.mini-ask-results:empty{display:none;}
+.mini-ask-results .hit{padding:0.5rem 0.6rem;border-radius:9px;}
+.mini-ask-results .hit-top{margin-bottom:0.25rem;gap:0.5rem;}
+.mini-ask-results .hit-src{font-size:0.65rem;letter-spacing:0.1em;}
+.mini-ask-results .hit-score{font-size:0.67rem;gap:0.3rem;}
+.mini-ask-results .hit-meter{width:2rem;height:3px;}
+.mini-ask-results .hit-text{font-size:0.78rem;line-height:1.5;}
+.mini-ask-results .model-status{font-size:0.72rem;margin-top:0;}
 .hit{
   border:1px solid var(--line-soft);border-radius:10px;padding:0.85rem 1rem;background:var(--bg-2);
   opacity:0;transform:translateY(10px);animation:hit-in 0.45s var(--ease) forwards;
@@ -914,7 +944,7 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 .card-tag{
   font-family:var(--mono);font-size:0.85rem;letter-spacing:0.14em;text-transform:uppercase;
   color:var(--muted);display:inline-flex;align-items:center;gap:0.45rem;
-  border:1px solid var(--line-soft);padding:0.16rem 0.55rem;
+  border:1px solid var(--line-soft);padding:0.16rem 0.55rem;background:var(--surface-2);
 }
 .cert-body{padding:1.05rem 1.1rem 1.2rem;}
 .cert h3{font-family:var(--display);font-size:1.15rem;font-weight:500;letter-spacing:-0.01em;margin:0.4rem 0 0.4rem;}
@@ -922,9 +952,10 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 .rail-nav{display:flex;gap:0.5rem;}
 .rail-btn{
   width:34px;height:34px;border:1px solid var(--line);border-radius:8px;color:var(--text-2);
-  display:grid;place-items:center;font-family:var(--mono);transition:border-color 0.25s,color 0.25s;
+  background:var(--surface);display:grid;place-items:center;font-family:var(--mono);
+  transition:border-color 0.25s,color 0.25s,background 0.25s;
 }
-.rail-btn:hover{border-color:var(--accent-line);color:var(--text);}
+.rail-btn:hover{border-color:var(--accent-line);color:var(--text);background:var(--surface-2);}
 
 /* ─── CONTACT ─── */
 .contact{border-top:1px solid var(--line-soft);background:var(--bg-2);}
@@ -992,7 +1023,7 @@ footer{
 /* ─── BACK TO TOP ─── */
 .to-top{
   position:fixed;right:1.5rem;bottom:1.5rem;z-index:7000;width:40px;height:40px;
-  border:1px solid var(--line);border-radius:10px;background:rgba(26,26,32,0.88);backdrop-filter:blur(8px);
+  border:1px solid var(--line);border-radius:10px;background:var(--surface-glass);backdrop-filter:blur(8px);
   color:var(--text-2);display:grid;place-items:center;font-family:var(--mono);
   opacity:0;pointer-events:none;transform:translateY(10px);transition:all 0.35s var(--ease);
 }
@@ -1028,14 +1059,13 @@ footer{
   .stats{grid-template-columns:repeat(3,minmax(0,1fr));}
   .cert{flex:0 0 84vw;}
   .bar-row{grid-template-columns:4.5rem 1fr 3.5rem;gap:0.5rem;}
-  .rag-body{padding:1.1rem;}
   .sheet-top,.sheet-body{padding-left:1.1rem;padding-right:1.1rem;}
   /* the owner is the same on every project and the page is already hers — drop it
      rather than let the slug wrap onto two ragged lines */
   .repo-slug .owner{display:none;}
   .repo-facts{gap:0.6rem;}
   /* backdrop-blur on many stacked cards is expensive on phone GPUs — go opaque */
-  .tile,.mat-group,.rag{
+  .tile,.mat-group,.mini-ask{
     backdrop-filter:none;-webkit-backdrop-filter:none;background-color:var(--surface);
   }
   .aura i{filter:blur(80px);opacity:0.16;}
@@ -1189,6 +1219,25 @@ footer{
         </div>
       </div>
 
+      <!-- semantic résumé search, kept small and tucked under the photo -->
+      <div class="mini-ask" id="ask">
+        <div class="mini-ask-top">
+          <span class="badge live" id="ragBadge">● ask my résumé</span>
+          <span class="mini-ask-idx" id="ragIndex">MiniLM · runs local</span>
+        </div>
+        <div class="mini-ask-row">
+          <input class="mini-ask-input" id="ragInput" placeholder="give projects" aria-label="Ask about my résumé">
+          <button class="mini-ask-go" id="ragRun" aria-label="Search my résumé">→</button>
+        </div>
+        <div class="samples mini-samples" id="ragSamples">
+          <button class="sample">give projects</button>
+          <button class="sample">internships</button>
+          <button class="sample">awards</button>
+          <button class="sample">computer vision</button>
+        </div>
+        <div class="mini-ask-results" id="ragResults"></div>
+      </div>
+
       <div class="socials">
         <a href="https://github.com/Anushhhka-jain" class="chip" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.4-.5-1.6.2-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 6.1 18 6.4 18 6.4c.7 1.6.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.9 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
@@ -1330,37 +1379,36 @@ footer{
 
       <div class="mat-group">
         <div class="mat-head">Languages <span>05</span></div>
-        <div class="mat-row"><span class="mat-name">Python</span><span class="mat-use"><b class="use-chip">cartelbench</b><b class="use-chip">anequant</b><b class="use-chip">agribid</b></span></div>
-        <div class="mat-row"><span class="mat-name">JavaScript</span><span class="mat-use"><b class="use-chip">berrybooked</b><b class="use-chip">agribid</b><b class="use-chip">this site</b></span></div>
-        <div class="mat-row"><span class="mat-name">SQL / PLpgSQL</span><span class="mat-use"><b class="use-chip">berrybooked</b><b class="use-chip">healthclick</b></span></div>
+        <div class="mat-row"><span class="mat-name">Python</span><span class="mat-use"><b class="use-chip">cartelbench</b><b class="use-chip">anequant</b><b class="use-chip">alpha builder</b></span></div>
+        <div class="mat-row"><span class="mat-name">JavaScript</span><span class="mat-use"><b class="use-chip">anequant</b><b class="use-chip">this site</b></span></div>
+        <div class="mat-row"><span class="mat-name">SQL / PLpgSQL</span><span class="mat-use"><b class="use-chip">healthclick</b></span></div>
         <div class="mat-row"><span class="mat-name">C++</span><span class="mat-use"><b class="use-chip">coursework</b><b class="use-chip">dsa</b></span></div>
         <div class="mat-row"><span class="mat-name">Java</span><span class="mat-use"><b class="use-chip">coursework</b></span></div>
       </div>
 
       <div class="mat-group">
         <div class="mat-head">AI / ML <span>05</span></div>
-        <div class="mat-row"><span class="mat-name">Agentic systems</span><span class="mat-use"><b class="use-chip">anequant</b><b class="use-chip">berrybooked</b></span></div>
-        <div class="mat-row"><span class="mat-name">Scikit-learn</span><span class="mat-use"><b class="use-chip">agribid</b><b class="use-chip">aml chain</b></span></div>
+        <div class="mat-row"><span class="mat-name">Agentic systems</span><span class="mat-use"><b class="use-chip">anequant</b><b class="use-chip">cartelbench</b></span></div>
+        <div class="mat-row"><span class="mat-name">Scikit-learn</span><span class="mat-use"><b class="use-chip">aml chain</b></span></div>
         <div class="mat-row"><span class="mat-name">Transformers</span><span class="mat-use"><b class="use-chip">this site</b></span></div>
-        <div class="mat-row"><span class="mat-name">TensorFlow</span><span class="mat-use"><b class="use-chip">liver seg</b><b class="use-chip">stock lstm</b></span></div>
-        <div class="mat-row"><span class="mat-name">OpenCV</span><span class="mat-use"><b class="use-chip">liver seg</b><b class="use-chip">image to voice</b></span></div>
+        <div class="mat-row"><span class="mat-name">TensorFlow</span><span class="mat-use"><b class="use-chip">liver seg</b></span></div>
+        <div class="mat-row"><span class="mat-name">OpenCV</span><span class="mat-use"><b class="use-chip">liver seg</b><b class="use-chip">curl correct</b></span></div>
       </div>
 
       <div class="mat-group">
-        <div class="mat-head">Tools &amp; platforms <span>05</span></div>
-        <div class="mat-row"><span class="mat-name">Flask / Express</span><span class="mat-use"><b class="use-chip">agribid</b><b class="use-chip">berrybooked</b></span></div>
-        <div class="mat-row"><span class="mat-name">Supabase / Postgres</span><span class="mat-use"><b class="use-chip">berrybooked</b></span></div>
-        <div class="mat-row"><span class="mat-name">Jupyter</span><span class="mat-use"><b class="use-chip">quant models</b></span></div>
+        <div class="mat-head">Tools &amp; platforms <span>04</span></div>
+        <div class="mat-row"><span class="mat-name">GitHub REST API</span><span class="mat-use"><b class="use-chip">this site</b></span></div>
         <div class="mat-row"><span class="mat-name">GitHub Actions / CI</span><span class="mat-use"><b class="use-chip">cartelbench</b><b class="use-chip">data-df-summarizer</b></span></div>
+        <div class="mat-row"><span class="mat-name">PyPI packaging</span><span class="mat-use"><b class="use-chip">data-df-summarizer</b></span></div>
         <div class="mat-row"><span class="mat-name">ONNX Runtime Web</span><span class="mat-use"><b class="use-chip">this site</b></span></div>
       </div>
 
       <div class="mat-group">
         <div class="mat-head">Specializations <span>05</span></div>
-        <div class="mat-row"><span class="mat-name">Quant Finance</span><span class="mat-use"><b class="use-chip">anequant</b><b class="use-chip">quant models</b><b class="use-chip">worldquant</b></span></div>
+        <div class="mat-row"><span class="mat-name">Quant Finance</span><span class="mat-use"><b class="use-chip">anequant</b><b class="use-chip">worldquant</b></span></div>
         <div class="mat-row"><span class="mat-name">Multi-agent Design</span><span class="mat-use"><b class="use-chip">cartelbench</b><b class="use-chip">anequant</b></span></div>
         <div class="mat-row"><span class="mat-name">Genetic Algorithms</span><span class="mat-use"><b class="use-chip">alpha builder</b></span></div>
-        <div class="mat-row"><span class="mat-name">Deep Learning</span><span class="mat-use"><b class="use-chip">liver seg</b><b class="use-chip">stock lstm</b></span></div>
+        <div class="mat-row"><span class="mat-name">Deep Learning</span><span class="mat-use"><b class="use-chip">liver seg</b><b class="use-chip">sentiment</b></span></div>
         <div class="mat-row"><span class="mat-name">NLP</span><span class="mat-use"><b class="use-chip">sentiment</b></span></div>
       </div>
 
@@ -1368,42 +1416,6 @@ footer{
   </div>
 </section>
 <!-- ASK / RESUME RETRIEVAL -->
-<section id="ask">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow reveal">Ask</p>
-      <h2 class="sec-title reveal">Query my résumé <em>semantically</em></h2>
-      <svg class="squiggle reveal" viewBox="0 0 96 9" aria-hidden="true"><path d="M2 6 Q 14 0, 26 5 T 50 5 T 74 5 T 94 4"/></svg>
-      <p class="sec-sub reveal">
-        Ask in your own words. A MiniLM sentence encoder embeds your question and every section of my
-        background <b>inside your browser</b>, then ranks them by cosine similarity — the retrieval half of a
-        RAG pipeline, with no API key, no server and no data leaving your machine.
-      </p>
-    </div>
-
-    <div class="rag reveal">
-      <div class="rag-bar">
-        <span class="badge live" id="ragBadge">● local retrieval</span>
-        <span>all-MiniLM-L6-v2 · 384-dim · int8</span>
-        <span style="margin-left:auto;" id="ragIndex">index: not built</span>
-      </div>
-      <div class="rag-body">
-        <div class="rag-input-row">
-          <input class="rag-input" id="ragInput" placeholder="e.g. what has she done in quantitative finance?" aria-label="Ask about my résumé">
-          <button class="btn btn-fill" id="ragRun">search</button>
-        </div>
-        <div class="samples" id="ragSamples">
-          <button class="sample">what internships has she done?</button>
-          <button class="sample">experience with computer vision</button>
-          <button class="sample">has she worked with transformers or NLP?</button>
-          <button class="sample">awards and competitions</button>
-        </div>
-        <div class="rag-results" id="ragResults"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CERTIFICATES -->
 <section id="proof">
   <div class="wrap">
@@ -1946,33 +1958,6 @@ document.addEventListener('pointermove', e=>{
       tree:['anequant/agents/base.py','anequant/agents/data.py','anequant/agents/executive.py','anequant/agents/operations.py','anequant/agents/research.py','anequant/agents/risk.py','anequant/agents/trading.py','anequant/agents/validation.py','anequant/api.py','anequant/bus.py','anequant/company.py','anequant/config.py','anequant/llm.py','anequant/market.py','anequant/memory.py','anequant/portfolio.py','anequant/rng.py','anequant/sim.py','anequant/strategies.py','frontend/app.js','frontend/index.html','frontend/styles.css','run.py','pytest.ini','requirements.txt','README.md','plan.md']
     },
     {
-      id:'agribid_proj', kind:'repo', repo:'agribid_proj', cats:['ai','fullstack'],
-      name:'Agribid',
-      blurb:'Crop decision support for Indian farms',
-      desc:'Crop decision support for Indian agriculture, built at Agribid. Three models — land/crop, mandi price, rainfall — feed an optimisation engine behind a Flask app.',
-      langs:{Python:48611, JavaScript:31382, HTML:17067, CSS:15035},
-      stars:0, pushed:'2026-06-15',
-      tree:['agri_dss/backend/app.py','agri_dss/backend/optimization_engine.py','agri_dss/backend/models/land_model.py','agri_dss/backend/models/mandi_model.py','agri_dss/backend/models/rainfall_model.py','agri_dss/backend/models/land_crop_classifier.pkl','agri_dss/backend/models/mandi_price_model.pkl','agri_dss/backend/models/rainfall_model.pkl','agri_dss/data/raw/land_use_data.csv','agri_dss/data/raw/mandi_price_data.csv','agri_dss/data/raw/rainfall_data.csv','agri_dss/frontend/templates/index.html','agri_dss/frontend/templates/metrics.html','agri_dss/frontend/static/js/main.js','agri_dss/frontend/static/js/metrics.js','agri_dss/train_all.py','agri_dss/run.py','agri_dss/README.md']
-    },
-    {
-      id:'BerryBooked', kind:'repo', repo:'BerryBooked', cats:['ai','fullstack'],
-      name:'BerryBooked',
-      blurb:'Clinic booking over WhatsApp',
-      desc:'Clinic booking over WhatsApp. Node/Express on Supabase, with a separate Python service running the bot.',
-      langs:{HTML:142751, JavaScript:90267, CSS:32338, PLpgSQL:14538, Python:7115},
-      stars:0, pushed:'2026-07-28',
-      tree:['berrybooked-server/server.js','berrybooked-server/src/booking.js','berrybooked-server/src/bot.js','berrybooked-server/src/store.js','berrybooked-server/src/whatsapp.js','berrybooked-server/ai_service/bot.py','berrybooked-server/ai_service/main.py','berrybooked-server/public/dashboard.html','berrybooked-server/public/founder.html','berrybooked-server/public/simulator.html','berrybooked-server/supabase/migration-2-doctors-patients.sql','berrybooked-server/supabase/migration-3-plans-whatsapp.sql','berrybooked-server/supabase/migration-4-reminders-payments.sql','berrybooked-server/supabase/migration-5-engagement.sql','berrybooked-server/DEPLOY.md','berrybooked-server/README.md']
-    },
-    {
-      id:'Quant_Finance_Basic_Models', kind:'repo', repo:'Quant_Finance_Basic_Models', cats:['quant'],
-      name:'Quant Finance Models',
-      blurb:'Black–Scholes to Markowitz, from scratch',
-      desc:'Black–Scholes, Monte Carlo, CAPM, geometric Brownian motion, Markowitz and the Wiener process — written from scratch.',
-      langs:{'Jupyter Notebook':589222, Python:4001},
-      stars:3, pushed:'2026-01-27',
-      tree:['black_scholes.py','black_scholes_with_monte_Carlo_sim.py','monte-carlo_simulation.py','capm_implementation.ipynb','geometric_brownian_motion.ipynb','markowitz_portfolio.ipynb','wiener_process.ipynb']
-    },
-    {
       id:'Alpha-Builder', kind:'repo', repo:'Alpha-Builder', cats:['quant'],
       name:'Alpha Builder',
       blurb:'Genetic programming evolves trading signals',
@@ -2008,20 +1993,6 @@ document.addEventListener('pointermove', e=>{
       note:'Private — no public repository.'
     },
     {
-      id:'stock', kind:'private', cats:['ai','quant'],
-      name:'Stock Prediction',
-      blurb:'Bi-LSTM forecaster on Streamlit',
-      desc:'A bidirectional LSTM time-series forecaster served through a Streamlit dashboard.',
-      note:'Private — no public repository.'
-    },
-    {
-      id:'img2voice', kind:'private', cats:['ai'],
-      name:'Image to Voice',
-      blurb:'OCR that reads images aloud',
-      desc:'OCR that lifts text out of images and speaks it back in three languages.',
-      note:'Private — no public repository.'
-    },
-    {
       id:'aml', kind:'private', cats:['ai'],
       name:'Adversarial AML Chain',
       blurb:'Adversarial AML on blockchain graphs',
@@ -2048,7 +2019,6 @@ document.addEventListener('pointermove', e=>{
     {k:'all',       label:'all'},
     {k:'ai',        label:'ai systems'},
     {k:'quant',     label:'quant finance'},
-    {k:'fullstack', label:'full-stack'},
     {k:'tooling',   label:'tooling'}
   ];
 
@@ -2508,20 +2478,15 @@ document.addEventListener('pointermove', e=>{
   const items=[
     {t:'Work',  k:'section', i:'#', go:()=>jump('#work')},
     {t:'Stack', k:'section', i:'#', go:()=>jump('#stack')},
-    {t:'Ask my résumé', k:'section', i:'#', go:()=>jump('#ask')},
+    {t:'Ask my résumé', k:'section', i:'#', go:()=>{ jump('#ask'); setTimeout(()=>$('#ragInput')?.focus({preventScroll:true}), 520); }},
     {t:'Recognition', k:'section', i:'#', go:()=>jump('#proof')},
     {t:'Log', k:'section', i:'#', go:()=>jump('#log')},
     {t:'Contact', k:'section', i:'#', go:()=>jump('#contact')},
     {t:'CartelBench — do LLM market makers collude?', k:'research', i:'▸', go:()=>reveal('cartelbench')},
     {t:'anequant — AI-agent quant firm', k:'repo', i:'▸', go:()=>reveal('anequant')},
-    {t:'Agribid — crop decision support', k:'repo', i:'▸', go:()=>reveal('agribid_proj')},
-    {t:'BerryBooked — WhatsApp clinic booking', k:'repo', i:'▸', go:()=>reveal('BerryBooked')},
-    {t:'Quant Finance Models', k:'repo', i:'▸', go:()=>reveal('Quant_Finance_Basic_Models')},
     {t:'Alpha Builder — genetic alpha search', k:'repo', i:'▸', go:()=>reveal('Alpha-Builder')},
     {t:'data-df-summarizer — PyPI package', k:'repo', i:'▸', go:()=>reveal('datainspector')},
     {t:'3D Liver Segmentation', k:'project', i:'▸', go:()=>reveal('liver')},
-    {t:'Stock Prediction — Bi-LSTM forecaster', k:'project', i:'▸', go:()=>reveal('stock')},
-    {t:'Image to Voice — multilingual OCR', k:'project', i:'▸', go:()=>reveal('img2voice')},
     {t:'Adversarial AML Chain', k:'project', i:'▸', go:()=>reveal('aml')},
     {t:'Curl Correct — pose estimation', k:'project', i:'▸', go:()=>reveal('curl')},
     {t:'Sentiment Analysis — live model', k:'project', i:'▸', go:()=>reveal('sentiment')},
@@ -2690,16 +2655,12 @@ const DTYPE = 'q8';
     {src:'education', text:'I am pursuing a B.Tech in Artificial Intelligence at MPSTME in Mumbai, graduating in 2027 with a CGPA of 3.52. I graduated from Emerald Heights International School under the CBSE board in 2023 with 93.6 percent.'},
     {src:'research · cartelbench', text:'CartelBench is my capstone research project, a benchmark studying whether large language model market makers spontaneously form price fixing cartels in a realistic financial market, and whether an AI regulator can break them up. It runs models as market maker, trader or regulator inside ABIDES, JPMorgan open source agent based limit order book simulator, across transparent, opaque dark pool, policed and opaque policed regimes, with a leniency and amnesty programme modelled on the US DOJ and India CCI. My contribution is reproducibility and artifact engineering: one command regeneration of every derived table and figure, continuous integration gates rewritten to fail closed, a re runnable anonymization scrub for double blind submission, the ACM acmart paper build with an enforced page budget, and end to end bibliography verification. Targeting the CODS 2026 conference.'},
     {src:'project · anequant', text:'anequant is a quantitative trading firm simulated as a company of AI agents: thirteen agents across seven departments run research, backtesting, risk and execution over an asynchronous event bus. Large language models only propose and veto strategy parameters, while deterministic Python computes every signal, position size and order. Runs are seeded and replay deterministically. Built in Python with a JavaScript frontend.'},
-    {src:'project · berrybooked', text:'BerryBooked is an appointment booking platform for clinics driven over WhatsApp, built with a Node and Express server on Supabase Postgres, a separate Python AI service for the conversational booking bot, and dashboards for clinics and founders.'},
-    {src:'project · agribid crop decision support', text:'A decision support system for Indian agriculture built during the Agribid internship, combining a land and crop classifier, a mandi price regressor and a rainfall model behind an optimisation engine in a Flask application, trained on real land use, mandi price and rainfall datasets.'},
-    {src:'project · quant finance models', text:'A repository of core quantitative finance models implemented from scratch in Python and Jupyter, covering Black Scholes option pricing with and without Monte Carlo simulation, the capital asset pricing model, geometric Brownian motion, Markowitz portfolio optimisation and the Wiener process.'},
     {src:'project · alpha builder', text:'Alpha Builder is a genetic programming powered alpha signal engine that evolves quantitative trading strategies using evolutionary algorithms, with a dashboard for backtesting, signal visualization and system architecture review. Built in Python.'},
     {src:'project · data-df-summarizer', text:'data-df-summarizer is a Python package I published to PyPI that summarises a large Pandas DataFrame in one call, reporting shape, column names, missing value counts and numeric statistics for fast exploratory data analysis. Released through a GitHub Actions workflow.'},
     {src:'project · aml chain', text:'Adversarial AML Chain is an AI powered adversarial anti money laundering research project on blockchain transaction analysis, attack simulation, anomaly detection and security aware machine learning pipelines for financial systems.'},
     {src:'project · liver segmentation', text:'A 3D liver segmentation system for surgical planning using CT preprocessing pipelines and convolutional neural network architectures in TensorFlow, reaching 92 percent segmentation accuracy. Medical imaging and computer vision work.'},
-    {src:'project · stock prediction', text:'A stock price forecasting system using bidirectional LSTM neural networks for time series prediction, with candlestick analysis and an interactive Streamlit dashboard for exploring predictions.'},
-    {src:'project · image to voice', text:'Image to Voice is an OCR powered assistive system that converts text inside images into multilingual speech using gTTS, built to help visually impaired users read printed material.'},
     {src:'project · sentiment analysis', text:'A natural language processing project fine tuning transformer models for real time sentiment classification using HuggingFace pipelines. A quantized version of this model runs live on this website.'},
+    {src:'project · curl correct', text:'Curl Correct is an exercise form analyzer that uses pose estimation to count repetitions and flag bad form during workouts. The repository is created but the code is not pushed publicly yet.'},
     {src:'award · worldquant', text:'I reached Gold Level in the WorldQuant Challenge by building data driven quantitative alpha models for predictive finance, competing on quant research and signal construction.'},
     {src:'award · logistics now', text:'At the Logistics Now Hackathon I worked with Team SisCode to build an AI powered system that automatically cleans and standardizes messy shipment and logistics data.'},
     {src:'award · smart india hackathon', text:'I competed in the Smart India Hackathon initiative through the MPSTME Ideathon with Team BrewGANs, pitching innovative technology driven solutions to national level problem statements.'},
@@ -2709,10 +2670,30 @@ const DTYPE = 'q8';
     {src:'contact', text:'You can reach me by email at anushkaj2211@gmail.com, on GitHub at Anushhhka-jain, or on LinkedIn. I am based in Mumbai, India and open to internships, research collaborations and ambitious AI projects.'}
   ];
 
+  /* Cosine alone answers "what did she do in quant finance?" well, but fails the
+     blunt list questions — "give projects" matches no single chunk, because no
+     chunk is *about* the word project. So a query that names a whole category
+     first narrows the pool to that category, and cosine only ranks within it. */
+  const GROUPS=[
+    {re:/\b(projects?|project|built|build|building|portfolio|repos?|repositories)\b/, in:s=>/^(project|research)/.test(s)},
+    {re:/\b(experiences?|internships?|interned|jobs?|roles?|employment|companies)\b/,  in:s=>/^experience/.test(s)},
+    {re:/\b(awards?|achievements?|competitions?|hackathons?|prizes?|recognition)\b/,   in:s=>/^award/.test(s)},
+    {re:/\b(educations?|degree|college|university|cgpa|school|graduation|graduate)\b/, in:s=>/^education/.test(s)},
+    {re:/\b(skills?|stack|technologies|tech|tools?|languages?)\b/,                     in:s=>/^(skills|focus)/.test(s)},
+    {re:/\b(contacts?|email|reach|hire|hiring|linkedin)\b/,                            in:s=>/^contact/.test(s)}
+  ];
+  /* filler that shouldn't count as "this question has a topic in it" */
+  const STOP=/^(give|list|show|tell|see|me|us|all|any|some|please|her|his|she|he|they|i|my|your|you|what|which|who|whose|when|where|how|many|much|is|are|was|were|be|been|has|have|had|do|does|did|done|the|a|an|of|and|or|on|in|for|with|to|s|about|more|full|worked|work|working|made|built)$/;
+
   let embed=null, vecs=null, busy=false;
 
   document.querySelectorAll('#ragSamples .sample').forEach(b=>b.addEventListener('click',()=>{
     input.value=b.textContent.trim(); search();
+  }));
+
+  /* anything pointing at #ask should land in the box ready to type */
+  document.querySelectorAll('a[href="#ask"]').forEach(a=>a.addEventListener('click',()=>{
+    setTimeout(()=>input.focus({preventScroll:true}), 520);
   }));
 
   async function build(){
@@ -2726,11 +2707,13 @@ const DTYPE = 'q8';
           if(p.status==='progress' && p.total) idx.textContent=`encoder · ${Math.round(p.progress)}%`;
         }
       });
-      idx.textContent=`embedding ${CHUNKS.length} chunks…`;
-      const out = await embed(CHUNKS.map(c=>c.text), {pooling:'mean', normalize:true});
+      idx.textContent=`embedding ${CHUNKS.length}…`;
+      /* the source label is embedded with the text — it is what makes a question
+         phrased around a category ("projects", "awards") land near its chunks */
+      const out = await embed(CHUNKS.map(c=>`${c.src.replace(/·/g,' ')}. ${c.text}`), {pooling:'mean', normalize:true});
       const [n,d] = out.dims;
       vecs = [...Array(n)].map((_,i)=>out.data.slice(i*d,(i+1)*d));
-      idx.textContent=`index: ${n} chunks · ${d}-dim`;
+      idx.textContent=`${n} chunks · ${d}-dim`;
       badge.textContent='● index ready';
     }catch(err){
       idx.textContent='encoder unavailable — check connection';
@@ -2750,8 +2733,20 @@ const DTYPE = 'q8';
     try{
       const out = await embed([q], {pooling:'mean', normalize:true});
       const qv = out.data.slice(0, out.dims[1]);
-      const ranked = CHUNKS.map((c,i)=>({...c, score:cosine(qv, vecs[i])}))
-                           .sort((a,b)=>b.score-a.score).slice(0,3);
+      let pool = CHUNKS.map((c,i)=>({...c, score:cosine(qv, vecs[i])}));
+      const ql = q.toLowerCase();
+      const g  = GROUPS.find(g=>g.re.test(ql));
+      let take = 3;
+      if(g && pool.some(c=>g.in(c.src))){
+        /* "give projects" is nothing but the category, so answer with the whole
+           category. "experience with computer vision" carries a topic as well —
+           leave that to cosine, and only show a couple more rows. Ranking is
+           always the raw score, so the numbers on screen stay in order. */
+        const rest = ql.split(/[^a-z]+/).filter(w=>w && !STOP.test(w) && !g.re.test(w));
+        if(!rest.length){ pool = pool.filter(c=>g.in(c.src)); take = pool.length; }
+        else take = 4;
+      }
+      const ranked = pool.sort((a,b)=>b.score-a.score).slice(0, take);
       results.innerHTML='';
       ranked.forEach((r,i)=>{
         const pct=clampPct(r.score);
