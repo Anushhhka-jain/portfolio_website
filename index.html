@@ -69,7 +69,7 @@
 }
 
 /* base colour lives on <html> so body doesn't paint over the negative-z aura */
-html{scroll-behavior:smooth;background:var(--bg);font-size:118.75%;}  /* 19px root */
+html{scroll-behavior:smooth;background:var(--bg);font-size:118.75%;overflow-x:hidden;}  /* 19px root */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
   *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;}
@@ -149,6 +149,9 @@ body.locked{overflow:hidden;}
 ::-webkit-scrollbar-thumb{background:#CFC8BE;border-radius:6px;border:2px solid var(--bg);}
 ::-webkit-scrollbar-thumb:hover{background:#B3AAA0;}
 
+/* Android paints a grey-blue flash over any tapped element; the page has its
+   own :active and :focus-visible states, so suppress the browser's */
+a,button,input{-webkit-tap-highlight-color:transparent;}
 a{color:inherit;text-decoration:none;}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
 input,textarea{font:inherit;color:inherit;}
@@ -421,6 +424,9 @@ body.ready .hero-image-side{animation:hero-fade 1s var(--ease) 0.28s both;}
   opacity:0;transition:opacity 0.5s;white-space:nowrap;
 }
 .hang:hover .rope-hint{opacity:0.85;}
+/* no hover on a touch screen, so the cord would look like decoration — show the
+   hint standing, since the handle is the only draggable part there */
+@media (hover:none){ .rope-hint{opacity:0.85;} }
 .rope-hint.gone{opacity:0 !important;}
 
 /* the card pivots at the anchor, a full cord-length above its own top edge */
@@ -501,7 +507,7 @@ body.ready .hero-image-side{animation:hero-fade 1s var(--ease) 0.28s both;}
 .chip:hover,.mini:hover,.fchip:hover{transform:translateY(-2px);}
 .chip,.mini,.fchip{transition:border-color 0.25s,color 0.25s,background 0.25s,transform 0.25s var(--bounce);}
 
-.socials{display:flex;gap:0.5rem;margin-top:0.9rem;}
+.socials{display:flex;gap:0.5rem;margin-top:0.9rem;flex-wrap:wrap;}
 .chip{
   display:inline-flex;align-items:center;gap:0.45rem;font-family:var(--mono);font-size:0.901rem;
   color:var(--text-2);border:1px solid var(--line);padding:0.45rem 0.85rem;background:var(--surface);
@@ -790,7 +796,7 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
   background:var(--surface-glass);backdrop-filter:blur(14px);box-shadow:var(--shadow);
 }
 .mini-ask-top{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;}
-.mini-ask-top .badge{font-size:0.66rem;padding:0.14rem 0.45rem;letter-spacing:0.08em;}
+.mini-ask-top .badge{font-size:0.66rem;padding:0.14rem 0.45rem;letter-spacing:0.08em;white-space:nowrap;}
 .mini-ask-idx{
   margin-left:auto;font-family:var(--mono);font-size:0.7rem;color:var(--muted);
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
@@ -1037,6 +1043,10 @@ footer{
 
 /* base (phones): single column everywhere */
 .hero-grid{grid-template-columns:1fr;gap:2.4rem;}
+/* grid and flex children default to min-width:auto, so one long word — the
+   display headline, a repo slug, an email — can push a column wider than the
+   screen and take the whole page with it. Nothing here needs that. */
+.hero-grid>*,.proj-grid>*,.matrix>*,.model-split>*{min-width:0;}
 .hero-image-side{max-width:420px;}
 .matrix{grid-template-columns:1fr;}
 .facts{grid-template-columns:repeat(2,1fr);}
@@ -1048,6 +1058,13 @@ footer{
   .burger{display:flex;}
 }
 @media (max-width:640px){
+  /* the 19px root is a desk measure. On a phone it blows the display headline
+     past its column — which then drags the whole page wider than the screen —
+     and makes body copy read like large print. 16px restores the scale. */
+  html{font-size:100%;}
+  /* and the headline itself tracks the viewport rather than the root, so it
+     still fits at 320px */
+  .hero-name{font-size:clamp(2.3rem,10.5vw,3.2rem);}
   .nav,.nav.stuck{padding:0.85rem 1.1rem;}
   .stats{grid-template-columns:repeat(3,1fr);gap:0.5rem;}
   .stat{padding:0.7rem 0.45rem;}
@@ -1076,6 +1093,28 @@ footer{
   .tree-list{max-height:220px;font-size:0.88rem;}
   .contact-mail{word-break:break-all;}
   .foot-row{justify-content:center;text-align:center;}
+  /* iOS zooms the whole page in when a focused input is under 16px, and never
+     zooms back out — these are the only fields a reader types into */
+  .mini-ask-input,.model-input,.pal-input{font-size:16px;}
+  /* thumb-sized hit areas for the small round controls */
+  .mini-ask-go{width:2.4rem;height:2.4rem;font-size:1rem;}
+  .mini-samples .sample{padding:0.3rem 0.7rem;}
+  .sample,.chip,.mini,.fchip{padding-top:0.5rem;padding-bottom:0.5rem;}
+  .rail-btn,.sheet-close{width:40px;height:40px;}
+  .to-top{width:44px;height:44px;right:1rem;bottom:1rem;}
+  /* the hero is tall on a phone already; let the search results stay short */
+  .mini-ask-results{max-height:13rem;}
+  /* with the photo, the search box and the social row stacked, the centred
+     scroll cue lands on top of the chips — and nobody needs telling to scroll
+     on a phone */
+  .scroll-hint{display:none;}
+}
+
+/* the narrowest phones still in use (320px): the index read-out has nowhere
+   left to go beside the badge, and it is the one thing on the card that is
+   pure decoration once the index is built */
+@media (max-width:360px){
+  .mini-ask-idx{display:none;}
 }
 
 /* tablets and up: tiles go two-up */
@@ -1777,8 +1816,11 @@ document.addEventListener('pointermove', e=>{
   ];
   const rand = rng(20260813);
   const pts = [];
+  /* the link pass is O(n²) per frame, and this is atmosphere at 0.38 opacity
+     behind the headline — a phone should not spend its frame budget on it */
+  const PER = innerWidth < 640 ? 16 : 34;
   clusters.forEach((c,ci)=>{
-    for(let i=0;i<34;i++){
+    for(let i=0;i<PER;i++){
       const a = rand()*Math.PI*2, r = Math.pow(rand(),0.6)*0.15;
       pts.push({ci, x:c.cx+Math.cos(a)*r, y:c.cy+Math.sin(a)*r*0.9,
                 ph:rand()*Math.PI*2, sp:0.3+rand()*0.7, sz:0.8+rand()*1.6});
@@ -1903,10 +1945,16 @@ document.addEventListener('pointermove', e=>{
   }
 
   grab.addEventListener('pointerdown', down);
-  swing.addEventListener('pointerdown', e=>{
-    if(e.target.closest('a,button')) return;          // don't hijack links in the frame
-    down(e);
-  });
+  /* On a touch screen the photo is a large slab in the middle of the first
+     scroll — grabbing it there would mean the page refuses to scroll under the
+     reader's thumb. The little cord handle still drags (it is too small to be
+     a scroll target), so nothing is lost; a mouse keeps the whole frame. */
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+    swing.addEventListener('pointerdown', e=>{
+      if(e.target.closest('a,button')) return;        // don't hijack links in the frame
+      down(e);
+    });
+  }
   addEventListener('pointermove', move, {passive:true});
   addEventListener('pointerup', up);
   addEventListener('pointercancel', up);
@@ -1940,7 +1988,7 @@ document.addEventListener('pointermove', e=>{
   /* kind drives the tile marker and which detail body gets built:
        live     · runs in the browser
        repo     · public repo of mine, GitHub-backed
-       research · capstone, repo not mine to publish
+       research · Capstone 
        private  · no public repository                                     */
   const PROJECTS = [
     {
@@ -1997,7 +2045,6 @@ document.addEventListener('pointermove', e=>{
       name:'Adversarial AML Chain',
       blurb:'Adversarial AML on blockchain graphs',
       desc:'Adversarial anti-money-laundering research on blockchain transaction graphs.',
-      note:'The code lives in a collaborator\'s repository, not mine.',
       link:{href:'https://github.com/reyaoberoi/Adversarial-AML-Chain', label:'collaborator\'s repo ↗'}
     },
     {
