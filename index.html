@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anushka Jain | AI Engineer</title>
-<meta name="description" content="Anushka Jain — AI Engineer & B.Tech Artificial Intelligence student in Mumbai. Deep learning, quant finance and agentic AI systems, with every project linked to its public source on GitHub.">
+<meta name="description" content="Anushka Jain, AI Engineer & B.Tech Artificial Intelligence student in Mumbai. Deep learning, quant finance and agentic AI systems, with every project linked to its public source on GitHub.">
 <meta name="theme-color" content="#FBFAF8">
 <meta property="og:title" content="Anushka Jain | AI Engineer">
 <meta property="og:description" content="AI Engineer building intelligent systems across deep learning, quant finance and NLP. Browse the real repositories, and run a transformer in your browser.">
@@ -291,9 +291,6 @@ section[id],article[id]{scroll-margin-top:86px;}
 
 /* ─── HERO ─── */
 .hero{min-height:100svh;display:flex;align-items:center;padding:8rem 0 4rem;position:relative;overflow:hidden;}
-/* the cluster graph is atmosphere, not content — it sits behind the headline,
-   so it recedes rather than competing with it for the same attention */
-#heroCanvas{position:absolute;inset:0;width:100%;height:100%;opacity:0.38;pointer-events:none;}
 .hero::after{
   content:'';position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(var(--accent-rgb),0.07),transparent 70%),
@@ -566,7 +563,7 @@ body.ready .hero-image-side{animation:hero-fade 1s var(--ease) 0.28s both;}
 .repo-slug b{color:var(--text);font-weight:500;}
 .repo-slug .owner{white-space:nowrap;}
 .repo-slug svg{width:13px;height:13px;fill:var(--muted);flex:none;}
-.repo-facts{display:flex;align-items:center;gap:0.75rem;font-family:var(--mono);font-size:0.865rem;color:var(--muted);flex:none;}
+.repo-facts{display:flex;align-items:center;gap:0.7rem;font-family:var(--mono);font-size:0.76rem;color:var(--muted);flex:none;}
 .repo-facts span{display:inline-flex;align-items:center;gap:0.28rem;}
 .repo-facts svg{width:11px;height:11px;fill:currentColor;}
 .repo-facts .hot{color:var(--amber);}
@@ -574,7 +571,7 @@ body.ready .hero-image-side{animation:hero-fade 1s var(--ease) 0.28s both;}
 /* real language byte split from the GitHub API */
 .langbar{display:flex;height:5px;border-radius:3px;overflow:hidden;margin-top:1.1rem;background:var(--surface-2);}
 .langbar i{display:block;height:100%;transition:width 0.7s var(--ease);}
-.langkeys{display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:0.6rem;font-family:var(--mono);font-size:0.86rem;color:var(--muted);}
+.langkeys{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:0.5rem;font-family:var(--mono);font-size:0.76rem;color:var(--muted);}
 .langkeys span{display:inline-flex;align-items:center;gap:0.35rem;}
 .langkeys u{width:7px;height:7px;border-radius:50%;text-decoration:none;flex:none;}
 .langkeys b{color:var(--text-2);font-weight:400;}
@@ -604,12 +601,12 @@ body.ready .hero-image-side{animation:hero-fade 1s var(--ease) 0.28s both;}
   background:var(--bg-2);overflow:hidden;
 }
 .tree-head{
-  display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;padding:0.5rem 0.8rem;
+  display:flex;align-items:center;gap:0.55rem;flex-wrap:wrap;padding:0.45rem 0.75rem;
   border-bottom:1px solid var(--line-soft);background:var(--surface-2);
-  font-family:var(--mono);font-size:0.855rem;color:var(--muted);
+  font-family:var(--mono);font-size:0.75rem;color:var(--muted);
 }
 .tree-head .path{color:var(--text-2);}
-.tree-list{max-height:19rem;overflow-y:auto;padding:0.5rem 0.3rem 0.6rem;font-family:var(--mono);font-size:0.901rem;}
+.tree-list{max-height:17rem;overflow-y:auto;padding:0.45rem 0.3rem 0.55rem;font-family:var(--mono);font-size:0.79rem;}
 .tree-list::-webkit-scrollbar{width:8px;}
 .tree-list::-webkit-scrollbar-thumb{background:#3A3A45;border-radius:6px;border:2px solid var(--bg-2);}
 .node{
@@ -618,11 +615,11 @@ body.ready .hero-image-side{animation:hero-fade 1s var(--ease) 0.28s both;}
 }
 a.node:hover{background:var(--surface-2);color:var(--text);}
 .node svg{width:12px;height:12px;flex:none;}
-.node .sz{margin-left:auto;color:var(--muted);font-size:0.85rem;padding-left:1rem;}
+.node .sz{margin-left:auto;color:var(--muted);font-size:0.75rem;padding-left:1rem;}
 .node.dir{color:var(--text);}
 .node.dir svg{fill:var(--blue);}
 .node.file svg{fill:var(--muted);}
-.tree-note{padding:0.55rem 0.85rem;font-family:var(--mono);font-size:0.855rem;color:var(--muted);border-top:1px solid var(--line-soft);}
+.tree-note{padding:0.5rem 0.8rem;font-family:var(--mono);font-size:0.75rem;color:var(--muted);border-top:1px solid var(--line-soft);}
 
 /* ─── PROJECT TILES ───
    One flat grid, one tile shape. A tile carries a name and a few words only;
@@ -674,7 +671,7 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 }
 .sheet.open{display:block;}
 .sheet-box{
-  position:relative;max-width:60rem;margin:0 auto;
+  position:relative;max-width:46rem;margin:0 auto;
   background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r);
   box-shadow:0 40px 90px -30px rgba(0,0,0,0.85);
   animation:sheet-in 0.34s var(--ease);
@@ -683,9 +680,9 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 @media (prefers-reduced-motion:reduce){.sheet-box{animation:none;}}
 .sheet-top{
   display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;
-  padding:1.3rem 1.5rem 1.1rem;border-bottom:1px solid var(--line-soft);
+  padding:1rem 1.15rem 0.85rem;border-bottom:1px solid var(--line-soft);
 }
-.sheet-title{font-family:var(--display);font-size:clamp(1.6rem,3.4vw,2.2rem);font-weight:500;letter-spacing:-0.015em;line-height:1.15;}
+.sheet-title{font-family:var(--display);font-size:clamp(1.15rem,2.1vw,1.38rem);font-weight:500;letter-spacing:-0.015em;line-height:1.15;}
 .sheet-meta{display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-top:0.6rem;}
 .sheet-close{
   flex:none;width:36px;height:36px;border:1px solid var(--line);border-radius:999px;
@@ -693,60 +690,68 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
   transition:border-color 0.25s,color 0.25s,background 0.25s;
 }
 .sheet-close:hover{border-color:var(--accent-line);color:var(--text);background:var(--surface-2);}
-.sheet-body{padding:1.5rem;}
-.sheet-body .lede{color:var(--text-2);font-size:1.084rem;line-height:1.65;}
+.sheet-body{padding:1.1rem;font-size:0.8rem;}
+.sheet-body .lede{color:var(--text-2);font-size:0.84rem;line-height:1.6;}
 .sheet-body .lede b{color:var(--text);font-weight:500;}
-.sheet-body .sub{color:var(--text-2);font-size:1.023rem;line-height:1.6;margin-top:0.8rem;}
+.sheet-body .sub{color:var(--text-2);font-size:0.79rem;line-height:1.58;margin-top:0.65rem;}
 .sheet-body .sub b{color:var(--text);font-weight:500;}
-.sheet-sec{margin-top:1.5rem;}
+.sheet-sec{margin-top:1.15rem;}
 .sheet-sec>h4{
-  font-family:var(--mono);font-size:0.85rem;letter-spacing:0.14em;text-transform:uppercase;
-  color:var(--muted);font-weight:500;margin-bottom:0.7rem;
+  font-family:var(--mono);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;margin-bottom:0.5rem;
 }
 .sheet .role{
-  border-left:2px solid var(--accent-line);padding:0.15rem 0 0.15rem 1rem;margin-top:1.5rem;
+  border-left:2px solid var(--accent-line);padding:0.15rem 0 0.15rem 0.9rem;margin-top:1.15rem;
   background:linear-gradient(90deg,rgba(var(--accent-rgb),0.05),transparent 70%);
 }
 .sheet .role h4{
-  font-family:var(--mono);font-size:0.85rem;letter-spacing:0.14em;text-transform:uppercase;
-  color:var(--accent);font-weight:500;margin-bottom:0.45rem;
+  font-family:var(--mono);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--accent);font-weight:500;margin-bottom:0.35rem;
 }
 .sheet-note{
-  font-family:var(--mono);font-size:0.9rem;color:var(--muted);line-height:1.55;
-  border:1px dashed var(--line);border-radius:var(--r-sm);padding:0.85rem 1rem;margin-top:1.5rem;
+  font-family:var(--mono);font-size:0.75rem;color:var(--muted);line-height:1.55;
+  border:1px dashed var(--line);border-radius:var(--r-sm);padding:0.7rem 0.85rem;margin-top:1.15rem;
 }
+/* the shared repo primitives are sized for the page; inside the sheet the same
+   chrome sits next to body copy, so it is stepped down with it */
+.sheet .tag{font-size:0.72rem;}
+.sheet .repo-slug{font-size:0.76rem;}
+.sheet .mini{font-size:0.74rem;padding:0.3rem 0.58rem;}
+.sheet .sync{font-size:0.71rem;}
+.sheet .repo-foot{margin-top:1rem;padding-top:0.9rem;}
+.sheet .btn{font-size:0.8rem;padding:0.6rem 0.95rem;}
 
 .facts{
   display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-soft);
-  border:1px solid var(--line-soft);border-radius:10px;overflow:hidden;margin-top:1.5rem;
+  border:1px solid var(--line-soft);border-radius:10px;overflow:hidden;margin-top:1.15rem;
 }
-.fact{background:var(--bg-2);padding:0.8rem 1rem;}
+.fact{background:var(--bg-2);padding:0.65rem 0.8rem;}
 .fact span{
-  display:block;font-family:var(--mono);font-size:0.85rem;letter-spacing:0.14em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem;
+  display:block;font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:0.25rem;
 }
-.fact b{font-family:var(--mono);font-size:0.986rem;color:var(--text);font-weight:500;letter-spacing:-0.01em;}
+.fact b{font-family:var(--mono);font-size:0.77rem;color:var(--text);font-weight:500;letter-spacing:-0.01em;}
 .badge.priv{color:var(--amber);border-color:rgba(251,191,36,0.32);background:rgba(251,191,36,0.07);}
 
 /* ─── LIVE MODEL (rendered inside the detail sheet) ─── */
 .model-head{display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.9rem;}
 .model-split{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;align-items:start;}
 .badge{
-  font-family:var(--mono);font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;
-  border:1px solid var(--line);padding:0.2rem 0.55rem;color:var(--muted);background:var(--surface-2);
+  font-family:var(--mono);font-size:0.67rem;letter-spacing:0.1em;text-transform:uppercase;
+  border:1px solid var(--line);padding:0.16rem 0.46rem;color:var(--muted);background:var(--surface-2);
 }
 .badge.live{color:var(--accent);border-color:var(--accent-line);background:var(--accent-dim);}
 .badge.warn{color:var(--amber);border-color:rgba(251,191,36,0.3);}
 .model-io{display:flex;gap:0.55rem;flex-wrap:wrap;}
 .model-input{
   flex:1;min-width:200px;background:var(--bg-2);border:1px solid var(--line);border-radius:9px;
-  padding:0.7rem 0.85rem;font-family:var(--mono);font-size:0.955rem;resize:vertical;min-height:74px;
+  padding:0.6rem 0.75rem;font-family:var(--mono);font-size:0.83rem;resize:vertical;min-height:70px;
   transition:border-color 0.25s;
 }
 .model-input:focus{outline:none;border-color:var(--accent-line);}
 .model-input::placeholder{color:var(--muted);}
 .bars{margin-top:1rem;display:flex;flex-direction:column;gap:0.6rem;}
-.bar-row{display:grid;grid-template-columns:5.6rem 1fr 4.1rem;align-items:center;gap:0.7rem;font-family:var(--mono);font-size:0.88rem;}
+.bar-row{display:grid;grid-template-columns:5rem 1fr 3.6rem;align-items:center;gap:0.6rem;font-family:var(--mono);font-size:0.78rem;}
 .bar-track{height:7px;border-radius:4px;background:var(--surface-2);overflow:hidden;border:1px solid var(--line-soft);}
 .bar-fill{height:100%;width:0;border-radius:4px;transition:width 0.6s var(--ease);}
 .bar-fill.pos{background:linear-gradient(90deg,var(--accent-2),var(--accent));}
@@ -755,11 +760,11 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 .bar-label{color:var(--text-2);}
 .progress-line{height:3px;border-radius:3px;background:var(--surface-2);overflow:hidden;margin-top:0.7rem;}
 .progress-line i{display:block;height:100%;width:0;background:var(--accent);transition:width 0.25s;}
-.model-status{font-family:var(--mono);font-size:0.865rem;color:var(--muted);margin-top:0.55rem;min-height:1.2em;}
+.model-status{font-family:var(--mono);font-size:0.76rem;color:var(--muted);margin-top:0.55rem;min-height:1.2em;}
 .samples{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.7rem;}
 .sample{
-  font-family:var(--mono);font-size:0.86rem;color:var(--text-2);border:1px solid var(--line-soft);
-  padding:0.25rem 0.7rem;background:var(--bg-2);transition:border-color 0.25s,color 0.25s;
+  font-family:var(--mono);font-size:0.76rem;color:var(--text-2);border:1px solid var(--line-soft);
+  padding:0.22rem 0.6rem;background:var(--bg-2);transition:border-color 0.25s,color 0.25s;
 }
 .sample:hover{border-color:var(--accent-line);color:var(--text);}
 
@@ -782,9 +787,8 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 .mat-use{display:flex;gap:0.3rem;flex-wrap:wrap;}
 .use-chip{
   font-family:var(--mono);font-size:0.839rem;color:var(--muted);border:1px solid var(--line-soft);
-  background:var(--bg-2);transition:color 0.25s,border-color 0.25s;
+  background:var(--bg-2);
 }
-.mat-row:hover .use-chip{color:var(--accent);border-color:var(--accent-line);}
 
 /* ─── RESUME SEARCH ───
    Lives under the photo in the hero rather than in a section of its own, so it
@@ -825,8 +829,6 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 .mini-ask-results .hit{padding:0.5rem 0.6rem;border-radius:9px;}
 .mini-ask-results .hit-top{margin-bottom:0.25rem;gap:0.5rem;}
 .mini-ask-results .hit-src{font-size:0.65rem;letter-spacing:0.1em;}
-.mini-ask-results .hit-score{font-size:0.67rem;gap:0.3rem;}
-.mini-ask-results .hit-meter{width:2rem;height:3px;}
 .mini-ask-results .hit-text{font-size:0.78rem;line-height:1.5;}
 .mini-ask-results .model-status{font-size:0.72rem;margin-top:0;}
 .hit{
@@ -836,9 +838,6 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 @keyframes hit-in{to{opacity:1;transform:none;}}
 .hit-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:0.4rem;}
 .hit-src{font-family:var(--mono);font-size:0.85rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);}
-.hit-score{font-family:var(--mono);font-size:0.86rem;color:var(--accent);display:flex;align-items:center;gap:0.45rem;}
-.hit-meter{width:3.3rem;height:4px;border-radius:3px;background:var(--surface-2);overflow:hidden;}
-.hit-meter i{display:block;height:100%;background:var(--accent);}
 .hit-text{font-size:1.023rem;color:var(--text-2);line-height:1.55;}
 
 /* ─── TIMELINE (commit log) ───
@@ -1199,7 +1198,6 @@ footer{
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <canvas id="heroCanvas" aria-hidden="true"></canvas>
   <div class="wrap hero-grid">
 
     <div class="hero-content">
@@ -1211,7 +1209,7 @@ footer{
 
       <p class="hero-desc">
         AI engineer working across <b>deep learning</b>, <b>quantitative finance</b>,
-        <b>agentic systems</b> and <b>NLP</b>. Every project below links to its source —
+        <b>agentic systems</b> and <b>NLP</b>. Every project below links to its source,
         and the transformer on this page really does run in your browser.
       </p>
 
@@ -1341,7 +1339,7 @@ footer{
     <div>
       <div class="model-head">
         <span class="badge live">● live inference</span>
-        <span class="badge" id="backendBadge">backend: —</span>
+        <span class="badge" id="backendBadge">backend: n/a</span>
         <span class="badge" id="sizeBadge">~67 MB int8</span>
       </div>
       <p class="lede">
@@ -1349,7 +1347,7 @@ footer{
         via Transformers.js. Nothing leaves your browser.
       </p>
       <p class="sub" style="color:var(--muted);">
-        WASM, not WebGPU — int8 kernels there return wrong logits today.
+        WASM, not WebGPU: int8 kernels there return wrong logits today.
       </p>
       <div class="samples" id="samples">
         <button class="sample">This portfolio is genuinely impressive.</button>
@@ -1376,12 +1374,12 @@ footer{
         <div class="bar-row">
           <span class="bar-label">POSITIVE</span>
           <span class="bar-track"><i class="bar-fill pos" id="barPos"></i></span>
-          <span class="bar-val" id="valPos">—</span>
+          <span class="bar-val" id="valPos">0.0%</span>
         </div>
         <div class="bar-row">
           <span class="bar-label">NEGATIVE</span>
           <span class="bar-track"><i class="bar-fill neg" id="barNeg"></i></span>
-          <span class="bar-val" id="valNeg">—</span>
+          <span class="bar-val" id="valNeg">0.0%</span>
         </div>
       </div>
     </div>
@@ -1419,7 +1417,7 @@ footer{
       <div class="mat-group">
         <div class="mat-head">Languages <span>05</span></div>
         <div class="mat-row"><span class="mat-name">Python</span><span class="mat-use"><b class="use-chip">cartelbench</b><b class="use-chip">anequant</b><b class="use-chip">alpha builder</b></span></div>
-        <div class="mat-row"><span class="mat-name">JavaScript</span><span class="mat-use"><b class="use-chip">anequant</b><b class="use-chip">this site</b></span></div>
+        <div class="mat-row"><span class="mat-name">JavaScript</span><span class="mat-use"><b class="use-chip">anequant</b></span></div>
         <div class="mat-row"><span class="mat-name">SQL / PLpgSQL</span><span class="mat-use"><b class="use-chip">healthclick</b></span></div>
         <div class="mat-row"><span class="mat-name">C++</span><span class="mat-use"><b class="use-chip">coursework</b><b class="use-chip">dsa</b></span></div>
         <div class="mat-row"><span class="mat-name">Java</span><span class="mat-use"><b class="use-chip">coursework</b></span></div>
@@ -1429,17 +1427,16 @@ footer{
         <div class="mat-head">AI / ML <span>05</span></div>
         <div class="mat-row"><span class="mat-name">Agentic systems</span><span class="mat-use"><b class="use-chip">anequant</b><b class="use-chip">cartelbench</b></span></div>
         <div class="mat-row"><span class="mat-name">Scikit-learn</span><span class="mat-use"><b class="use-chip">aml chain</b></span></div>
-        <div class="mat-row"><span class="mat-name">Transformers</span><span class="mat-use"><b class="use-chip">this site</b></span></div>
+        <div class="mat-row"><span class="mat-name">Transformers</span><span class="mat-use"><b class="use-chip">sentiment</b></span></div>
         <div class="mat-row"><span class="mat-name">TensorFlow</span><span class="mat-use"><b class="use-chip">liver seg</b></span></div>
         <div class="mat-row"><span class="mat-name">OpenCV</span><span class="mat-use"><b class="use-chip">liver seg</b><b class="use-chip">curl correct</b></span></div>
       </div>
 
       <div class="mat-group">
-        <div class="mat-head">Tools &amp; platforms <span>04</span></div>
-        <div class="mat-row"><span class="mat-name">GitHub REST API</span><span class="mat-use"><b class="use-chip">this site</b></span></div>
+        <div class="mat-head">Tools &amp; platforms <span>03</span></div>
+        <div class="mat-row"><span class="mat-name">Git / GitHub</span><span class="mat-use"><b class="use-chip">cartelbench</b><b class="use-chip">anequant</b></span></div>
         <div class="mat-row"><span class="mat-name">GitHub Actions / CI</span><span class="mat-use"><b class="use-chip">cartelbench</b><b class="use-chip">data-df-summarizer</b></span></div>
         <div class="mat-row"><span class="mat-name">PyPI packaging</span><span class="mat-use"><b class="use-chip">data-df-summarizer</b></span></div>
-        <div class="mat-row"><span class="mat-name">ONNX Runtime Web</span><span class="mat-use"><b class="use-chip">this site</b></span></div>
       </div>
 
       <div class="mat-group">
@@ -1478,7 +1475,7 @@ footer{
           <img src="images/wqb_gold.png" class="cert-img" alt="WorldQuant Challenge Gold Level achievement" loading="lazy" decoding="async">
           <div class="cert-body">
             <span class="card-tag">achievement</span>
-            <h3>WorldQuant Challenge — Gold</h3>
+            <h3>WorldQuant Challenge: Gold</h3>
             <p>Reached Gold Level by building data-driven quantitative alpha models for predictive finance.</p>
           </div>
         </article>
@@ -1496,7 +1493,7 @@ footer{
           <img src="images/healthclick.png" class="cert-img" alt="HealthClick SDE internship certificate" loading="lazy" decoding="async">
           <div class="cert-body">
             <span class="card-tag">internship</span>
-            <h3>HealthClick — SDE Intern</h3>
+            <h3>HealthClick: SDE Intern</h3>
             <p>Delivered scalable software features and technical projects within an agile team.</p>
           </div>
         </article>
@@ -1550,7 +1547,7 @@ footer{
 
       <div class="entry">
         <div class="entry-meta"><span class="entry-hash">0918bd4</span><span>2023</span><span>· root</span></div>
-        <h3>CBSE Graduation — 93.6%</h3>
+        <h3>CBSE Graduation: 93.6%</h3>
         <p>Graduated from Emerald Heights International School.</p>
       </div>
 
@@ -1585,7 +1582,6 @@ footer{
 <footer>
   <div class="wrap foot-row">
     <span>© 2026 Anushka Jain</span>
-    <span>no framework · transformers.js · canvas 2d · one html file</span>
     <span><a href="#top">back to top ↑</a></span>
   </div>
 </footer>
@@ -1613,37 +1609,6 @@ const $$ = (s,r=document)=>[...r.querySelectorAll(s)];
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const clamp = (v,a,b)=>Math.min(b,Math.max(a,v));
 const lerp = (a,b,t)=>a+(b-a)*t;
-
-/* deterministic pseudo-random so demos look identical every load */
-function rng(seed){let s=seed>>>0;return()=>{s^=s<<13;s^=s>>>17;s^=s<<5;return((s>>>0)/4294967296);};}
-
-/* fit a canvas to its box at device pixel ratio */
-function stage(cv){
-  const ctx = cv.getContext('2d');
-  let w=0,h=0;
-  function resize(){
-    const r = cv.getBoundingClientRect();
-    if(!r.width) return;
-    const d = Math.min(window.devicePixelRatio||1, 2);
-    w = r.width; h = r.height;
-    cv.width = Math.round(w*d); cv.height = Math.round(h*d);
-    ctx.setTransform(d,0,0,d,0,0);
-  }
-  resize();
-  new ResizeObserver(resize).observe(cv);
-  return {ctx, get w(){return w;}, get h(){return h;}};
-}
-
-/* run `draw(frame)` only while the canvas is on screen */
-function animate(cv, draw){
-  let raf=0, f=0, live=false;
-  const tick = ()=>{ draw(f++); raf = requestAnimationFrame(tick); };
-  new IntersectionObserver(es=>{
-    live = es[0].isIntersecting;
-    if(live && !raf){ if(REDUCED){ draw(f=0); } else { tick(); } }
-    else if(!live && raf){ cancelAnimationFrame(raf); raf=0; }
-  },{threshold:0.04}).observe(cv);
-}
 
 /* ══ 01 · preloader ══ */
 (function(){
@@ -1804,68 +1769,7 @@ document.addEventListener('pointermove', e=>{
   card.style.setProperty('--my', (e.clientY-r.top)+'px');
 }, {passive:true});
 
-/* ══ 07 · hero — embedding scatter ══ */
-(function(){
-  const cv=$('#heroCanvas'); if(!cv) return;
-  const s = stage(cv);
-  const clusters = [
-    {label:'vision',  cx:0.20, cy:0.30, color:'249,184,206'},
-    {label:'nlp',     cx:0.78, cy:0.24, color:'199,169,255'},
-    {label:'quant',   cx:0.68, cy:0.72, color:'143,184,255'},
-    {label:'systems', cx:0.30, cy:0.78, color:'251,113,133'}
-  ];
-  const rand = rng(20260813);
-  const pts = [];
-  /* the link pass is O(n²) per frame, and this is atmosphere at 0.38 opacity
-     behind the headline — a phone should not spend its frame budget on it */
-  const PER = innerWidth < 640 ? 16 : 34;
-  clusters.forEach((c,ci)=>{
-    for(let i=0;i<PER;i++){
-      const a = rand()*Math.PI*2, r = Math.pow(rand(),0.6)*0.15;
-      pts.push({ci, x:c.cx+Math.cos(a)*r, y:c.cy+Math.sin(a)*r*0.9,
-                ph:rand()*Math.PI*2, sp:0.3+rand()*0.7, sz:0.8+rand()*1.6});
-    }
-  });
-  let mx=0.5, my=0.5;
-  addEventListener('pointermove', e=>{ mx=e.clientX/innerWidth; my=e.clientY/innerHeight; },{passive:true});
-
-  animate(cv, f=>{
-    const {ctx,w,h} = s; if(!w) return;
-    ctx.clearRect(0,0,w,h);
-    const px = (mx-0.5)*24, py = (my-0.5)*18;
-
-    // intra-cluster links
-    ctx.lineWidth = 0.6;
-    for(let i=0;i<pts.length;i++){
-      for(let j=i+1;j<pts.length;j++){
-        if(pts[i].ci!==pts[j].ci) continue;
-        const dx=(pts[i].x-pts[j].x)*w, dy=(pts[i].y-pts[j].y)*h;
-        const d=Math.hypot(dx,dy);
-        if(d>78) continue;
-        ctx.strokeStyle = `rgba(${clusters[pts[i].ci].color},${0.1*(1-d/78)})`;
-        ctx.beginPath();
-        ctx.moveTo(pts[i].x*w+px, pts[i].y*h+py);
-        ctx.lineTo(pts[j].x*w+px, pts[j].y*h+py);
-        ctx.stroke();
-      }
-    }
-    // points
-    pts.forEach(p=>{
-      const drift = REDUCED ? 0 : Math.sin(f*0.006*p.sp + p.ph)*3;
-      const x = p.x*w+px+drift, y = p.y*h+py+Math.cos(f*0.005*p.sp+p.ph)*3;
-      ctx.fillStyle = `rgba(${clusters[p.ci].color},0.55)`;
-      ctx.beginPath(); ctx.arc(x,y,p.sz,0,7); ctx.fill();
-    });
-    // labels
-    ctx.font = '500 10px JetBrains Mono, monospace';
-    clusters.forEach(c=>{
-      ctx.fillStyle = `rgba(${c.color},0.45)`;
-      ctx.fillText(c.label, c.cx*w+px-12, c.cy*h+py-26);
-    });
-  });
-})();
-
-/* ══ 07b · the hanging photo ══
+/* ══ 07 · the hanging photo ══
    A vertical cord and the card below it are one pendulum pivoting at the fixed
    anchor. Two coupled springs drive it: `ang` is the swing angle about that
    anchor, `stretch` is how far the cord pulls longer under load. Both spring
@@ -2000,7 +1904,7 @@ document.addEventListener('pointermove', e=>{
       id:'anequant', kind:'repo', repo:'anequant', cats:['ai','quant'],
       name:'anequant',
       blurb:'13 AI agents run a quant firm',
-      desc:'A quant firm as a multi-agent system — <b>13 agents, 7 departments</b>, one async event bus. LLMs only <b>propose and veto</b>; deterministic Python computes every signal and order. Seeded runs replay byte for byte.',
+      desc:'A quant firm as a multi-agent system: <b>13 agents, 7 departments</b>, one async event bus. LLMs only <b>propose and veto</b>; deterministic Python computes every signal and order. Seeded runs replay byte for byte.',
       langs:{Python:132656, JavaScript:28694, CSS:13840, HTML:7369},
       stars:0, pushed:'2026-08-08',
       tree:['anequant/agents/base.py','anequant/agents/data.py','anequant/agents/executive.py','anequant/agents/operations.py','anequant/agents/research.py','anequant/agents/risk.py','anequant/agents/trading.py','anequant/agents/validation.py','anequant/api.py','anequant/bus.py','anequant/company.py','anequant/config.py','anequant/llm.py','anequant/market.py','anequant/memory.py','anequant/portfolio.py','anequant/rng.py','anequant/sim.py','anequant/strategies.py','frontend/app.js','frontend/index.html','frontend/styles.css','run.py','pytest.ini','requirements.txt','README.md','plan.md']
@@ -2009,7 +1913,7 @@ document.addEventListener('pointermove', e=>{
       id:'Alpha-Builder', kind:'repo', repo:'Alpha-Builder', cats:['quant'],
       name:'Alpha Builder',
       blurb:'Genetic programming evolves trading signals',
-      desc:'Genetic programming that evolves trading signals — alpha expressions scored by fitness, refined by selection and mutation.',
+      desc:'Genetic programming that evolves trading signals: alpha expressions scored by fitness, refined by selection and mutation.',
       langs:{HTML:34898, Python:22238},
       stars:0, pushed:'2026-04-15',
       tree:['ga_alpha/alpha.py','ga_alpha/api.py','ga_alpha/data.py','ga_alpha/fitness.py','ga_alpha/ga.py','ga_alpha/main.py','ga_alpha/requirements.txt','genome_alpha_dashboard.html','gp_alpha_system_architecture.svg']
@@ -2018,7 +1922,7 @@ document.addEventListener('pointermove', e=>{
       id:'datainspector', kind:'repo', repo:'datainspector', cats:['tooling'],
       name:'data-df-summarizer',
       blurb:'One-call Pandas profiler on PyPI',
-      desc:'A PyPI package — <b>pip install data-df-summarizer</b> — that profiles a Pandas DataFrame in one call: shape, columns, nulls, numeric stats.',
+      desc:'A PyPI package, <b>pip install data-df-summarizer</b>, that profiles a Pandas DataFrame in one call: shape, columns, nulls, numeric stats.',
       langs:{Python:1531},
       stars:0, pushed:'2025-11-12',
       tree:['data_df_summarizer/__init__.py','pyproject.toml','setup.py','.github/workflows/publish.yml','README.md']
@@ -2030,7 +1934,7 @@ document.addEventListener('pointermove', e=>{
       slug:'manan-tech/cartelbench',
       desc:'Do LLM market makers collude? A benchmark that drops language models into <b>ABIDES</b>, JPMorgan\'s order-book simulator, and scores them on nothing but the order book and the cash ledger.',
       sub:'<b>Told</b> to run a cartel, models comply and take real money off captured retail flow. <b>Left alone</b>, none initiates. <b>Invited</b>, it turns on how persuasive the invitation is. Three earlier claims were withdrawn under adversarial review.',
-      role:'Reproducibility and artifact engineering — one-command regeneration of every table and figure, CI gates that fail closed, a double-blind scrub, and the ACM <span class="mono">acmart</span> build with an enforced page budget.',
+      role:'Reproducibility and artifact engineering: one-command regeneration of every table and figure, CI gates that fail closed, a double-blind scrub, and the ACM <span class="mono">acmart</span> build with an enforced page budget.',
       facts:[['Substrate','ABIDES · JPMorgan'],['Models under test','Gemma 3 · Llama 4 · Kimi K2.5'],['My commits','39 of 396'],['Target venue','CODS 2026']]
     },
     {
@@ -2038,7 +1942,7 @@ document.addEventListener('pointermove', e=>{
       name:'3D Liver Segmentation',
       blurb:'CT pipeline into a 3D CNN',
       desc:'A CT preprocessing pipeline feeding a 3D CNN for surgical planning, built with TensorFlow and OpenCV.',
-      note:'Private — no public repository.'
+      note:'Private. No public repository.'
     },
     {
       id:'aml', kind:'private', cats:['ai'],
@@ -2124,7 +2028,7 @@ document.addEventListener('pointermove', e=>{
       const sz  = r.size ? `<span class="sz">${kb(r.size)}</span>` : '';
       return `<a class="node ${cls}" href="${url}" target="_blank" rel="noopener" style="padding-left:${0.55+r.depth*0.95}rem">${ico}${esc(r.name)}${sz}</a>`;
     }).join('');
-    const extra = rows.length>shown.length ? `<div class="tree-note">+ ${rows.length-shown.length} more paths — ${truncated?'tree truncated by GitHub. ':''}build artefacts (__pycache__, dist, egg-info, lockfiles) are filtered out.</div>`
+    const extra = rows.length>shown.length ? `<div class="tree-note">+ ${rows.length-shown.length} more paths. ${truncated?'tree truncated by GitHub. ':''}build artefacts (__pycache__, dist, egg-info, lockfiles) are filtered out.</div>`
                                            : `<div class="tree-note">build artefacts (__pycache__, dist, egg-info, lockfiles) are filtered out.</div>`;
     return `<div class="tree">
       <div class="tree-head"><span class="path">${esc(OWNER)}/${esc(repoName)}</span><span>· main</span><span style="margin-left:auto">${shown.length} paths</span></div>
@@ -2337,7 +2241,7 @@ document.addEventListener('pointermove', e=>{
       if(res.status === 404){                       // still private (or renamed)
         badge.textContent = 'repo going public';
         sync.className = 'sync cached spacer';
-        sync.innerHTML = '<i></i>not public yet — link will resolve once it opens';
+        sync.innerHTML = '<i></i>not public yet, link will resolve once it opens';
         return;
       }
       if(!res.ok) throw new Error(res.status);
@@ -2529,14 +2433,14 @@ document.addEventListener('pointermove', e=>{
     {t:'Recognition', k:'section', i:'#', go:()=>jump('#proof')},
     {t:'Log', k:'section', i:'#', go:()=>jump('#log')},
     {t:'Contact', k:'section', i:'#', go:()=>jump('#contact')},
-    {t:'CartelBench — do LLM market makers collude?', k:'research', i:'▸', go:()=>reveal('cartelbench')},
-    {t:'anequant — AI-agent quant firm', k:'repo', i:'▸', go:()=>reveal('anequant')},
-    {t:'Alpha Builder — genetic alpha search', k:'repo', i:'▸', go:()=>reveal('Alpha-Builder')},
-    {t:'data-df-summarizer — PyPI package', k:'repo', i:'▸', go:()=>reveal('datainspector')},
+    {t:'CartelBench, do LLM market makers collude?', k:'research', i:'▸', go:()=>reveal('cartelbench')},
+    {t:'anequant, AI-agent quant firm', k:'repo', i:'▸', go:()=>reveal('anequant')},
+    {t:'Alpha Builder, genetic alpha search', k:'repo', i:'▸', go:()=>reveal('Alpha-Builder')},
+    {t:'data-df-summarizer, PyPI package', k:'repo', i:'▸', go:()=>reveal('datainspector')},
     {t:'3D Liver Segmentation', k:'project', i:'▸', go:()=>reveal('liver')},
     {t:'Adversarial AML Chain', k:'project', i:'▸', go:()=>reveal('aml')},
-    {t:'Curl Correct — pose estimation', k:'project', i:'▸', go:()=>reveal('curl')},
-    {t:'Sentiment Analysis — live model', k:'project', i:'▸', go:()=>reveal('sentiment')},
+    {t:'Curl Correct, pose estimation', k:'project', i:'▸', go:()=>reveal('curl')},
+    {t:'Sentiment Analysis, live model', k:'project', i:'▸', go:()=>reveal('sentiment')},
     {t:'Run the sentiment classifier', k:'action', i:'⚡', go:()=>{reveal('sentiment'); setTimeout(()=>$('#sentRun')?.click(), 400);}},
     {t:'Copy email address', k:'action', i:'⧉', go:()=>{
         navigator.clipboard?.writeText('anushkaj2211@gmail.com');
@@ -2635,7 +2539,7 @@ const DTYPE = 'q8';
   }));
   clear.addEventListener('click',()=>{
     input.value=''; input.focus();
-    barPos.style.width=barNeg.style.width='0'; valPos.textContent=valNeg.textContent='—';
+    barPos.style.width=barNeg.style.width='0'; valPos.textContent=valNeg.textContent='0.0%';
   });
 
   async function load(){
@@ -2658,8 +2562,8 @@ const DTYPE = 'q8';
       run.textContent='run classifier';
       status.textContent='model ready · cached for next visit';
     }catch(err){
-      status.textContent='model unavailable offline — try again on a live connection';
-      backend.textContent='backend: —';
+      status.textContent='model unavailable offline, try again on a live connection';
+      backend.textContent='backend: n/a';
       console.error('[sentiment]', err);
     }finally{
       loading=false; run.disabled=false; run.style.opacity='1';
@@ -2681,7 +2585,7 @@ const DTYPE = 'q8';
       barNeg.style.width=(neg*100).toFixed(1)+'%'; valNeg.textContent=(neg*100).toFixed(1)+'%';
       status.textContent=`${pos>=neg?'POSITIVE':'NEGATIVE'} · ${Math.round(performance.now()-t0)} ms · ${text.split(/\s+/).length} tokens in`;
     }catch(err){
-      status.textContent='inference failed — see console';
+      status.textContent='inference failed, see console';
       console.error('[sentiment]', err);
     }
   }
@@ -2763,7 +2667,7 @@ const DTYPE = 'q8';
       idx.textContent=`${n} chunks · ${d}-dim`;
       badge.textContent='● index ready';
     }catch(err){
-      idx.textContent='encoder unavailable — check connection';
+      idx.textContent='encoder unavailable, check connection';
       console.error('[rag]', err);
     }finally{
       busy=false; run.disabled=false; run.style.opacity='1';
@@ -2786,9 +2690,9 @@ const DTYPE = 'q8';
       let take = 3;
       if(g && pool.some(c=>g.in(c.src))){
         /* "give projects" is nothing but the category, so answer with the whole
-           category. "experience with computer vision" carries a topic as well —
-           leave that to cosine, and only show a couple more rows. Ranking is
-           always the raw score, so the numbers on screen stay in order. */
+           category. "experience with computer vision" carries a topic as well:
+           leave that to cosine, and only show a couple more rows. Rows are
+           ordered by raw cosine even though the number is not shown. */
         const rest = ql.split(/[^a-z]+/).filter(w=>w && !STOP.test(w) && !g.re.test(w));
         if(!rest.length){ pool = pool.filter(c=>g.in(c.src)); take = pool.length; }
         else take = 4;
@@ -2796,20 +2700,17 @@ const DTYPE = 'q8';
       const ranked = pool.sort((a,b)=>b.score-a.score).slice(0, take);
       results.innerHTML='';
       ranked.forEach((r,i)=>{
-        const pct=clampPct(r.score);
         const el=document.createElement('div');
         el.className='hit'; el.style.animationDelay=(i*70)+'ms';
-        el.innerHTML=`<div class="hit-top"><span class="hit-src">${r.src}</span>
-          <span class="hit-score"><span class="hit-meter"><i style="width:${pct}%"></i></span>${r.score.toFixed(3)}</span></div>
+        el.innerHTML=`<div class="hit-top"><span class="hit-src">${r.src}</span></div>
           <p class="hit-text">${r.text}</p>`;
         results.append(el);
       });
     }catch(err){
-      results.innerHTML='<p class="model-status mono">retrieval failed — see console</p>';
+      results.innerHTML='<p class="model-status mono">retrieval failed, see console</p>';
       console.error('[rag]', err);
     }
   }
-  const clampPct = s => Math.max(4, Math.min(100, Math.round(s*100)));
 
   run.addEventListener('click',()=>{ if(!busy) search(); });
   input.addEventListener('keydown', e=>{ if(e.key==='Enter' && !busy) search(); });
