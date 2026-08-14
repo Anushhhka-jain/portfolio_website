@@ -5,56 +5,65 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anushka Jain | AI Engineer</title>
 <meta name="description" content="Anushka Jain — AI Engineer & B.Tech Artificial Intelligence student in Mumbai. Deep learning, quant finance and full-stack AI systems, with every project linked to its public source on GitHub.">
-<meta name="theme-color" content="#0A0A0B">
+<meta name="theme-color" content="#FBFAF8">
 <meta property="og:title" content="Anushka Jain | AI Engineer">
 <meta property="og:description" content="AI Engineer building intelligent systems across deep learning, quant finance and NLP. Browse the real repositories, and run a transformer in your browser.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="images/Anushka_with_tie.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230A0A0B'/%3E%3Ctext x='50' y='68' font-size='54' text-anchor='middle' fill='%23F9B8CE' font-family='monospace' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23FBFAF8'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' fill='%239E3B3B' font-family='Georgia,serif' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="preload" as="image" href="images/Anushka_with_tie.png" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
 :root{
-  /* Surfaces follow Material's dark-theme guidance: never pure black (it fatigues
-     the eye and kills depth), and elevation is expressed as a lighter surface —
-     ~5/8/12% white — rather than a heavier shadow. Each step is one elevation up. */
-  --bg:#101014;          /* baseline, not #000 */
-  --bg-2:#141419;        /* recessed strips */
-  --surface:#1A1A20;     /* +5%  · cards */
-  --surface-2:#212128;   /* +8%  · card chrome */
-  --surface-3:#282830;   /* +12% · popovers */
-  --line:#33333D;
-  --line-soft:#26262E;
-  /* text steps all clear WCAG AA on --bg; --muted used to sit at ~3.8:1 and failed */
-  --text:#F2F2F5;        /* ~16:1 */
-  --text-2:#B7B7C2;      /* ~9:1  */
-  --muted:#8C8C99;       /* ~5.4:1 */
-  /* baby pink accent — --accent-rgb drives every tint so there is one source of truth */
-  --accent:#F9B8CE;
-  --accent-2:#F48FB1;
-  --accent-rgb:249,184,206;
-  --accent-dim:rgba(249,184,206,0.12);
-  --accent-line:rgba(249,184,206,0.34);
-  --on-accent:#2A0E18;
-  --blue:#8FB8FF;
-  --violet:#C7A9FF;
-  --amber:#FBBF24;
-  --rose:#FB7185;
-  --peach:#FFC9A9;
-  --mint:#A8E6D0;
+  /* Light editorial. Surfaces run warm-white rather than pure #FFF — paper, not
+     screen — and elevation is a hairline plus a very soft shadow, never a heavy
+     one. Each step is one elevation up, the same ladder as before, inverted. */
+  --bg:#FBFAF8;          /* warm paper, not #FFF */
+  --bg-2:#F4F2EE;        /* recessed strips */
+  --surface:#FFFFFF;     /* cards sit above the page, so they go brighter */
+  --surface-2:#F7F5F1;   /* card chrome */
+  --surface-3:#FFFFFF;   /* popovers */
+  --line:#DDD8D0;
+  --line-soft:#EBE7E0;
+  /* text steps all clear WCAG AA on --bg */
+  --text:#1C1A18;        /* ~15:1 */
+  --text-2:#57524C;      /* ~8:1  */
+  --muted:#7D766E;       /* ~4.9:1 */
+  /* oxblood accent — --accent-rgb drives every tint so there is one source of truth */
+  --accent:#9E3B3B;
+  --accent-2:#7E2D2D;
+  --accent-rgb:158,59,59;
+  --accent-dim:rgba(158,59,59,0.08);
+  --accent-line:rgba(158,59,59,0.28);
+  --on-accent:#FFFFFF;
+  /* support hues re-picked for a light field — the old pastels vanished on white */
+  --blue:#2F5FA8;
+  --violet:#6B4E9E;
+  --amber:#9A6B0F;
+  --rose:#B03A52;
+  --peach:#B8663C;
+  --mint:#3E7D63;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --display:'Playfair Display',Georgia,'Times New Roman',serif;
   --ease:cubic-bezier(0.22,1,0.36,1);
   --bounce:cubic-bezier(0.34,1.56,0.64,1);
   --r:22px;          /* softer corners throughout */
   --r-sm:12px;
-  --glow:0 18px 50px -22px rgba(var(--accent-rgb),0.45);
-  --surface-glass:rgba(26,26,32,0.72);
+  /* one spacing scale so every grid, gap and stack lands on the same rhythm —
+     cards used to mix 12px / 14px / clamp() and nothing lined up */
+  --gap:16px;              /* between sibling cards, everywhere */
+  --gap-group:4.5rem;      /* above a sub-group heading */
+  --gap-group-in:1.5rem;   /* heading → its own content (tight, so they bind) */
+  --glow:0 16px 40px -20px rgba(var(--accent-rgb),0.30);
+  --surface-glass:rgba(255,255,255,0.78);
+  /* one soft paper shadow, reused — heavy dark shadows read as dirt on white */
+  --shadow:0 1px 2px rgba(28,26,24,0.04), 0 8px 24px -14px rgba(28,26,24,0.16);
 }
 
 /* base colour lives on <html> so body doesn't paint over the negative-z aura */
@@ -76,71 +85,67 @@ body{
 body.locked{overflow:hidden;}
 
 /* ─── ATMOSPHERE ───
-   Two fixed layers behind all content: slow-drifting pastel blobs for warmth,
-   and a fine grain so the flat dark never looks like plastic. Both are inert
-   (pointer-events:none) and both stop under prefers-reduced-motion. */
+   On a light page these do far less work than they did on black: the paper
+   carries itself, so the blobs are only a faint warm tint in the corners and
+   the vignette lightens the edges instead of darkening them. All inert
+   (pointer-events:none), all still under prefers-reduced-motion. */
 .aura{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;}
 .aura i{
   position:absolute;display:block;border-radius:50%;
-  filter:blur(100px);opacity:0.26;will-change:transform;   /* restrained: the raised
-     baseline already carries the depth, so the blobs only need to warm it */
+  filter:blur(150px);opacity:0.10;will-change:transform;   /* a tint on paper, not
+     a glow in the dark — any stronger and it muddies the text */
 }
 .aura i:nth-child(1){
   width:46vw;height:46vw;left:-10vw;top:-8vw;
-  background:radial-gradient(circle,rgba(var(--accent-rgb),0.55),transparent 70%);
+  background:radial-gradient(circle,rgba(var(--accent-rgb),0.5),transparent 70%);
   animation:drift-a 26s ease-in-out infinite;
 }
 .aura i:nth-child(2){
   width:38vw;height:38vw;right:-8vw;top:14vh;
-  background:radial-gradient(circle,rgba(199,169,255,0.45),transparent 70%);
+  background:radial-gradient(circle,rgba(184,102,60,0.42),transparent 70%);
   animation:drift-b 32s ease-in-out infinite;
 }
 .aura i:nth-child(3){
   width:34vw;height:34vw;left:26vw;bottom:-12vw;
-  background:radial-gradient(circle,rgba(255,201,169,0.35),transparent 70%);
+  background:radial-gradient(circle,rgba(158,59,59,0.28),transparent 70%);
   animation:drift-c 38s ease-in-out infinite;
 }
 @keyframes drift-a{50%{transform:translate3d(6vw,7vh,0) scale(1.15);}}
 @keyframes drift-b{50%{transform:translate3d(-7vw,5vh,0) scale(0.88);}}
 @keyframes drift-c{50%{transform:translate3d(4vw,-6vh,0) scale(1.12);}}
 
-/* faint dot matrix — gives the dark field structure so it doesn't read as a void,
-   and a vignette so the aurora falls off at the edges instead of glowing off-screen */
+/* faint dot matrix — dark dots now; the old white ones were invisible on paper */
 .mesh{
   position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background-image:radial-gradient(rgba(255,255,255,0.055) 1px, transparent 1px);
-  background-size:34px 34px;
+  background-image:radial-gradient(rgba(28,26,24,0.055) 1px, transparent 1px);
+  background-size:40px 40px;
   -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 32%,#000 20%,transparent 78%);
   mask-image:radial-gradient(ellipse 90% 70% at 50% 32%,#000 20%,transparent 78%);
 }
+/* lightens the edges so the page fades to white rather than closing in */
 .vignette{
   position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(ellipse 78% 62% at 50% 42%,transparent 45%,rgba(6,6,9,0.72) 100%);
+  background:radial-gradient(ellipse 78% 62% at 50% 42%,transparent 55%,rgba(255,255,255,0.7) 100%);
 }
 
+/* static grain — the old version shifted every ~1.2s, which read as a flicker
+   behind the text. Texture is the point; movement was not. */
 .grain{
-  position:fixed;inset:-50%;z-index:-1;pointer-events:none;opacity:0.03;
+  position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0.022;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation:grain-shift 7s steps(6) infinite;
-}
-@keyframes grain-shift{
-  0%,100%{transform:translate(0,0);}      20%{transform:translate(-3%,2%);}
-  40%{transform:translate(2%,-3%);}       60%{transform:translate(-2%,-2%);}
-  80%{transform:translate(3%,1%);}
 }
 @media (prefers-reduced-motion:reduce){
-  .aura i,.grain{animation:none !important;}
+  .aura i{animation:none !important;}
 }
-/* elevation reads as a lighter surface + a hairline top highlight, not a big shadow */
-.card,.repo,.mat-group,.rag,.offline,.research,.cert,.stat,.frame{
-  box-shadow:0 1px 0 rgba(255,255,255,0.045) inset, 0 10px 30px -18px rgba(0,0,0,0.7);
-}
+/* elevation is a hairline plus one soft paper shadow — a heavy dark shadow reads
+   as grime on white, so every raised surface shares the same restrained token */
+.mat-group,.rag,.cert,.stat,.frame{box-shadow:var(--shadow);}
 
 ::selection{background:var(--accent);color:var(--on-accent);}
 ::-webkit-scrollbar{width:10px;height:10px;}
 ::-webkit-scrollbar-track{background:var(--bg);}
-::-webkit-scrollbar-thumb{background:#3A3A45;border-radius:6px;border:2px solid var(--bg);}
-::-webkit-scrollbar-thumb:hover{background:#4A4A57;}
+::-webkit-scrollbar-thumb{background:#CFC8BE;border-radius:6px;border:2px solid var(--bg);}
+::-webkit-scrollbar-thumb:hover{background:#B3AAA0;}
 
 a{color:inherit;text-decoration:none;}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
@@ -160,18 +165,19 @@ canvas{display:block;}
 .eyebrow::before{content:'';width:16px;height:1px;background:var(--accent);}
 /* full-bleed container: fills wide screens, breathes on small ones */
 .wrap{width:100%;max-width:1720px;margin:0 auto;padding:0 clamp(1.1rem,3.5vw,3.5rem);}
-section{padding:clamp(3.5rem,7vw,7rem) 0;position:relative;}
+section{padding:clamp(4.5rem,8vw,8.5rem) 0;position:relative;}
 section[id],article[id]{scroll-margin-top:86px;}
-.sec-head{margin-bottom:3rem;}
+.sec-head{margin-bottom:3.5rem;}
+/* the serif carries the editorial voice; it is reserved for real headings and
+   never used for UI text, where Inter stays clearer at small sizes */
 .sec-title{
-  font-size:clamp(1.9rem,4vw,2.9rem);font-weight:600;letter-spacing:-0.035em;
-  line-height:1.1;margin-top:1rem;
+  font-family:var(--display);
+  font-size:clamp(2rem,4.2vw,3.2rem);font-weight:500;letter-spacing:-0.015em;
+  line-height:1.12;margin-top:1rem;
 }
-.sec-title em{
-  font-style:normal;
-  background:linear-gradient(100deg,var(--accent) 10%,var(--violet) 55%,var(--peach) 95%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
+/* one flat accent, and italic — the serif's italic is a real cut, so emphasis
+   can come from the typeface itself instead of another colour */
+.sec-title em{font-style:italic;color:var(--accent);}
 .sec-sub{color:var(--text-2);max-width:62ch;margin-top:0.9rem;font-size:1.091rem;}
 .rule{height:1px;background:linear-gradient(90deg,var(--line),transparent);margin:0;border:0;}
 
@@ -202,7 +208,7 @@ section[id],article[id]{scroll-margin-top:86px;}
 /* ─── SCROLL PROGRESS ─── */
 .progress{
   position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);
-  background:linear-gradient(90deg,var(--accent),var(--violet));z-index:9000;
+  background:var(--accent);z-index:9000;
 }
 @supports (animation-timeline:scroll()){
   .progress{animation:grow-progress linear;animation-timeline:scroll(root block);}
@@ -218,12 +224,13 @@ section[id],article[id]{scroll-margin-top:86px;}
   border-bottom:1px solid transparent;
 }
 .nav.stuck{
-  background:rgba(16,16,20,0.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom-color:var(--line-soft);padding:0.8rem 2rem;
+  background:rgba(251,250,248,0.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom-color:var(--line);padding:0.8rem 2rem;
 }
 .brand{display:flex;align-items:center;gap:0.6rem;font-family:var(--mono);font-size:1.008rem;font-weight:500;letter-spacing:-0.01em;}
-.brand-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent-line);animation:ping 2.6s var(--ease) infinite;}
-@keyframes ping{0%{box-shadow:0 0 0 0 rgba(var(--accent-rgb),0.45);}70%{box-shadow:0 0 0 9px rgba(var(--accent-rgb),0);}100%{box-shadow:0 0 0 0 rgba(var(--accent-rgb),0);}}
+/* a steady dot, not a pulsing one — it sits in the fixed nav on every screen,
+   so an infinite ping is movement the eye can never settle away from */
+.brand-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),0.14);}
 .nav-right{display:flex;align-items:center;gap:1.9rem;}
 .nav-links{display:flex;gap:1.9rem;list-style:none;}
 .nav-links a{
@@ -253,13 +260,15 @@ section[id],article[id]{scroll-margin-top:86px;}
   transform:translateY(-100%);transition:transform 0.55s var(--ease);
 }
 .mobile-menu.open{transform:none;}
-.mobile-menu a{font-size:1.889rem;font-weight:600;letter-spacing:-0.03em;color:var(--text-2);}
+.mobile-menu a{font-family:var(--display);font-size:2rem;font-weight:500;letter-spacing:-0.015em;color:var(--text-2);}
 .mobile-menu a:hover{color:var(--accent);}
 .mobile-menu .idx{font-family:var(--mono);font-size:0.901rem;color:var(--muted);margin-right:0.8rem;}
 
 /* ─── HERO ─── */
 .hero{min-height:100svh;display:flex;align-items:center;padding:8rem 0 4rem;position:relative;overflow:hidden;}
-#heroCanvas{position:absolute;inset:0;width:100%;height:100%;opacity:0.55;pointer-events:none;}
+/* the cluster graph is atmosphere, not content — it sits behind the headline,
+   so it recedes rather than competing with it for the same attention */
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;opacity:0.38;pointer-events:none;}
 .hero::after{
   content:'';position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(var(--accent-rgb),0.07),transparent 70%),
@@ -270,11 +279,14 @@ section[id],article[id]{scroll-margin-top:86px;}
   gap:4rem;align-items:center;width:100%;
 }
 .hero-name{
-  font-size:clamp(2.6rem,7vw,5rem);font-weight:600;letter-spacing:-0.045em;line-height:0.98;
+  font-family:var(--display);
+  font-size:clamp(2.8rem,7.2vw,5.4rem);font-weight:500;letter-spacing:-0.02em;line-height:1.02;
   margin:1.4rem 0 1rem;
 }
+/* the one gradient left on the page, and it stays inside the accent family */
 .hero-name .accent{
-  background:linear-gradient(105deg,var(--accent) 8%,var(--violet) 50%,var(--peach) 92%);
+  font-style:italic;
+  background:linear-gradient(105deg,var(--accent) 10%,var(--peach) 95%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .hero-role{
@@ -287,7 +299,7 @@ section[id],article[id]{scroll-margin-top:86px;}
 
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,10.5rem));gap:0.75rem;margin-bottom:2.4rem;}
 .stat{
-  border:1px solid var(--line);border-radius:10px;padding:0.85rem 0.9rem;background:rgba(26,26,32,0.62);
+  border:1px solid var(--line);border-radius:10px;padding:0.85rem 0.9rem;background:rgba(255,255,255,0.7);
   backdrop-filter:blur(6px);transition:border-color 0.3s,transform 0.3s var(--ease);
 }
 .stat:hover{border-color:var(--accent-line);transform:translateY(-2px);}
@@ -318,55 +330,81 @@ section[id],article[id]{scroll-margin-top:86px;}
   font-family:var(--mono);font-size:0.87rem;color:var(--muted);
 }
 .frame-dots{display:flex;gap:5px;}
-.frame-dots i{width:8px;height:8px;border-radius:50%;background:#3C3C47;display:block;}
-.frame-dots i:first-child{background:#4A4A57;}
+.frame-dots i{width:8px;height:8px;border-radius:50%;background:#D6D0C6;display:block;}
+.frame-dots i:first-child{background:#BEB6AA;}
 /* full colour, uncropped — the whole frame, no object-fit, no aspect-ratio box */
 .photo{width:100%;height:auto;display:block;}
 
 /* ─── HANGING PHOTO ───
-   The card swings from a rope. Both the rope and the card are draggable; the
-   physics live in JS (section 07b) and everything here just describes the parts. */
+   A single vertical cord drops from a fixed anchor and the card hangs off its
+   end, so the whole thing swings as one pendulum pivoting at the anchor. The
+   physics live in JS (section 07b); everything here just describes the parts.
+   --rope-len is the resting cord length and must match .hang's padding-top,
+   since that padding is what reserves the cord's space above the card. */
 /* The photo is never cropped, so its height is dictated by its width (3:4-ish).
    Cap the width off the viewport height instead, so the whole frame still fits. */
 .hang{
-  position:relative;padding-top:5.4rem;
+  --rope-len:6.5rem;
+  position:relative;padding-top:var(--rope-len);
   max-width:min(100%, max(19rem, 44vh));margin:0 auto;
 }
+/* the fixed point the cord hangs from — this one never moves.
+   Pewter rather than the old near-white: chrome fittings disappeared entirely
+   once the page went to paper. */
+.rope-anchor{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:15px;height:15px;border-radius:50%;z-index:5;
+  background:linear-gradient(160deg,#9A9188,#5C554D);
+  box-shadow:0 2px 5px rgba(28,26,24,0.28),inset 0 1px 0 rgba(255,255,255,0.45);
+}
+.rope-anchor::after{                     /* the eyelet the cord threads through */
+  content:'';position:absolute;left:50%;top:50%;width:5px;height:5px;
+  transform:translate(-50%,-50%);border-radius:50%;background:rgba(0,0,0,0.42);
+}
+/* spans the full width so the cord can be drawn from centre and swing out of
+   its own box without being clipped */
 .rope{
-  position:absolute;left:0;top:0;width:100%;height:5.4rem;overflow:visible;
+  position:absolute;left:0;top:0;width:100%;height:var(--rope-len);overflow:visible;
   pointer-events:none;z-index:2;
 }
 .rope #ropePath{
   fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linecap:round;opacity:0.75;
   filter:drop-shadow(0 2px 6px rgba(var(--accent-rgb),0.35));
 }
-/* invisible grab strip over the rope — generous hit area, the rope itself is thin */
+/* invisible grab strip down the cord — generous hit area, the cord itself is thin */
 .rope-grab{
-  position:absolute;left:0;top:0;width:100%;height:4.4rem;z-index:3;
+  position:absolute;left:50%;top:0;transform:translateX(-50%);
+  width:52px;height:var(--rope-len);z-index:3;
   cursor:grab;touch-action:none;
 }
 .rope-grab:active{cursor:grabbing;}
+/* sits beside the cord rather than behind it */
 .rope-hint{
-  position:absolute;top:1.5rem;left:50%;transform:translateX(-50%);z-index:3;
+  position:absolute;top:1.4rem;left:calc(50% + 1rem);z-index:3;
   font-size:0.78rem;color:var(--muted);pointer-events:none;
   opacity:0;transition:opacity 0.5s;white-space:nowrap;
 }
 .hang:hover .rope-hint{opacity:0.85;}
 .rope-hint.gone{opacity:0 !important;}
 
-/* the card itself pivots from the clip on the rope */
-.swing{transform-origin:50% -0.5rem;will-change:transform;cursor:grab;touch-action:pan-y;}
+/* the card pivots at the anchor, a full cord-length above its own top edge */
+.swing{
+  position:relative;
+  transform-origin:50% calc(-1 * var(--rope-len));
+  will-change:transform;cursor:grab;touch-action:pan-y;
+}
 .swing:active{cursor:grabbing;}
 .swing .frame{animation:none;}          /* the swing replaces the idle bob */
+/* the fitting where the cord terminates, centred on the card's top edge */
 .clip{
-  position:absolute;top:-1.15rem;left:50%;transform:translateX(-50%);
+  position:absolute;top:-0.75rem;left:50%;transform:translateX(-50%);
   width:1.5rem;height:1.5rem;border-radius:6px;z-index:4;
-  background:linear-gradient(160deg,#F2F2F5,#B9B9C4);
-  box-shadow:0 3px 8px rgba(0,0,0,0.55),inset 0 1px 0 rgba(255,255,255,0.9);
+  background:linear-gradient(160deg,#9A9188,#5C554D);
+  box-shadow:0 2px 6px rgba(28,26,24,0.3),inset 0 1px 0 rgba(255,255,255,0.45);
 }
 .clip::after{                            /* the pinch line down the middle of the peg */
   content:'';position:absolute;left:50%;top:22%;width:1.5px;height:56%;
-  transform:translateX(-50%);background:rgba(0,0,0,0.28);border-radius:2px;
+  transform:translateX(-50%);background:rgba(0,0,0,0.38);border-radius:2px;
 }
 /* the barest pink wash so the photo sits in the palette instead of fighting it */
 .photo-tint{
@@ -382,7 +420,7 @@ section[id],article[id]{scroll-margin-top:86px;}
   font-family:var(--mono);font-size:0.865rem;color:var(--text-2);
 }
 .status-pill{display:inline-flex;align-items:center;gap:0.45rem;color:var(--accent);}
-.status-pill i{width:6px;height:6px;border-radius:50%;background:var(--accent);display:block;animation:blink 1.8s ease infinite;}
+.status-pill i{width:6px;height:6px;border-radius:50%;background:var(--accent);display:block;box-shadow:0 0 0 3px rgba(var(--accent-rgb),0.16);}
 
 /* ─── WHIMSY ─── */
 
@@ -392,25 +430,10 @@ section[id],article[id]{scroll-margin-top:86px;}
 @keyframes bob{50%{transform:translateY(-9px);}}
 @media (prefers-reduced-motion:reduce){.frame{animation:none;}}
 
-/* twinkling sparkles scattered around the hero heading */
-.sparkles{position:absolute;inset:0;pointer-events:none;z-index:3;}
-.sparkles b{
-  position:absolute;width:var(--s,10px);height:var(--s,10px);display:block;
-  background:var(--c,var(--accent));opacity:0;
-  clip-path:polygon(50% 0%,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0% 50%,40% 40%);
-  animation:twinkle var(--d,4s) ease-in-out var(--delay,0s) infinite;
-}
-@keyframes twinkle{
-  0%,100%{opacity:0;transform:scale(0.4) rotate(0deg);}
-  45%    {opacity:0.9;transform:scale(1) rotate(90deg);}
-  70%    {opacity:0.25;transform:scale(0.7) rotate(140deg);}
-}
-@media (prefers-reduced-motion:reduce){.sparkles{display:none;}}
-
 /* hand-drawn squiggle under each section heading */
-.squiggle{display:block;width:7rem;height:0.62rem;margin-top:0.7rem;overflow:visible;}
+.squiggle{display:block;width:5.5rem;height:0.55rem;margin-top:0.85rem;overflow:visible;}
 .squiggle path{
-  fill:none;stroke:url(#sqg);stroke-width:2.4;stroke-linecap:round;
+  fill:none;stroke:url(#sqg);stroke-width:2;stroke-linecap:round;
   stroke-dasharray:200;stroke-dashoffset:200;
 }
 .squiggle.in path{animation:draw 1.1s var(--ease) 0.15s forwards;}
@@ -418,11 +441,16 @@ section[id],article[id]{scroll-margin-top:86px;}
 
 /* cards lift with a soft pink bloom rather than a flat border change
    (the inset top highlight is kept, otherwise the glow would erase it) */
-.card:hover,.repo:hover{box-shadow:var(--glow),inset 0 1px 0 rgba(255,255,255,0.06);}
 .cert:hover{box-shadow:var(--glow);}
 
-/* pill-shaped small UI — rounder reads friendlier than the old 6px boxes */
-.tag,.badge,.chip,.fchip,.mini,.sample,.use-chip,.card-tag,.kbd-btn,.btn,.rail-btn,.to-top{border-radius:999px;}
+/* ── ONE radius system for small UI ──
+   This rule was being overridden by per-component border-radius further down
+   the file (.chip 8px, .fchip 8px, .tag 6px, .badge 5px, .sample 6px,
+   .use-chip 5px), so four different chip shapes showed up at once. Those are
+   removed at their source; the split below is now the whole system:
+     · pills → things you click     · 8px → static labels in dense rows      */
+.chip,.fchip,.mini,.sample,.kbd-btn,.btn,.rail-btn,.to-top{border-radius:999px;}
+.tag,.badge,.use-chip,.card-tag{border-radius:8px;}
 .tag,.use-chip{padding:0.26rem 0.62rem;}
 .stat{border-radius:16px;}
 .demo,.tree,.langbar,.facts,.hit,.pal-box,.model-input,.rag-input{border-radius:var(--r-sm);}
@@ -440,7 +468,7 @@ section[id],article[id]{scroll-margin-top:86px;}
 .socials{display:flex;gap:0.5rem;margin-top:0.9rem;}
 .chip{
   display:inline-flex;align-items:center;gap:0.45rem;font-family:var(--mono);font-size:0.901rem;
-  color:var(--text-2);border:1px solid var(--line);border-radius:8px;padding:0.45rem 0.75rem;
+  color:var(--text-2);border:1px solid var(--line);padding:0.45rem 0.85rem;
   transition:border-color 0.25s,color 0.25s,background 0.25s;
 }
 .chip:hover{border-color:var(--accent-line);color:var(--text);background:var(--surface);}
@@ -463,53 +491,17 @@ section[id],article[id]{scroll-margin-top:86px;}
 .ticker-set i{color:var(--accent);font-style:normal;}
 
 /* ─── BENTO ─── */
-.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
-.card{
-  position:relative;background:var(--surface-glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:var(--r);
-  padding:1.4rem;overflow:hidden;display:flex;flex-direction:column;
-  transition:border-color 0.4s var(--ease),transform 0.4s var(--ease);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,0.035);
-}
-.card:hover{border-color:#42424E;transform:translateY(-3px);}
-.card::before{
-  content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;
-  background:radial-gradient(340px circle at var(--mx,50%) var(--my,50%),rgba(var(--accent-rgb),0.09),transparent 62%);
-  transition:opacity 0.35s;
-}
-.card:hover::before{opacity:1;}
-.c4{grid-column:span 4;}
-.c3{grid-column:span 3;}
-.c2{grid-column:span 2;}
-.c6{grid-column:span 6;}
-
-.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:0.5rem;}
-.card-tag{
-  font-family:var(--mono);font-size:0.86rem;letter-spacing:0.15em;text-transform:uppercase;
-  color:var(--muted);display:inline-flex;align-items:center;gap:0.45rem;
-}
-.card-tag b{color:var(--accent);font-weight:500;}
-.card-title{font-size:1.322rem;font-weight:600;letter-spacing:-0.025em;margin:0.3rem 0 0.5rem;}
-.card-desc{color:var(--text-2);font-size:1.031rem;line-height:1.55;}
-.tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:auto;padding-top:1rem;}
+.tags{display:flex;flex-wrap:wrap;gap:0.35rem;padding-top:1rem;}
 .tag{
   font-family:var(--mono);font-size:0.865rem;color:var(--text-2);
-  border:1px solid var(--line-soft);border-radius:6px;padding:0.22rem 0.5rem;background:var(--bg-2);
+  border:1px solid var(--line-soft);background:var(--bg-2);
 }
-.card-link{
-  display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--mono);font-size:0.912rem;
-  color:var(--accent);margin-top:0.9rem;transition:gap 0.3s var(--ease);
-}
-.card-link:hover{gap:0.75rem;}
 
-/* ─── REPO EXPLORER ─── */
-.repo-bar{
-  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
-  margin-bottom:1.5rem;padding-bottom:1.15rem;border-bottom:1px solid var(--line-soft);
-}
+/* ─── REPO PRIMITIVES (used inside the detail sheet) ─── */
 .filters{display:flex;gap:0.4rem;flex-wrap:wrap;}
 .fchip{
   font-family:var(--mono);font-size:0.891rem;color:var(--text-2);
-  border:1px solid var(--line);border-radius:8px;padding:0.4rem 0.72rem;
+  border:1px solid var(--line);padding:0.4rem 0.85rem;
   display:inline-flex;align-items:center;gap:0.45rem;
   transition:border-color 0.25s,color 0.25s,background 0.25s;
 }
@@ -525,26 +517,6 @@ section[id],article[id]{scroll-margin-top:86px;}
 .sync.live i{background:var(--accent);box-shadow:0 0 0 3px var(--accent-dim);}
 .sync.cached i{background:var(--amber);}
 
-/* 1 col on phones → 2 on laptops → 3 on wide desktops (stepped in RESPONSIVE below) */
-.repo-grid{display:grid;grid-template-columns:1fr;gap:clamp(12px,1.1vw,18px);align-items:start;}
-.repo{
-  background:var(--surface-glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:var(--r);
-  display:flex;flex-direction:column;position:relative;overflow:hidden;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,0.035);
-  transition:border-color 0.35s var(--ease),transform 0.35s var(--ease),opacity 0.3s;
-}
-.repo:hover{border-color:#42424E;transform:translateY(-2px);}
-.repo.feature{grid-column:span 2;}
-.repo[hidden]{display:none;}
-.repo::before{
-  content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;
-  background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(var(--accent-rgb),0.07),transparent 62%);
-  transition:opacity 0.35s;z-index:0;
-}
-.repo:hover::before{opacity:1;}
-.repo>*{position:relative;z-index:1;}
-
-.repo-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;padding:1.15rem 1.25rem 0;}
 .repo-slug{
   font-family:var(--mono);font-size:0.912rem;color:var(--text-2);
   display:inline-flex;align-items:center;gap:0.4rem;min-width:0;
@@ -556,12 +528,6 @@ section[id],article[id]{scroll-margin-top:86px;}
 .repo-facts span{display:inline-flex;align-items:center;gap:0.28rem;}
 .repo-facts svg{width:11px;height:11px;fill:currentColor;}
 .repo-facts .hot{color:var(--amber);}
-
-.repo-body{padding:0.7rem 1.25rem 1.15rem;display:flex;flex-direction:column;flex:1;}
-.repo-title{font-size:1.256rem;font-weight:600;letter-spacing:-0.025em;margin-bottom:0.45rem;}
-.repo.feature .repo-title{font-size:1.539rem;}
-.repo-desc{color:var(--text-2);font-size:1.028rem;line-height:1.6;max-width:74ch;}
-.repo-desc b{color:var(--text);font-weight:500;}
 
 /* real language byte split from the GitHub API */
 .langbar{display:flex;height:5px;border-radius:3px;overflow:hidden;margin-top:1.1rem;background:var(--surface-2);}
@@ -616,80 +582,116 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 .node.file svg{fill:var(--muted);}
 .tree-note{padding:0.55rem 0.85rem;font-family:var(--mono);font-size:0.855rem;color:var(--muted);border-top:1px solid var(--line-soft);}
 
-/* ─── GROUP HEADINGS (live · on github · not public) ─── */
-.group-head{margin:3.2rem 0 1.4rem;}
-.group-head:first-of-type{margin-top:0;}
-.group-head h3{
-  font-size:1.379rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:0.35rem;
-  display:flex;align-items:center;gap:0.75rem;
+/* ─── PROJECT TILES ───
+   One flat grid, one tile shape. A tile carries a name and a few words only;
+   everything else lives in the detail sheet, so the grid stays scannable. */
+.proj-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  margin-bottom:1.75rem;padding-bottom:1.15rem;border-bottom:1px solid var(--line-soft);
 }
-.group-head h3::after{
-  content:'';flex:1;height:1px;
-  background:linear-gradient(90deg,var(--accent-line),transparent);
+.proj-grid{
+  display:grid;grid-template-columns:1fr;gap:var(--gap);
 }
-.group-head p{color:var(--text-2);font-size:1.122rem;line-height:1.6;max-width:76ch;}
+.tile{
+  position:relative;text-align:left;width:100%;
+  background:var(--surface-glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--line);border-radius:var(--r);
+  padding:1.35rem 1.4rem 1.2rem;overflow:hidden;
+  display:flex;flex-direction:column;gap:0.4rem;min-height:9.5rem;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.035),0 10px 30px -18px rgba(0,0,0,0.7);
+  transition:border-color 0.35s var(--ease),transform 0.35s var(--ease),box-shadow 0.35s var(--ease);
+}
+.tile:hover{border-color:var(--accent-line);transform:translateY(-3px);box-shadow:var(--glow),inset 0 1px 0 rgba(255,255,255,0.06);}
+.tile[hidden]{display:none;}
+.tile-kind{
+  font-family:var(--mono);font-size:0.85rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted);display:inline-flex;align-items:center;gap:0.42rem;
+}
+.tile-kind::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;flex:none;}
+.tile-kind.live{color:var(--accent);}
+.tile-kind.research{color:var(--violet);}
+.tile-kind.private{color:var(--muted);}
+.tile-name{
+  font-family:var(--display);
+  font-size:1.42rem;font-weight:500;letter-spacing:-0.01em;line-height:1.2;margin-top:0.15rem;
+}
+.tile-blurb{color:var(--text-2);font-size:1.008rem;line-height:1.5;}
+.tile-go{
+  margin-top:auto;padding-top:0.9rem;font-family:var(--mono);font-size:0.9rem;color:var(--muted);
+  display:inline-flex;align-items:center;gap:0.4rem;transition:color 0.3s,gap 0.3s var(--ease);
+}
+.tile:hover .tile-go{color:var(--accent);gap:0.7rem;}
 
-/* ─── FEATURED RESEARCH (private repo — honest, no dead link) ─── */
-.research{
-  position:relative;border:1px solid var(--accent-line);border-radius:var(--r);
-  background:linear-gradient(150deg,rgba(var(--accent-rgb),0.07),transparent 42%),var(--surface-glass);backdrop-filter:blur(14px);
-  overflow:hidden;margin-bottom:2.2rem;
+/* ─── DETAIL SHEET ───
+   The full project — long description, live GitHub data, file tree, or the
+   running model — opens here instead of expanding the grid in place. */
+.sheet{
+  position:fixed;inset:0;z-index:9500;display:none;
+  background:rgba(6,6,9,0.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  padding:clamp(0.75rem,4vh,3rem) clamp(0.75rem,4vw,2rem);overflow-y:auto;
 }
-.research-head{
-  display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;
-  padding:0.8rem 1.5rem;border-bottom:1px solid var(--line-soft);background:rgba(16,16,20,0.4);
+.sheet.open{display:block;}
+.sheet-box{
+  position:relative;max-width:60rem;margin:0 auto;
+  background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:0 40px 90px -30px rgba(0,0,0,0.85);
+  animation:sheet-in 0.34s var(--ease);
 }
-.research-body{padding:1.5rem;}
-.research-split{display:grid;grid-template-columns:1.35fr 1fr;gap:2.4rem;align-items:start;}
-.research h3{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:600;letter-spacing:-0.03em;margin-bottom:0.3rem;}
-.research .lede{color:var(--text-2);font-size:1.084rem;line-height:1.65;margin-bottom:1rem;}
-.research .lede b{color:var(--text);font-weight:500;}
-.research p.sub{color:var(--text-2);font-size:1.023rem;line-height:1.6;}
-.research p.sub+p.sub{margin-top:0.75rem;}
-.research .role{
-  border-left:2px solid var(--accent-line);padding:0.15rem 0 0.15rem 1rem;
+@keyframes sheet-in{from{opacity:0;transform:translateY(18px);}}
+@media (prefers-reduced-motion:reduce){.sheet-box{animation:none;}}
+.sheet-top{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;
+  padding:1.3rem 1.5rem 1.1rem;border-bottom:1px solid var(--line-soft);
+}
+.sheet-title{font-family:var(--display);font-size:clamp(1.6rem,3.4vw,2.2rem);font-weight:500;letter-spacing:-0.015em;line-height:1.15;}
+.sheet-meta{display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-top:0.6rem;}
+.sheet-close{
+  flex:none;width:36px;height:36px;border:1px solid var(--line);border-radius:999px;
+  color:var(--text-2);display:grid;place-items:center;font-size:1rem;
+  transition:border-color 0.25s,color 0.25s,background 0.25s;
+}
+.sheet-close:hover{border-color:var(--accent-line);color:var(--text);background:var(--surface-2);}
+.sheet-body{padding:1.5rem;}
+.sheet-body .lede{color:var(--text-2);font-size:1.084rem;line-height:1.65;}
+.sheet-body .lede b{color:var(--text);font-weight:500;}
+.sheet-body .sub{color:var(--text-2);font-size:1.023rem;line-height:1.6;margin-top:0.8rem;}
+.sheet-body .sub b{color:var(--text);font-weight:500;}
+.sheet-sec{margin-top:1.5rem;}
+.sheet-sec>h4{
+  font-family:var(--mono);font-size:0.85rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;margin-bottom:0.7rem;
+}
+.sheet .role{
+  border-left:2px solid var(--accent-line);padding:0.15rem 0 0.15rem 1rem;margin-top:1.5rem;
   background:linear-gradient(90deg,rgba(var(--accent-rgb),0.05),transparent 70%);
 }
-.research .role h4{
-  font-family:var(--mono);font-size:0.865rem;letter-spacing:0.16em;text-transform:uppercase;
+.sheet .role h4{
+  font-family:var(--mono);font-size:0.85rem;letter-spacing:0.14em;text-transform:uppercase;
   color:var(--accent);font-weight:500;margin-bottom:0.45rem;
 }
+.sheet-note{
+  font-family:var(--mono);font-size:0.9rem;color:var(--muted);line-height:1.55;
+  border:1px dashed var(--line);border-radius:var(--r-sm);padding:0.85rem 1rem;margin-top:1.5rem;
+}
+
 .facts{
   display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-soft);
   border:1px solid var(--line-soft);border-radius:10px;overflow:hidden;margin-top:1.5rem;
 }
 .fact{background:var(--bg-2);padding:0.8rem 1rem;}
 .fact span{
-  display:block;font-family:var(--mono);font-size:0.839rem;letter-spacing:0.14em;
+  display:block;font-family:var(--mono);font-size:0.85rem;letter-spacing:0.14em;
   text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem;
 }
 .fact b{font-family:var(--mono);font-size:0.986rem;color:var(--text);font-weight:500;letter-spacing:-0.01em;}
 .badge.priv{color:var(--amber);border-color:rgba(251,191,36,0.32);background:rgba(251,191,36,0.07);}
 
-/* honest, non-interactive listing for work with no public repo */
-.offline{border:1px solid var(--line);border-radius:var(--r);background:var(--surface-glass);backdrop-filter:blur(14px);overflow:hidden;margin-top:14px;}
-.offline-head{
-  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
-  padding:0.8rem 1.25rem;border-bottom:1px solid var(--line-soft);background:var(--surface-2);
-  font-family:var(--mono);font-size:0.88rem;letter-spacing:0.13em;text-transform:uppercase;color:var(--text-2);
-}
-.offline-head span{letter-spacing:0;text-transform:none;color:var(--muted);}
-.off-row{
-  display:grid;grid-template-columns:minmax(11rem,0.9fr) 2fr auto;gap:1.4rem;align-items:baseline;
-  padding:0.9rem 1.25rem;border-bottom:1px solid var(--line-soft);transition:background 0.25s;
-}
-.off-row:last-child{border-bottom:0;}
-.off-row:hover{background:var(--bg-2);}
-.off-name{font-weight:500;font-size:1.046rem;letter-spacing:-0.015em;}
-.off-desc{color:var(--text-2);font-size:0.993rem;line-height:1.55;}
-.off-note{font-family:var(--mono);font-size:0.85rem;color:var(--muted);white-space:nowrap;}
-.off-note.link{color:var(--accent);}
-
-/* ─── LIVE MODEL CARD ─── */
+/* ─── LIVE MODEL (rendered inside the detail sheet) ─── */
 .model-head{display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.9rem;}
+.model-split{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;align-items:start;}
 .badge{
   font-family:var(--mono);font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;
-  border:1px solid var(--line);border-radius:5px;padding:0.18rem 0.45rem;color:var(--muted);
+  border:1px solid var(--line);padding:0.2rem 0.55rem;color:var(--muted);
 }
 .badge.live{color:var(--accent);border-color:var(--accent-line);background:var(--accent-dim);}
 .badge.warn{color:var(--amber);border-color:rgba(251,191,36,0.3);}
@@ -715,17 +717,17 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 .samples{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.7rem;}
 .sample{
   font-family:var(--mono);font-size:0.86rem;color:var(--text-2);border:1px solid var(--line-soft);
-  border-radius:6px;padding:0.25rem 0.5rem;background:var(--bg-2);transition:border-color 0.25s,color 0.25s;
+  padding:0.25rem 0.7rem;background:var(--bg-2);transition:border-color 0.25s,color 0.25s;
 }
 .sample:hover{border-color:var(--accent-line);color:var(--text);}
 
 /* ─── SKILLS MATRIX ─── */
-.matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gap);}
 .mat-group{border:1px solid var(--line);border-radius:var(--r);background:var(--surface-glass);backdrop-filter:blur(14px);overflow:hidden;}
 .mat-head{
   display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.1rem;
   border-bottom:1px solid var(--line-soft);background:var(--surface-2);
-  font-family:var(--mono);font-size:0.88rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-2);
+  font-family:var(--mono);font-size:0.85rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-2);
 }
 .mat-head span{color:var(--muted);}
 .mat-row{
@@ -738,7 +740,7 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 .mat-use{display:flex;gap:0.3rem;flex-wrap:wrap;}
 .use-chip{
   font-family:var(--mono);font-size:0.839rem;color:var(--muted);border:1px solid var(--line-soft);
-  border-radius:5px;padding:0.12rem 0.4rem;transition:color 0.25s,border-color 0.25s;
+  transition:color 0.25s,border-color 0.25s;
 }
 .mat-row:hover .use-chip{color:var(--accent);border-color:var(--accent-line);}
 
@@ -764,7 +766,7 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 }
 @keyframes hit-in{to{opacity:1;transform:none;}}
 .hit-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:0.4rem;}
-.hit-src{font-family:var(--mono);font-size:0.85rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+.hit-src{font-family:var(--mono);font-size:0.85rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);}
 .hit-score{font-family:var(--mono);font-size:0.86rem;color:var(--accent);display:flex;align-items:center;gap:0.45rem;}
 .hit-meter{width:3.3rem;height:4px;border-radius:3px;background:var(--surface-2);overflow:hidden;}
 .hit-meter i{display:block;height:100%;background:var(--accent);}
@@ -773,7 +775,7 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 /* ─── TIMELINE (commit log) ─── */
 .log{position:relative;padding-left:1.9rem;}
 .log::before{content:'';position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line);}
-.log-line{position:absolute;left:5px;top:6px;width:1px;background:linear-gradient(180deg,var(--accent),var(--violet));height:0;transition:height 1.4s var(--ease);}
+.log-line{position:absolute;left:5px;top:6px;width:1px;background:var(--accent);height:0;transition:height 1.4s var(--ease);}
 .entry{position:relative;padding-bottom:2.1rem;}
 .entry:last-child{padding-bottom:0;}
 .entry::before{
@@ -783,12 +785,12 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 .entry.in::before{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-dim);}
 .entry-meta{display:flex;align-items:center;gap:0.7rem;flex-wrap:wrap;font-family:var(--mono);font-size:0.87rem;color:var(--muted);}
 .entry-hash{color:var(--accent);}
-.entry h3{font-size:1.138rem;font-weight:600;letter-spacing:-0.02em;margin:0.35rem 0 0.3rem;}
+.entry h3{font-family:var(--display);font-size:1.22rem;font-weight:500;letter-spacing:-0.01em;margin:0.35rem 0 0.3rem;}
 .entry p{color:var(--text-2);font-size:1.031rem;max-width:64ch;}
 
 /* ─── CERTIFICATES RAIL ─── */
 .rail-wrap{position:relative;}
-.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:0.6rem;scrollbar-width:none;}
+.rail{display:flex;gap:var(--gap);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:0.6rem;scrollbar-width:none;}
 .rail::-webkit-scrollbar{display:none;}
 .cert{
   flex:0 0 22rem;scroll-snap-align:start;border:1px solid var(--line);border-radius:var(--r);
@@ -798,8 +800,13 @@ a.node:hover{background:var(--surface-2);color:var(--text);}
 /* full colour here too — same desaturate-until-hover trick, same problem */
 .cert-img{width:100%;height:186px;object-fit:cover;cursor:zoom-in;transition:transform 0.6s var(--ease);}
 .cert:hover .cert-img{transform:scale(1.04);}
+.card-tag{
+  font-family:var(--mono);font-size:0.85rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted);display:inline-flex;align-items:center;gap:0.45rem;
+  border:1px solid var(--line-soft);padding:0.16rem 0.55rem;
+}
 .cert-body{padding:1.05rem 1.1rem 1.2rem;}
-.cert h3{font-size:1.084rem;font-weight:600;letter-spacing:-0.02em;margin:0.4rem 0 0.4rem;}
+.cert h3{font-family:var(--display);font-size:1.15rem;font-weight:500;letter-spacing:-0.01em;margin:0.4rem 0 0.4rem;}
 .cert p{font-size:0.986rem;color:var(--text-2);line-height:1.5;}
 .rail-nav{display:flex;gap:0.5rem;}
 .rail-btn{
@@ -890,13 +897,8 @@ footer{
 .hero-grid{grid-template-columns:1fr;gap:2.4rem;}
 .hero-image-side{max-width:420px;}
 .matrix{grid-template-columns:1fr;}
-.research-split{grid-template-columns:1fr;gap:1.5rem;}
-.off-row{grid-template-columns:1fr;gap:0.3rem;}
 .facts{grid-template-columns:repeat(2,1fr);}
-.repo.feature{grid-column:span 1;}
-.bento{grid-template-columns:1fr;gap:12px;}
-.c4,.c3,.c2,.c6{grid-column:1/-1;}
-.live-split{grid-template-columns:1fr !important;gap:1.4rem !important;}
+.model-split{grid-template-columns:1fr;gap:1.4rem;}
 
 /* the enlarged nav type collides with the brand below this — collapse earlier */
 @media (max-width:900px){
@@ -915,18 +917,17 @@ footer{
   .stats{grid-template-columns:repeat(3,minmax(0,1fr));}
   .cert{flex:0 0 84vw;}
   .bar-row{grid-template-columns:4.5rem 1fr 3.5rem;gap:0.5rem;}
-  .research-body,.rag-body{padding:1.1rem;}
-  .repo-top,.repo-body{padding-left:1rem;padding-right:1rem;}
-  /* the owner is the same on every card and the page is already hers — drop it
+  .rag-body{padding:1.1rem;}
+  .sheet-top,.sheet-body{padding-left:1.1rem;padding-right:1.1rem;}
+  /* the owner is the same on every project and the page is already hers — drop it
      rather than let the slug wrap onto two ragged lines */
   .repo-slug .owner{display:none;}
   .repo-facts{gap:0.6rem;}
   /* backdrop-blur on many stacked cards is expensive on phone GPUs — go opaque */
-  .card,.repo,.mat-group,.rag,.offline,.research{
+  .tile,.mat-group,.rag{
     backdrop-filter:none;-webkit-backdrop-filter:none;background-color:var(--surface);
   }
-  .aura i{filter:blur(70px);opacity:0.3;}
-  .sparkles b{--s:8px !important;}
+  .aura i{filter:blur(80px);opacity:0.16;}
   .repo-foot{gap:0.4rem;}
   .repo-foot .spacer{margin-left:0;width:100%;}
   .hero{padding-top:6.5rem;}
@@ -936,22 +937,17 @@ footer{
   .foot-row{justify-content:center;text-align:center;}
 }
 
-/* tablets and up */
+/* tablets and up: tiles go two-up */
 @media (min-width:641px){
   .facts{grid-template-columns:repeat(4,1fr);}
-  .off-row{grid-template-columns:minmax(11rem,0.9fr) 2fr auto;gap:1.4rem;}
+  .proj-grid{grid-template-columns:repeat(2,1fr);}
 }
 
-/* laptops: two-up bento, feature card gets its extra column */
+/* laptops */
 @media (min-width:860px){
-  .bento{grid-template-columns:repeat(6,1fr);}
-  .c4{grid-column:span 4;} .c3{grid-column:span 3;}
-  .c2{grid-column:span 2;} .c6{grid-column:span 6;}
-  .live-split{grid-template-columns:1fr 1fr !important;gap:1.8rem !important;}
   .matrix{grid-template-columns:repeat(2,1fr);}
-  .repo-grid{grid-template-columns:repeat(2,1fr);}
-  .repo.feature{grid-column:span 2;}
-  .research-split{grid-template-columns:1.35fr 1fr;gap:2.4rem;}
+  .proj-grid{grid-template-columns:repeat(3,1fr);}
+  .model-split{grid-template-columns:1fr 1fr;gap:1.8rem;}
 }
 
 /* desktop: hero goes side-by-side */
@@ -960,16 +956,15 @@ footer{
   .hero-image-side{max-width:none;}
 }
 
-/* wide desktops: four-up skills matrix, roomier rhythm */
+/* wide desktops: four-up skills matrix and tiles */
 @media (min-width:1500px){
   .matrix{grid-template-columns:repeat(4,1fr);}
-  .repo-grid{grid-template-columns:repeat(3,1fr);}
-  .repo.feature{grid-column:span 2;}   /* 2 of 3 — keeps the flagship card dominant */
+  .proj-grid{grid-template-columns:repeat(4,1fr);}
 }
 
 /* very wide: keep line length readable rather than stretching prose edge to edge */
 @media (min-width:1900px){
-  .research .lede,.research p.sub{max-width:68ch;}
+  .sheet-body .lede,.sheet-body .sub{max-width:68ch;}
 }
 </style>
 </head>
@@ -986,8 +981,8 @@ footer{
 <!-- shared gradient for the squiggle underlines -->
 <svg width="0" height="0" aria-hidden="true" style="position:absolute">
   <defs><linearGradient id="sqg" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0%" stop-color="#F9B8CE"/><stop offset="55%" stop-color="#C7A9FF"/>
-    <stop offset="100%" stop-color="#FFC9A9"/>
+    <stop offset="0%" stop-color="#F9B8CE"/>
+    <stop offset="100%" stop-color="#F9B8CE" stop-opacity="0.25"/>
   </linearGradient></defs>
 </svg>
 
@@ -1028,14 +1023,6 @@ footer{
   <div class="wrap hero-grid">
 
     <div class="hero-content">
-      <div class="sparkles" aria-hidden="true">
-        <b style="--s:14px;left:-2%;top:26%;--delay:0s;--d:4.5s;"></b>
-        <b style="--s:9px;left:52%;top:8%;--delay:1.1s;--d:3.8s;--c:var(--violet);"></b>
-        <b style="--s:11px;left:78%;top:34%;--delay:2.3s;--d:5s;--c:var(--peach);"></b>
-        <b style="--s:7px;left:34%;top:52%;--delay:0.6s;--d:4.2s;"></b>
-        <b style="--s:12px;left:88%;top:62%;--delay:3.1s;--d:4.8s;--c:var(--violet);"></b>
-        <b style="--s:8px;left:12%;top:70%;--delay:1.8s;--d:3.6s;--c:var(--peach);"></b>
-      </div>
       <p class="eyebrow">B.Tech Artificial Intelligence · Mumbai</p>
 
       <h1 class="hero-name">Anushka Jain<br><span class="accent">builds systems<br>that learn.</span></h1>
@@ -1064,11 +1051,12 @@ footer{
     </div>
 
     <div class="hero-image-side">
-      <!-- photo hangs from a rope you can actually grab, drag and pluck -->
+      <!-- photo hangs from a vertical cord you can actually grab, drag and pluck -->
       <div class="hang" id="hang">
+        <span class="rope-anchor" aria-hidden="true"></span>
         <svg class="rope" id="ropeSvg" aria-hidden="true"><path id="ropePath"/></svg>
         <div class="rope-grab" id="ropeGrab" title="drag me"></div>
-        <span class="rope-hint mono" id="ropeHint">drag the rope ↔</span>
+        <span class="rope-hint mono" id="ropeHint">drag to swing ↔</span>
         <div class="swing" id="swing">
           <span class="clip" aria-hidden="true"></span>
           <div class="frame">
@@ -1131,171 +1119,89 @@ footer{
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow reveal">Selected work</p>
-      <h2 class="sec-title reveal">Run it, <em>then read the source</em></h2>
+      <h2 class="sec-title reveal">Things I <em>built</em></h2>
       <svg class="squiggle reveal" viewBox="0 0 96 9" aria-hidden="true"><path d="M2 6 Q 14 0, 26 5 T 50 5 T 74 5 T 94 4"/></svg>
-      <p class="sec-sub reveal">
-        Ordered by how much you can check yourself — a model you can run, then code you
-        can read, then the rest.
-      </p>
+      <p class="sec-sub reveal">Click any project to open it.</p>
     </div>
 
-    <div class="group-head reveal">
-      <h3>Live in your browser</h3><p>A real quantized transformer, running client-side.</p>
-    </div>
-
-    <div class="bento">
-
-      <!-- LIVE MODEL -->
-      <article class="card c6" id="live-model">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;" class="live-split">
-          <div>
-            <div class="model-head">
-              <span class="badge live">● live inference</span>
-              <span class="badge" id="backendBadge">backend: —</span>
-              <span class="badge" id="sizeBadge">~67 MB int8</span>
-            </div>
-            <h3 class="card-title" style="margin-top:0;">Sentiment Analysis</h3>
-            <p class="card-desc">
-              A DistilBERT classifier fine-tuned on SST-2, quantized to int8 and run
-              client-side via Transformers.js. Nothing leaves your browser.
-            </p>
-            <p class="card-desc" style="margin-top:0.7rem;color:var(--muted);font-size:0.97rem;">
-              On WASM rather than WebGPU deliberately — int8 kernels on WebGPU return
-              wrong logits today. Correct probabilities beat the speedup.
-            </p>
-            <div class="samples" id="samples">
-              <button class="sample">This portfolio is genuinely impressive.</button>
-              <button class="sample">The model latency is unacceptable.</button>
-              <button class="sample">It works, though the UI feels dated.</button>
-            </div>
-            <div class="tags">
-              <span class="tag">Transformers.js</span><span class="tag">DistilBERT</span>
-              <span class="tag">ONNX Runtime Web</span><span class="tag">int8</span>
-            </div>
-          </div>
-
-          <div>
-            <div class="model-io">
-              <textarea class="model-input" id="sentInput" placeholder="Type a sentence, then run the classifier…" aria-label="Text to classify">This portfolio is genuinely impressive.</textarea>
-            </div>
-            <div style="display:flex;gap:0.55rem;margin-top:0.7rem;flex-wrap:wrap;">
-              <button class="btn btn-fill" id="sentRun">load model &amp; run</button>
-              <button class="btn btn-ghost" id="sentClear">clear</button>
-            </div>
-            <div class="progress-line"><i id="sentProgress"></i></div>
-            <p class="model-status mono" id="sentStatus">idle · model not yet downloaded</p>
-            <div class="bars">
-              <div class="bar-row">
-                <span class="bar-label">POSITIVE</span>
-                <span class="bar-track"><i class="bar-fill pos" id="barPos"></i></span>
-                <span class="bar-val" id="valPos">—</span>
-              </div>
-              <div class="bar-row">
-                <span class="bar-label">NEGATIVE</span>
-                <span class="bar-track"><i class="bar-fill neg" id="barNeg"></i></span>
-                <span class="bar-val" id="valNeg">—</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-    </div>
-
-    <div class="group-head reveal">
-      <h3>On GitHub</h3><p>Six repositories. Stars, languages and file trees come from the GitHub API — expand any card to browse the real contents.</p>
-    </div>
-
-    <div class="repo-bar reveal">
-      <div class="filters" id="repoFilters" role="group" aria-label="Filter projects"></div>
+    <div class="proj-bar reveal">
+      <div class="filters" id="projFilters" role="group" aria-label="Filter projects"></div>
       <span class="sync" id="repoSync"><i></i><span id="repoSyncText">reading github…</span></span>
     </div>
 
-    <div class="repo-grid" id="repoGrid"></div>
+    <div class="proj-grid" id="projGrid"></div>
+  </div>
+</section>
 
-    <div class="group-head reveal">
-      <h3>Not public yet</h3><p>Capstone research and coursework with no public repository.</p>
+<!-- ── The live classifier lives here while its sheet is closed. Opening the
+     Sentiment Analysis tile MOVES this node into the sheet rather than
+     re-rendering it, so the downloaded model survives open/close cycles and
+     section 12a's element references stay valid. ── -->
+<div id="liveHost" hidden>
+  <div class="model-split" id="liveModel">
+    <div>
+      <div class="model-head">
+        <span class="badge live">● live inference</span>
+        <span class="badge" id="backendBadge">backend: —</span>
+        <span class="badge" id="sizeBadge">~67 MB int8</span>
+      </div>
+      <p class="lede">
+        DistilBERT fine-tuned on SST-2, quantized to int8, run client-side
+        via Transformers.js. Nothing leaves your browser.
+      </p>
+      <p class="sub" style="color:var(--muted);">
+        WASM, not WebGPU — int8 kernels there return wrong logits today.
+      </p>
+      <div class="samples" id="samples">
+        <button class="sample">This portfolio is genuinely impressive.</button>
+        <button class="sample">The model latency is unacceptable.</button>
+        <button class="sample">It works, though the UI feels dated.</button>
+      </div>
+      <div class="tags">
+        <span class="tag">Transformers.js</span><span class="tag">DistilBERT</span>
+        <span class="tag">ONNX Runtime Web</span><span class="tag">int8</span>
+      </div>
     </div>
 
-    <!-- FEATURED RESEARCH — repo is private, so: no link, no live data, no pretending -->
-    <article class="research reveal" id="cartelbench">
-      <div class="research-head">
-        <span class="badge live">● capstone research</span>
-        <span class="badge priv" id="cbStatus">repo going public</span>
-        <span class="badge">paper in progress</span>
+    <div>
+      <div class="model-io">
+        <textarea class="model-input" id="sentInput" placeholder="Type a sentence, then run the classifier…" aria-label="Text to classify">This portfolio is genuinely impressive.</textarea>
       </div>
-      <div class="research-body">
-        <div class="research-split">
-        <div>
-        <h3>CartelBench</h3>
-        <p class="lede">
-          Do LLM market makers collude — and can anything stop them? A benchmark that drops
-          language models into <b>ABIDES</b>, JPMorgan's order-book simulator, as market maker,
-          trader or regulator, scored only on the order book and the cash ledger.
-        </p>
-        <p class="sub">
-          <b>Told</b> to run a cartel, models comply and take real money off captured retail flow.
-          <b>Left alone</b>, none initiates. <b>Invited</b>, it turns entirely on how persuasive the
-          invitation is. Three earlier claims were withdrawn under adversarial review.
-        </p>
+      <div style="display:flex;gap:0.55rem;margin-top:0.7rem;flex-wrap:wrap;">
+        <button class="btn btn-fill" id="sentRun">load model &amp; run</button>
+        <button class="btn btn-ghost" id="sentClear">clear</button>
+      </div>
+      <div class="progress-line"><i id="sentProgress"></i></div>
+      <p class="model-status mono" id="sentStatus">idle · model not yet downloaded</p>
+      <div class="bars">
+        <div class="bar-row">
+          <span class="bar-label">POSITIVE</span>
+          <span class="bar-track"><i class="bar-fill pos" id="barPos"></i></span>
+          <span class="bar-val" id="valPos">—</span>
         </div>
-        <div class="role">
-          <h4>My contribution</h4>
-          <p class="sub">
-            Reproducibility and artifact engineering — one-command regeneration of every table and
-            figure, CI gates rewritten to fail closed, a double-blind anonymisation scrub, and the
-            ACM <span class="mono">acmart</span> build with an enforced page budget.
-          </p>
+        <div class="bar-row">
+          <span class="bar-label">NEGATIVE</span>
+          <span class="bar-track"><i class="bar-fill neg" id="barNeg"></i></span>
+          <span class="bar-val" id="valNeg">—</span>
         </div>
-        </div>
-        <div class="facts">
-          <div class="fact"><span>Substrate</span><b>ABIDES · JPMorgan</b></div>
-          <div class="fact"><span>Models under test</span><b>Gemma 3 · Llama 4 · Kimi K2.5</b></div>
-          <div class="fact"><span>My commits</span><b id="cbCommits">39 of 396</b></div>
-          <div class="fact"><span>Target venue</span><b>CODS 2026</b></div>
-        </div>
-        <div class="repo-foot">
-          <a class="mini" href="https://github.com/manan-tech/cartelbench" target="_blank" rel="noopener">
-            manan-tech/cartelbench ↗
-          </a>
-          <span class="sync cached spacer" id="cbSync"><i></i>checking repo visibility…</span>
-        </div>
-      </div>
-    </article>
-
-    <!-- work without a public repo — stated plainly, no fake demos -->
-    <div class="offline reveal">
-      <div class="offline-head">
-        Not on GitHub <span>coursework and client work with no public repository</span>
-      </div>
-      <div class="off-row">
-        <span class="off-name">3D Liver Segmentation</span>
-        <span class="off-desc">CT pipeline feeding a 3D CNN for surgical planning. TensorFlow, OpenCV.</span>
-        <span class="off-note">private · no repo</span>
-      </div>
-      <div class="off-row">
-        <span class="off-name">Stock Prediction</span>
-        <span class="off-desc">Bi-LSTM time-series forecaster served through a Streamlit dashboard.</span>
-        <span class="off-note">private · no repo</span>
-      </div>
-      <div class="off-row">
-        <span class="off-name">Image to Voice</span>
-        <span class="off-desc">OCR that lifts text out of images and speaks it back in three languages.</span>
-        <span class="off-note">private · no repo</span>
-      </div>
-      <div class="off-row">
-        <span class="off-name">Adversarial AML Chain</span>
-        <span class="off-desc">Adversarial anti-money-laundering research on blockchain graphs.</span>
-        <a class="off-note link" href="https://github.com/reyaoberoi/Adversarial-AML-Chain" target="_blank" rel="noopener">collaborator's repo ↗</a>
-      </div>
-      <div class="off-row">
-        <span class="off-name">Curl Correct</span>
-        <span class="off-desc">Exercise-form analyzer using pose estimation. Repo created, code not yet pushed.</span>
-        <span class="off-note">in progress</span>
       </div>
     </div>
   </div>
-</section>
+</div>
+
+<!-- PROJECT DETAIL SHEET -->
+<div class="sheet" id="projSheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet-box">
+    <div class="sheet-top">
+      <div>
+        <h2 class="sheet-title" id="sheetTitle"></h2>
+        <div class="sheet-meta" id="sheetMeta"></div>
+      </div>
+      <button class="sheet-close" id="sheetClose" aria-label="Close project">✕</button>
+    </div>
+    <div class="sheet-body" id="sheetBody"></div>
+  </div>
+</div>
 
 <!-- STACK -->
 <section id="stack">
@@ -1743,67 +1649,74 @@ document.addEventListener('pointermove', e=>{
 })();
 
 /* ══ 07b · the hanging photo ══
-   Two coupled springs. `ang` is the card's swing (a damped pendulum); `sag` is
-   how far the rope droops. Dragging the rope or the card drives both, and on
-   release each springs back with damping. Idle, the card sways almost
-   imperceptibly so it reads as hanging rather than pinned. ══ */
+   A vertical cord and the card below it are one pendulum pivoting at the fixed
+   anchor. Two coupled springs drive it: `ang` is the swing angle about that
+   anchor, `stretch` is how far the cord pulls longer under load. Both spring
+   back with damping on release. Idle, the card sways almost imperceptibly so it
+   reads as hanging rather than pinned.
+
+   The cord is drawn in .hang's own coordinates rather than inside .swing: the
+   card's transform would otherwise carry the cord's top end away from the
+   anchor it is supposed to be tied to. Instead both ends are computed from the
+   same `ang`/`stretch`, so they cannot drift apart. ══ */
 (function(){
   const hang=$('#hang'), swing=$('#swing'), svg=$('#ropeSvg'),
         path=$('#ropePath'), grab=$('#ropeGrab'), hint=$('#ropeHint');
   if(!hang||!swing||!path) return;
 
-  let ang=0, angV=0;          // card angle (deg) and angular velocity
-  let sag=0, sagV=0;          // extra rope droop (px)
-  let pull=0;                 // horizontal position of the rope's low point (-1..1)
-  let dragging=null, startX=0, startY=0, baseAng=0, t0=0;
+  let ang=0, angV=0;              // swing angle (deg) and angular velocity
+  let stretch=0, strV=0;          // cord extension beyond its resting length (px)
+  let dragging=null, startX=0, startY=0, baseAng=0, baseStr=0, t0=0;
 
   const STIFF=0.055, DAMP=0.94;      // pendulum: soft spring, slow decay
-  const S_STIFF=0.10, S_DAMP=0.86;   // rope sag: snappier
-  const MAXA=13;                     // beyond this it swings out of its column
+  const S_STIFF=0.14, S_DAMP=0.80;   // cord stretch: snappier, settles fast
+  const MAXA=14;                     // beyond this it swings out of its column
 
   function draw(){
-    const w=hang.clientWidth, h=parseFloat(getComputedStyle(svg).height)||70;
+    const w=hang.clientWidth;
+    const len=parseFloat(getComputedStyle(svg).height)||90;   // resting cord length
     if(!w) return;
-    const y=h*0.42;                                   // resting height of the rope
-    const cx=w/2 + pull*w*0.22;                       // low point follows the drag
-    const cy=y + 20 + sag + Math.abs(ang)*0.5;        // weight pulls it lower
-    // quadratic through the two posts, dipping to the loaded point
-    path.setAttribute('d',`M0 ${y} Q ${cx} ${cy}, ${w} ${y}`);
-    swing.style.transform=`rotate(${ang.toFixed(3)}deg)`;
+    const a=ang*Math.PI/180, L=len+stretch;
+    const ax=w/2, ay=0;                       // anchor: fixed, top centre
+    const ex=ax+Math.sin(a)*L, ey=ay+Math.cos(a)*L;           // where the clip ends up
+
+    /* bow the cord against the direction of travel so a swing whips rather than
+       staying ruler-straight; the offset is perpendicular to the cord */
+    const bow=clamp(-angV*2.4, -7, 7);
+    const mx=(ax+ex)/2 + Math.cos(a)*bow;
+    const my=(ay+ey)/2 - Math.sin(a)*bow;
+
+    path.setAttribute('d',`M${ax} ${ay} Q ${mx.toFixed(2)} ${my.toFixed(2)}, ${ex.toFixed(2)} ${ey.toFixed(2)}`);
+    /* rotate about the anchor, then slide down the cord — so translateY runs
+       along the rotated axis and the card stays on the cord's end */
+    swing.style.transform=`rotate(${ang.toFixed(3)}deg) translateY(${stretch.toFixed(2)}px)`;
   }
 
   function tick(now){
     if(!dragging){
       angV += -STIFF*ang;  angV *= DAMP;  ang += angV;
-      sagV += -S_STIFF*sag; sagV *= S_DAMP; sag += sagV;
+      strV += -S_STIFF*stretch; strV *= S_DAMP; stretch += strV;
       // a breath of idle motion once it has essentially settled
       if(Math.abs(ang)<0.35 && Math.abs(angV)<0.06) ang += Math.sin(now/1400)*0.05;
-      pull += (0-pull)*0.08;
     }
     draw();
     raf=requestAnimationFrame(tick);
   }
 
-  function down(e, what){
-    dragging=what; startX=e.clientX; startY=e.clientY; baseAng=ang; t0=performance.now();
-    angV=0; sagV=0;
+  function down(e){
+    dragging=true; startX=e.clientX; startY=e.clientY;
+    baseAng=ang; baseStr=stretch; t0=performance.now();
+    angV=0; strV=0;
     hint?.classList.add('gone');
     e.target.setPointerCapture?.(e.pointerId);
     e.preventDefault();
   }
+  /* one gesture for both grips: sideways swings it, downward stretches the cord */
   function move(e){
     if(!dragging) return;
-    const w=hang.clientWidth||1;
     const dx=e.clientX-startX, dy=e.clientY-startY;
-    if(dragging==='rope'){
-      pull = clamp(((e.clientX-hang.getBoundingClientRect().left)/w-0.5)*2, -1, 1);
-      sag  = clamp(dy, -12, 64);
-      ang  = clamp(pull*9 + dx*0.03, -MAXA, MAXA);    // the card trails the rope
-    }else{
-      ang  = clamp(baseAng + dx*0.09, -MAXA, MAXA);
-      sag  = clamp(Math.abs(ang)*0.7, 0, 40);
-      pull = clamp(ang/MAXA*0.6, -1, 1);
-    }
+    ang     = clamp(baseAng + dx*0.09, -MAXA, MAXA);
+    stretch = clamp(baseStr + dy*0.34, -5, 34);
   }
   function up(e){
     if(!dragging) return;
@@ -1814,17 +1727,17 @@ document.addEventListener('pointermove', e=>{
     e.target.releasePointerCapture?.(e.pointerId);
   }
 
-  grab.addEventListener('pointerdown', e=>down(e,'rope'));
+  grab.addEventListener('pointerdown', down);
   swing.addEventListener('pointerdown', e=>{
     if(e.target.closest('a,button')) return;          // don't hijack links in the frame
-    down(e,'card');
+    down(e);
   });
   addEventListener('pointermove', move, {passive:true});
   addEventListener('pointerup', up);
   addEventListener('pointercancel', up);
 
-  // a click without a drag = a pluck
-  grab.addEventListener('click', ()=>{ if(!REDUCED){ sag=22; sagV=0; angV=1.1; } });
+  // a click without a drag = a pluck: the cord bounces and swings a little
+  grab.addEventListener('click', ()=>{ if(!REDUCED){ stretch=18; strV=0; angV=0.8; } });
 
   let raf=0;
   new ResizeObserver(draw).observe(hang);
@@ -1834,59 +1747,131 @@ document.addEventListener('pointermove', e=>{
   document.addEventListener('visibilitychange',()=>{ if(!document.hidden) draw(); });
 })();
 
-/* ══ 08 · project explorer — real repositories, real GitHub data ══
-   Every number, language split and file path rendered here comes from the
-   GitHub REST API. The REPOS array below is a snapshot of that same API taken
-   on SNAP_DATE; it is used only when the live call fails or the anonymous
-   rate limit (60 req/hr per IP) is spent, so the page never shows a figure it
-   did not read from GitHub. ══ */
+/* ══ 08 · projects — one grid of tiles, one detail sheet ══
+   Every project on the page lives in the PROJECTS array below, whatever its
+   kind. A tile shows a name and a few words; everything else — the long
+   description, live GitHub numbers, the file tree, or the running model —
+   is built on demand when the tile is opened.
+
+   Numbers, language splits and file paths come from the GitHub REST API.
+   The snapshot fields are the same API read on SNAP_DATE, used only when the
+   live call fails or the anonymous limit (60 req/hr per IP) is spent, so the
+   page never shows a figure it did not read from GitHub. ══ */
 (function(){
-  const grid = $('#repoGrid'); if(!grid) return;
+  const grid = $('#projGrid'); if(!grid) return;
   const OWNER = 'Anushhhka-jain';
   const SNAP_DATE = '2026-08-13';
 
-  const REPOS = [
+  /* kind drives the tile marker and which detail body gets built:
+       live     · runs in the browser
+       repo     · public repo of mine, GitHub-backed
+       research · capstone, repo not mine to publish
+       private  · no public repository                                     */
+  const PROJECTS = [
     {
-      name:'anequant', feature:true, cats:['ai','quant'],
-      desc:'A quant firm simulated as a company — <b>13 AI agents across 7 departments</b> trading over an async event bus. LLMs only <b>propose and veto</b>; deterministic Python computes every signal, size and order. Seeded runs replay byte for byte.',
+      id:'sentiment', kind:'live', cats:['ai'],
+      name:'Sentiment Analysis',
+      blurb:'DistilBERT, live in your browser'
+    },
+    {
+      id:'anequant', kind:'repo', repo:'anequant', cats:['ai','quant'],
+      name:'anequant',
+      blurb:'13 AI agents run a quant firm',
+      desc:'A quant firm as a multi-agent system — <b>13 agents, 7 departments</b>, one async event bus. LLMs only <b>propose and veto</b>; deterministic Python computes every signal and order. Seeded runs replay byte for byte.',
       langs:{Python:132656, JavaScript:28694, CSS:13840, HTML:7369},
       stars:0, pushed:'2026-08-08',
       tree:['anequant/agents/base.py','anequant/agents/data.py','anequant/agents/executive.py','anequant/agents/operations.py','anequant/agents/research.py','anequant/agents/risk.py','anequant/agents/trading.py','anequant/agents/validation.py','anequant/api.py','anequant/bus.py','anequant/company.py','anequant/config.py','anequant/llm.py','anequant/market.py','anequant/memory.py','anequant/portfolio.py','anequant/rng.py','anequant/sim.py','anequant/strategies.py','frontend/app.js','frontend/index.html','frontend/styles.css','run.py','pytest.ini','requirements.txt','README.md','plan.md']
     },
     {
-      name:'agribid_proj', title:'Agribid — crop decision support', cats:['ai','fullstack'],
-      desc:'Crop decision support for Indian agriculture, built during the Agribid internship. Three trained models — land/crop, mandi price, rainfall — feed an optimisation engine behind a Flask app.',
+      id:'agribid_proj', kind:'repo', repo:'agribid_proj', cats:['ai','fullstack'],
+      name:'Agribid',
+      blurb:'Crop decision support for Indian farms',
+      desc:'Crop decision support for Indian agriculture, built at Agribid. Three models — land/crop, mandi price, rainfall — feed an optimisation engine behind a Flask app.',
       langs:{Python:48611, JavaScript:31382, HTML:17067, CSS:15035},
       stars:0, pushed:'2026-06-15',
       tree:['agri_dss/backend/app.py','agri_dss/backend/optimization_engine.py','agri_dss/backend/models/land_model.py','agri_dss/backend/models/mandi_model.py','agri_dss/backend/models/rainfall_model.py','agri_dss/backend/models/land_crop_classifier.pkl','agri_dss/backend/models/mandi_price_model.pkl','agri_dss/backend/models/rainfall_model.pkl','agri_dss/data/raw/land_use_data.csv','agri_dss/data/raw/mandi_price_data.csv','agri_dss/data/raw/rainfall_data.csv','agri_dss/frontend/templates/index.html','agri_dss/frontend/templates/metrics.html','agri_dss/frontend/static/js/main.js','agri_dss/frontend/static/js/metrics.js','agri_dss/train_all.py','agri_dss/run.py','agri_dss/README.md']
     },
     {
-      name:'BerryBooked', title:'BerryBooked', cats:['ai','fullstack'],
-      desc:'Clinic appointment booking over WhatsApp. Node/Express on Supabase, with a separate Python service running the conversational bot.',
+      id:'BerryBooked', kind:'repo', repo:'BerryBooked', cats:['ai','fullstack'],
+      name:'BerryBooked',
+      blurb:'Clinic booking over WhatsApp',
+      desc:'Clinic booking over WhatsApp. Node/Express on Supabase, with a separate Python service running the bot.',
       langs:{HTML:142751, JavaScript:90267, CSS:32338, PLpgSQL:14538, Python:7115},
       stars:0, pushed:'2026-07-28',
       tree:['berrybooked-server/server.js','berrybooked-server/src/booking.js','berrybooked-server/src/bot.js','berrybooked-server/src/store.js','berrybooked-server/src/whatsapp.js','berrybooked-server/ai_service/bot.py','berrybooked-server/ai_service/main.py','berrybooked-server/public/dashboard.html','berrybooked-server/public/founder.html','berrybooked-server/public/simulator.html','berrybooked-server/supabase/migration-2-doctors-patients.sql','berrybooked-server/supabase/migration-3-plans-whatsapp.sql','berrybooked-server/supabase/migration-4-reminders-payments.sql','berrybooked-server/supabase/migration-5-engagement.sql','berrybooked-server/DEPLOY.md','berrybooked-server/README.md']
     },
     {
-      name:'Quant_Finance_Basic_Models', title:'Quant Finance Models', cats:['quant'],
-      desc:'Core quant models written from scratch — Black–Scholes, Monte Carlo, CAPM, geometric Brownian motion, Markowitz and the Wiener process.',
+      id:'Quant_Finance_Basic_Models', kind:'repo', repo:'Quant_Finance_Basic_Models', cats:['quant'],
+      name:'Quant Finance Models',
+      blurb:'Black–Scholes to Markowitz, from scratch',
+      desc:'Black–Scholes, Monte Carlo, CAPM, geometric Brownian motion, Markowitz and the Wiener process — written from scratch.',
       langs:{'Jupyter Notebook':589222, Python:4001},
       stars:3, pushed:'2026-01-27',
       tree:['black_scholes.py','black_scholes_with_monte_Carlo_sim.py','monte-carlo_simulation.py','capm_implementation.ipynb','geometric_brownian_motion.ipynb','markowitz_portfolio.ipynb','wiener_process.ipynb']
     },
     {
-      name:'Alpha-Builder', title:'Alpha Builder', cats:['quant'],
-      desc:'Genetic-programming engine that evolves trading signals — candidate alpha expressions scored by fitness, refined by selection and mutation.',
+      id:'Alpha-Builder', kind:'repo', repo:'Alpha-Builder', cats:['quant'],
+      name:'Alpha Builder',
+      blurb:'Genetic programming evolves trading signals',
+      desc:'Genetic programming that evolves trading signals — alpha expressions scored by fitness, refined by selection and mutation.',
       langs:{HTML:34898, Python:22238},
       stars:0, pushed:'2026-04-15',
       tree:['ga_alpha/alpha.py','ga_alpha/api.py','ga_alpha/data.py','ga_alpha/fitness.py','ga_alpha/ga.py','ga_alpha/main.py','ga_alpha/requirements.txt','genome_alpha_dashboard.html','gp_alpha_system_architecture.svg']
     },
     {
-      name:'datainspector', title:'data-df-summarizer', cats:['tooling'],
-      desc:'A PyPI package — <b>pip install data-df-summarizer</b> — that profiles a Pandas DataFrame in one call: shape, columns, missing values, numeric stats.',
+      id:'datainspector', kind:'repo', repo:'datainspector', cats:['tooling'],
+      name:'data-df-summarizer',
+      blurb:'One-call Pandas profiler on PyPI',
+      desc:'A PyPI package — <b>pip install data-df-summarizer</b> — that profiles a Pandas DataFrame in one call: shape, columns, nulls, numeric stats.',
       langs:{Python:1531},
       stars:0, pushed:'2025-11-12',
       tree:['data_df_summarizer/__init__.py','pyproject.toml','setup.py','.github/workflows/publish.yml','README.md']
+    },
+    {
+      id:'cartelbench', kind:'research', cats:['ai','quant'],
+      name:'CartelBench',
+      blurb:'Do LLM market makers collude?',
+      slug:'manan-tech/cartelbench',
+      desc:'Do LLM market makers collude? A benchmark that drops language models into <b>ABIDES</b>, JPMorgan\'s order-book simulator, and scores them on nothing but the order book and the cash ledger.',
+      sub:'<b>Told</b> to run a cartel, models comply and take real money off captured retail flow. <b>Left alone</b>, none initiates. <b>Invited</b>, it turns on how persuasive the invitation is. Three earlier claims were withdrawn under adversarial review.',
+      role:'Reproducibility and artifact engineering — one-command regeneration of every table and figure, CI gates that fail closed, a double-blind scrub, and the ACM <span class="mono">acmart</span> build with an enforced page budget.',
+      facts:[['Substrate','ABIDES · JPMorgan'],['Models under test','Gemma 3 · Llama 4 · Kimi K2.5'],['My commits','39 of 396'],['Target venue','CODS 2026']]
+    },
+    {
+      id:'liver', kind:'private', cats:['ai'],
+      name:'3D Liver Segmentation',
+      blurb:'CT pipeline into a 3D CNN',
+      desc:'A CT preprocessing pipeline feeding a 3D CNN for surgical planning, built with TensorFlow and OpenCV.',
+      note:'Private — no public repository.'
+    },
+    {
+      id:'stock', kind:'private', cats:['ai','quant'],
+      name:'Stock Prediction',
+      blurb:'Bi-LSTM forecaster on Streamlit',
+      desc:'A bidirectional LSTM time-series forecaster served through a Streamlit dashboard.',
+      note:'Private — no public repository.'
+    },
+    {
+      id:'img2voice', kind:'private', cats:['ai'],
+      name:'Image to Voice',
+      blurb:'OCR that reads images aloud',
+      desc:'OCR that lifts text out of images and speaks it back in three languages.',
+      note:'Private — no public repository.'
+    },
+    {
+      id:'aml', kind:'private', cats:['ai'],
+      name:'Adversarial AML Chain',
+      blurb:'Adversarial AML on blockchain graphs',
+      desc:'Adversarial anti-money-laundering research on blockchain transaction graphs.',
+      note:'The code lives in a collaborator\'s repository, not mine.',
+      link:{href:'https://github.com/reyaoberoi/Adversarial-AML-Chain', label:'collaborator\'s repo ↗'}
+    },
+    {
+      id:'curl', kind:'private', cats:['ai'],
+      name:'Curl Correct',
+      blurb:'Pose estimation checks your form',
+      desc:'An exercise-form analyzer using pose estimation to count reps and flag bad form.',
+      note:'Repository created, code not pushed yet.'
     }
   ];
 
@@ -1903,6 +1888,8 @@ document.addEventListener('pointermove', e=>{
     {k:'fullstack', label:'full-stack'},
     {k:'tooling',   label:'tooling'}
   ];
+
+  const KIND_LABEL = {live:'live demo', repo:'github', research:'research', private:'not public'};
 
   const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const kb  = n => n>=1048576 ? (n/1048576).toFixed(1)+' MB' : n>=1024 ? Math.round(n/1024)+' KB' : n+' B';
@@ -1935,7 +1922,7 @@ document.addEventListener('pointermove', e=>{
   }
 
   /* flat path list → indented tree rows, each linking to the real file */
-  function treeMarkup(repo, paths, sizes, truncated){
+  function treeMarkup(repoName, paths, sizes, truncated){
     const seen = new Set();
     const rows = [];
     for(const p of paths){
@@ -1951,7 +1938,7 @@ document.addEventListener('pointermove', e=>{
     }
     const shown = rows.slice(0, 70);
     const body = shown.map(r=>{
-      const url = `https://github.com/${OWNER}/${repo.name}/${r.kind}/main/${r.path}`;
+      const url = `https://github.com/${OWNER}/${repoName}/${r.kind}/main/${r.path}`;
       const cls = r.kind==='tree' ? 'dir' : 'file';
       const ico = r.kind==='tree' ? ICON_DIR : ICON_FILE;
       const sz  = r.size ? `<span class="sz">${kb(r.size)}</span>` : '';
@@ -1960,73 +1947,154 @@ document.addEventListener('pointermove', e=>{
     const extra = rows.length>shown.length ? `<div class="tree-note">+ ${rows.length-shown.length} more paths — ${truncated?'tree truncated by GitHub. ':''}build artefacts (__pycache__, dist, egg-info, lockfiles) are filtered out.</div>`
                                            : `<div class="tree-note">build artefacts (__pycache__, dist, egg-info, lockfiles) are filtered out.</div>`;
     return `<div class="tree">
-      <div class="tree-head"><span class="path">${esc(OWNER)}/${esc(repo.name)}</span><span>· main</span><span style="margin-left:auto">${shown.length} paths</span></div>
+      <div class="tree-head"><span class="path">${esc(OWNER)}/${esc(repoName)}</span><span>· main</span><span style="margin-left:auto">${shown.length} paths</span></div>
       <div class="tree-list">${body}</div>${extra}
     </div>`;
   }
 
   const NOISE = /(^|\/)(__pycache__|\.pytest_cache|node_modules|dist|build|\.egg-info)(\/|$)|\.(pyc|pyo|whl|lock)$|(^|\/)package-lock\.json$/;
 
-  function card(r){
-    const title = r.title || r.name;
-    return `<article class="repo${r.feature?' feature':''}" data-cats="${r.cats.join(' ')}" data-name="${esc(r.name)}">
-      <div class="repo-top">
-        <a class="repo-slug" href="https://github.com/${OWNER}/${r.name}" target="_blank" rel="noopener">
-          ${ICON_REPO}<span class="owner">${esc(OWNER)}/</span><b>${esc(r.name)}</b>
-        </a>
-        <div class="repo-facts">
-          <span class="${r.stars>0?'hot':''}" data-stars>${ICON_STAR}${r.stars}</span>
-          <span data-pushed>updated ${ago(r.pushed)}</span>
-        </div>
-      </div>
-      <div class="repo-body">
-        <h3 class="repo-title">${esc(title)}</h3>
-        <p class="repo-desc">${r.desc}</p>
-        ${langMarkup(r.langs)}
-        <div class="repo-foot">
-          <button class="mini" data-tree aria-expanded="false"><span class="car">›</span> browse files</button>
-          <a class="mini" href="https://github.com/${OWNER}/${r.name}" target="_blank" rel="noopener">open on github ↗</a>
-          <span class="sync spacer" data-src><i></i>snapshot ${SNAP_DATE}</span>
-        </div>
-        <div class="tree-wrap"><div class="tree-inner" data-treebox></div></div>
-      </div>
-    </article>`;
+  /* ── tiles: name and a few words, nothing more ── */
+  function tile(p){
+    return `<button class="tile" data-id="${p.id}" data-cats="${p.cats.join(' ')}" aria-haspopup="dialog">
+      <span class="tile-kind ${p.kind}">${KIND_LABEL[p.kind]}</span>
+      <h3 class="tile-name">${esc(p.name)}</h3>
+      <p class="tile-blurb">${esc(p.blurb)}</p>
+      <span class="tile-go">open <span aria-hidden="true">→</span></span>
+    </button>`;
   }
+  grid.innerHTML = PROJECTS.map(tile).join('');
 
-  /* ── render ── */
-  grid.innerHTML = REPOS.map(card).join('');
-
-  $('#repoFilters').innerHTML = FILTERS.map(f=>{
-    const n = f.k==='all' ? REPOS.length : REPOS.filter(r=>r.cats.includes(f.k)).length;
+  $('#projFilters').innerHTML = FILTERS.map(f=>{
+    const n = f.k==='all' ? PROJECTS.length : PROJECTS.filter(p=>p.cats.includes(f.k)).length;
     return `<button class="fchip${f.k==='all'?' on':''}" data-f="${f.k}">${f.label} <em>${n}</em></button>`;
   }).join('');
 
-  $('#repoFilters').addEventListener('click', e=>{
+  $('#projFilters').addEventListener('click', e=>{
     const b = e.target.closest('.fchip'); if(!b) return;
-    $$('.fchip', $('#repoFilters')).forEach(c=>c.classList.toggle('on', c===b));
+    $$('.fchip', $('#projFilters')).forEach(c=>c.classList.toggle('on', c===b));
     const k = b.dataset.f;
-    $$('.repo', grid).forEach(el=>{
+    $$('.tile', grid).forEach(el=>{
       el.hidden = !(k==='all' || el.dataset.cats.split(' ').includes(k));
     });
   });
 
+  /* ══ the detail sheet ══ */
+  const sheet = $('#projSheet'), sBody = $('#sheetBody'),
+        sTitle = $('#sheetTitle'), sMeta = $('#sheetMeta');
+  const liveHost = $('#liveHost'), liveModel = $('#liveModel');
+  let lastFocus = null;
+
+  /* the row of small facts under the title */
+  function metaMarkup(p){
+    if(p.kind==='repo'){
+      return `<a class="repo-slug" href="https://github.com/${OWNER}/${p.repo}" target="_blank" rel="noopener">
+          ${ICON_REPO}<span class="owner">${esc(OWNER)}/</span><b>${esc(p.repo)}</b>
+        </a>
+        <div class="repo-facts">
+          <span class="${p.stars>0?'hot':''}">${ICON_STAR}${p.stars}</span>
+          <span>updated ${ago(p.pushed)}</span>
+        </div>`;
+    }
+    if(p.kind==='live')     return '<span class="badge live">● runs in your browser</span>';
+    if(p.kind==='research') return '<span class="badge live">● capstone research</span><span class="badge priv" id="cbStatus">repo going public</span><span class="badge">paper in progress</span>';
+    return '<span class="badge">no public repository</span>';
+  }
+
+  function bodyMarkup(p){
+    if(p.kind==='live') return '<div data-live-slot></div>';
+
+    if(p.kind==='repo'){
+      return `<p class="lede">${p.desc}</p>
+        <div class="sheet-sec">
+          <h4>Languages</h4>
+          ${langMarkup(p.langs)}
+        </div>
+        <div class="repo-foot">
+          <button class="mini" data-tree aria-expanded="false"><span class="car">›</span> browse files</button>
+          <a class="mini" href="https://github.com/${OWNER}/${p.repo}" target="_blank" rel="noopener">open on github ↗</a>
+          <span class="sync spacer" data-src><i></i>snapshot ${SNAP_DATE}</span>
+        </div>
+        <div data-treebox></div>`;
+    }
+
+    if(p.kind==='research'){
+      const facts = p.facts.map(([k,v])=>`<div class="fact"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('');
+      return `<p class="lede">${p.desc}</p>
+        <p class="sub">${p.sub}</p>
+        <div class="role"><h4>My contribution</h4><p class="sub" style="margin-top:0">${p.role}</p></div>
+        <div class="facts">${facts}</div>
+        <div class="repo-foot">
+          <a class="mini" href="https://github.com/${p.slug}" target="_blank" rel="noopener">${esc(p.slug)} ↗</a>
+          <span class="sync cached spacer" id="cbSync"><i></i>checking repo visibility…</span>
+        </div>`;
+    }
+
+    /* private: say so plainly, link only where a real link exists */
+    const link = p.link ? `<div class="repo-foot"><a class="mini" href="${p.link.href}" target="_blank" rel="noopener">${esc(p.link.label)}</a></div>` : '';
+    return `<p class="lede">${p.desc}</p>
+      <div class="sheet-note">${esc(p.note)}</div>${link}`;
+  }
+
+  function openSheet(id){
+    const p = PROJECTS.find(x=>x.id===id); if(!p) return;
+    /* the palette can open a project while another sheet is already up; rescue
+       the model node first or overwriting sBody would delete it for good */
+    if(liveModel.parentElement !== liveHost) liveHost.appendChild(liveModel);
+    if(!sheet.classList.contains('open')) lastFocus = document.activeElement;
+    sTitle.textContent = p.name;
+    sMeta.innerHTML = metaMarkup(p);
+    sBody.innerHTML = bodyMarkup(p);
+
+    /* the model is moved, not rebuilt — see the note on #liveHost */
+    if(p.kind==='live') $('[data-live-slot]', sBody).appendChild(liveModel);
+    if(p.kind==='research') checkCartelBench();
+
+    sheet.classList.add('open');
+    document.body.classList.add('locked');
+    sheet.scrollTop = 0;
+    $('#sheetClose').focus();
+    sheet.dataset.open = id;
+  }
+
+  function closeSheet(){
+    if(!sheet.classList.contains('open')) return;
+    /* put the model back before the sheet body is discarded */
+    if(liveModel.parentElement !== liveHost) liveHost.appendChild(liveModel);
+    sheet.classList.remove('open');
+    document.body.classList.remove('locked');
+    sBody.innerHTML = '';
+    delete sheet.dataset.open;
+    lastFocus?.focus();
+  }
+
+  grid.addEventListener('click', e=>{
+    const t = e.target.closest('.tile'); if(!t) return;
+    openSheet(t.dataset.id);
+  });
+  $('#sheetClose').addEventListener('click', closeSheet);
+  sheet.addEventListener('click', e=>{ if(e.target === sheet) closeSheet(); });
+  addEventListener('keydown', e=>{ if(e.key==='Escape') closeSheet(); });
+
+  /* let the command palette open a project directly */
+  window.openProject = openSheet;
+
   /* ── expand: fetch the repository's real file tree on demand ── */
-  grid.addEventListener('click', async e=>{
+  sBody.addEventListener('click', async e=>{
     const btn = e.target.closest('[data-tree]'); if(!btn) return;
-    const art  = btn.closest('.repo');
-    const wrap = $('.tree-wrap', art), box = $('[data-treebox]', art);
+    const box = $('[data-treebox]', sBody);
     const open = btn.getAttribute('aria-expanded')==='true';
 
-    if(open){ btn.setAttribute('aria-expanded','false'); wrap.classList.remove('open'); return; }
-    btn.setAttribute('aria-expanded','true'); wrap.classList.add('open');
-    if(box.dataset.loaded) return;
-    box.dataset.loaded = '1';
+    if(open){ btn.setAttribute('aria-expanded','false'); box.innerHTML=''; return; }
+    btn.setAttribute('aria-expanded','true');
+    if(box.dataset.loaded){ box.innerHTML = box.dataset.html; return; }
 
-    const repo = REPOS.find(r=>r.name===art.dataset.name);
-    box.innerHTML = `<div class="tree"><div class="tree-head"><span class="path">reading ${esc(OWNER)}/${esc(repo.name)} …</span></div></div>`;
+    const p = PROJECTS.find(x=>x.id===sheet.dataset.open);
+    box.innerHTML = `<div class="tree"><div class="tree-head"><span class="path">reading ${esc(OWNER)}/${esc(p.repo)} …</span></div></div>`;
 
+    const src = $('[data-src]', sBody);
     try{
-      const res = await fetch(`https://api.github.com/repos/${OWNER}/${repo.name}/git/trees/main?recursive=1`);
+      const res = await fetch(`https://api.github.com/repos/${OWNER}/${p.repo}/git/trees/main?recursive=1`);
       if(!res.ok) throw new Error(res.status);
       const data = await res.json();
       const sizes = {};
@@ -2035,21 +2103,23 @@ document.addEventListener('pointermove', e=>{
         .map(n => { sizes[n.path] = n.size; return n.path; })
         .sort();
       if(!paths.length) throw new Error('empty');
-      box.innerHTML = treeMarkup(repo, paths, sizes, data.truncated);
-      const src = $('[data-src]', art);
+      box.innerHTML = treeMarkup(p.repo, paths, sizes, data.truncated);
       src.classList.add('live');
       src.innerHTML = '<i></i>live from github api';
     }catch(err){
-      box.innerHTML = treeMarkup(repo, repo.tree, null, false);
-      const src = $('[data-src]', art);
+      box.innerHTML = treeMarkup(p.repo, p.tree, null, false);
       src.classList.remove('live');
       src.classList.add('cached');
       const why = String(err.message)==='403' ? 'api rate limit' : 'api unreachable';
       src.innerHTML = `<i></i>tree from ${SNAP_DATE} snapshot · ${why}`;
     }
+    box.dataset.loaded = '1';
+    box.dataset.html = box.innerHTML;
   });
 
-  /* ── refresh stars + last-push from the live API (one request for all repos) ── */
+  /* ── refresh stars + last-push from the live API (one request for all repos).
+     This updates the PROJECTS data rather than the DOM, so whichever project
+     the visitor opens later shows the live figure. ── */
   (async function refresh(){
     const badge = $('#repoSync'), text = $('#repoSyncText');
     try{
@@ -2057,19 +2127,12 @@ document.addEventListener('pointermove', e=>{
       if(!res.ok) throw new Error(res.status);
       const live = await res.json();
       let hits = 0;
-      $$('.repo', grid).forEach(art=>{
-        const found = live.find(r=>r.name===art.dataset.name);
+      PROJECTS.filter(p=>p.kind==='repo').forEach(p=>{
+        const found = live.find(r=>r.name===p.repo);
         if(!found) return;
         hits++;
-        const st = $('[data-stars]', art), pu = $('[data-pushed]', art);
-        st.innerHTML = ICON_STAR + found.stargazers_count;
-        st.classList.toggle('hot', found.stargazers_count>0);
-        pu.textContent = 'updated ' + ago(found.pushed_at);
-        const src = $('[data-src]', art);
-        if(!src.classList.contains('live')){
-          src.classList.add('live');
-          src.innerHTML = '<i></i>live from github api';
-        }
+        p.stars  = found.stargazers_count;
+        p.pushed = found.pushed_at;
       });
       badge.classList.add('live');
       text.textContent = `live · ${hits} repos read from github api`;
@@ -2082,12 +2145,12 @@ document.addEventListener('pointermove', e=>{
   })();
 
   /* ── CartelBench lives in a collaborator's repo that is private today and going
-     public soon. Rather than hard-coding either state, ask GitHub on load: while it
-     404s the card says so plainly, and the day it opens the badge, star count and
-     language split fill themselves in with no edit to this file. ── */
-  (async function cartelbench(){
-    const badge = $('#cbStatus'), sync = $('#cbSync'), art = $('#cartelbench');
-    if(!art) return;
+     public soon. Rather than hard-coding either state, ask GitHub when the sheet
+     opens: while it 404s the sheet says so plainly, and the day it opens the
+     badge, star count and language split fill themselves in. ── */
+  async function checkCartelBench(){
+    const badge = $('#cbStatus'), sync = $('#cbSync');
+    if(!badge || !sync) return;
     const SLUG = 'manan-tech/cartelbench';
     try{
       const res = await fetch(`https://api.github.com/repos/${SLUG}`);
@@ -2106,20 +2169,20 @@ document.addEventListener('pointermove', e=>{
 
       const langs = await (await fetch(`https://api.github.com/repos/${SLUG}/languages`)).json();
       if(langs && Object.keys(langs).length){
-        $('.facts', art).insertAdjacentHTML('beforebegin', langMarkup(langs));
+        $('.facts', sBody)?.insertAdjacentHTML('beforebegin', langMarkup(langs));
       }
     }catch(err){
       sync.className = 'sync spacer';
       sync.innerHTML = '<i></i>github api unreachable';
     }
-  })();
+  }
 
-  /* reveal the cards once they are in the DOM */
+  /* reveal the tiles once they are in the DOM */
   new IntersectionObserver((es,o)=>{
     if(!es[0].isIntersecting) return;
-    $$('.repo', grid).forEach((el,i)=>{
+    $$('.tile', grid).forEach((el,i)=>{
       el.style.cssText += 'opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease);';
-      setTimeout(()=>{ el.style.opacity='1'; el.style.transform='none'; }, REDUCED?0:90*i);
+      setTimeout(()=>{ el.style.opacity='1'; el.style.transform='none'; }, REDUCED?0:60*i);
     });
     o.disconnect();
   },{threshold:0.05}).observe(grid);
@@ -2162,15 +2225,20 @@ document.addEventListener('pointermove', e=>{
     {t:'Recognition', k:'section', i:'#', go:()=>jump('#proof')},
     {t:'Log', k:'section', i:'#', go:()=>jump('#log')},
     {t:'Contact', k:'section', i:'#', go:()=>jump('#contact')},
-    {t:'CartelBench — do LLM market makers collude?', k:'research', i:'▸', go:()=>jump('#work')},
+    {t:'CartelBench — do LLM market makers collude?', k:'research', i:'▸', go:()=>reveal('cartelbench')},
     {t:'anequant — AI-agent quant firm', k:'repo', i:'▸', go:()=>reveal('anequant')},
     {t:'Agribid — crop decision support', k:'repo', i:'▸', go:()=>reveal('agribid_proj')},
     {t:'BerryBooked — WhatsApp clinic booking', k:'repo', i:'▸', go:()=>reveal('BerryBooked')},
     {t:'Quant Finance Models', k:'repo', i:'▸', go:()=>reveal('Quant_Finance_Basic_Models')},
     {t:'Alpha Builder — genetic alpha search', k:'repo', i:'▸', go:()=>reveal('Alpha-Builder')},
     {t:'data-df-summarizer — PyPI package', k:'repo', i:'▸', go:()=>reveal('datainspector')},
-    {t:'Sentiment Analysis — live model', k:'project', i:'▸', go:()=>jump('#live-model')},
-    {t:'Run the sentiment classifier', k:'action', i:'⚡', go:()=>{jump('#live-model'); setTimeout(()=>$('#sentRun')?.click(), 700);}},
+    {t:'3D Liver Segmentation', k:'project', i:'▸', go:()=>reveal('liver')},
+    {t:'Stock Prediction — Bi-LSTM forecaster', k:'project', i:'▸', go:()=>reveal('stock')},
+    {t:'Image to Voice — multilingual OCR', k:'project', i:'▸', go:()=>reveal('img2voice')},
+    {t:'Adversarial AML Chain', k:'project', i:'▸', go:()=>reveal('aml')},
+    {t:'Curl Correct — pose estimation', k:'project', i:'▸', go:()=>reveal('curl')},
+    {t:'Sentiment Analysis — live model', k:'project', i:'▸', go:()=>reveal('sentiment')},
+    {t:'Run the sentiment classifier', k:'action', i:'⚡', go:()=>{reveal('sentiment'); setTimeout(()=>$('#sentRun')?.click(), 400);}},
     {t:'Copy email address', k:'action', i:'⧉', go:()=>{
         navigator.clipboard?.writeText('anushkaj2211@gmail.com');
         const b=$('#palOpen'); if(b){const o=b.innerHTML;b.innerHTML='copied ✓';setTimeout(()=>b.innerHTML=o,1600);} }},
@@ -2181,14 +2249,10 @@ document.addEventListener('pointermove', e=>{
   let filtered=items, sel=0;
 
   function jump(hash){ $(hash)?.scrollIntoView({behavior:REDUCED?'auto':'smooth'}); }
-  /* scroll to a repo card, clear any active filter hiding it, and flash its border */
-  function reveal(name){
-    const el = document.querySelector(`.repo[data-name="${name}"]`);
-    if(!el) return jump('#work');
-    document.querySelector('.fchip[data-f="all"]')?.click();
-    el.scrollIntoView({behavior:REDUCED?'auto':'smooth', block:'center'});
-    el.style.borderColor='var(--accent)';
-    setTimeout(()=>el.style.borderColor='', 1400);
+  /* open a project's detail sheet directly (section 08 exposes the opener) */
+  function reveal(id){
+    if(window.openProject) window.openProject(id);
+    else jump('#work');
   }
   function score(q, t){
     t=t.toLowerCase();
@@ -2218,7 +2282,11 @@ document.addEventListener('pointermove', e=>{
     sel=0; render();
   }
   function openPal(){ pal.classList.add('open'); document.body.classList.add('locked'); input.value=''; filter(); input.focus(); }
-  function close(){ pal.classList.remove('open'); document.body.classList.remove('locked'); }
+  /* the project sheet may be open underneath — don't unlock the page out from under it */
+  function close(){
+    pal.classList.remove('open');
+    if(!$('#projSheet.open')) document.body.classList.remove('locked');
+  }
 
   $('#palOpen').addEventListener('click', openPal);
   input.addEventListener('input', filter);
